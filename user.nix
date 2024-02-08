@@ -32,7 +32,7 @@
       enable = true;
       vimAlias = true;
       plugins = with pkgs.vimPlugins; [
-        lualine-nvim
+#        lualine-nvim
         vim-airline
         nerdtree
       ];
