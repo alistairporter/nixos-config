@@ -19,8 +19,13 @@ name: Fleek Configuration
 overlays: {}
 packages:
     - helix
-    - starship
     - antidote
+    - neovim
+    - htop
+    - btop
+    - jq
+    - atuin
+    - starship
 paths:
     - $HOME/bin
     - $HOME/.local/bin
