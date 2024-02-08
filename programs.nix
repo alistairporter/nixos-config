@@ -7,7 +7,6 @@
   # Bling supplied programs
 
   # User specified programs 
-    programs.dircolors.enable = true; 
-    programs.nano.enable = true;
+    programs.dircolors.enable = true;
 
 }

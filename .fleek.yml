@@ -32,7 +32,6 @@ paths:
     - $HOME/.local/bin
 programs:
     - dircolors
-    - nano
 shell: zsh
 systems:
     - arch: x86_64
