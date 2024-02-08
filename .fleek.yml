@@ -26,6 +26,7 @@ packages:
     - jq
     - atuin
     - starship
+    - nano
 paths:
     - $HOME/bin
     - $HOME/.local/bin
