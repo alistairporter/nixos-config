@@ -1,0 +1,33 @@
+{ pkgs, misc, ... }: {
+  # FEEL FREE TO EDIT: This file is NOT managed by fleek. 
+  programs = {
+    zsh = {
+      enable = true;
+      antidote = {
+        enable = true;
+        plugins = [
+         "zsh-users/zsh-syntax-highlighting"
+         "zsh-users/zsh-completions"
+         "belak/zsh-utils path:completion"
+         "ohmyzsh/ohmyzsh path:lib"
+         "ohmyzsh/ohmyzsh path:plugins/git"
+         "ohmyzsh/ohmyzsh path:plugins/lol"
+         "ohmyzsh/ohmyzsh path:plugins/common-aliases"
+         "ohmyzsh/ohmyzsh path:plugins/sudo"
+         "ohmyzsh/ohmyzsh path:plugins/tmux"
+         "ohmyzsh/ohmyzsh path:plugins/git"
+        ];
+      };
+      #syntaxHighlighting.enable = true;
+    };
+    starship = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+    atuin = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+  };
+ 
+}
