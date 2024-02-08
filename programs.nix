@@ -7,7 +7,6 @@
   # Bling supplied programs
 
   # User specified programs 
-    programs.neovim.enable = true; 
     programs.dircolors.enable = true;
 
 }
