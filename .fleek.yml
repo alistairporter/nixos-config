@@ -39,6 +39,17 @@ systems:
         ssh_public_key_file: ~/.ssh/id_rsa.pub
         username: alistair
       username: alistair
+    - arch: x86_64
+      home: ""
+      hostname: morpheus
+      os: linux
+      user:
+        email: alistair_porter@outlook.com
+        name: alistair
+        ssh_private_key_file: ~/.ssh/id_rsa
+        ssh_public_key_file: ~/.ssh/id_rsa.pub
+        username: alistair
+      username: alistair
 track: nixos-unstable
 unfree: true
 users: []
