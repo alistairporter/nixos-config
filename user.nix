@@ -31,11 +31,11 @@
     neovim = {
       enable = true;
       vimAlias = true;
-#      plugins = with pkgs.vimPlugins; [
-#        lualine-nvim
-#        vim-airline
-#        nerdtree
-#      ];
+      plugins = with pkgs.vimPlugins; [
+        lualine-nvim
+        vim-airline
+        nerdtree
+      ];
     };
 #    nano = {
 #      enable = true;
