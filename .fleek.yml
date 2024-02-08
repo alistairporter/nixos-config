@@ -20,7 +20,6 @@ overlays: {}
 packages:
     - helix
     - antidote
-    - neovim
     - htop
     - btop
     - jq
@@ -31,6 +30,7 @@ paths:
     - $HOME/bin
     - $HOME/.local/bin
 programs:
+    - neovim
     - dircolors
 shell: zsh
 systems:

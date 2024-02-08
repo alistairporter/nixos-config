@@ -22,7 +22,6 @@
     # user selected packages
     pkgs.helix
     pkgs.antidote
-    pkgs.neovim
     pkgs.htop
     pkgs.btop
     pkgs.jq
