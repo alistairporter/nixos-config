@@ -21,8 +21,13 @@
   home.packages = [
     # user selected packages
     pkgs.helix
-    pkgs.starship
     pkgs.antidote
+    pkgs.htop
+    pkgs.btop
+    pkgs.jq
+    pkgs.atuin
+    pkgs.starship
+    pkgs.nano
     # Fleek Bling
     pkgs.git
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
