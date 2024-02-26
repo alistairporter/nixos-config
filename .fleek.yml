@@ -29,6 +29,7 @@ packages:
 paths:
     - $HOME/bin
     - $HOME/.local/bin
+    - $HOME/.cargo/bin
 programs:
     - neovim
     - dircolors
