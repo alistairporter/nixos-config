@@ -15,9 +15,6 @@
 
     # Overlays
     
-    nur.url = "github:nix-community/NUR";
-    
-    
 
   };
 
@@ -49,7 +46,7 @@
             ];
           }
           ({
-           nixpkgs.overlays = [inputs.nur.overlay ];
+           nixpkgs.overlays = [];
           })
 
         ];
@@ -75,7 +72,7 @@
             ];
           }
           ({
-           nixpkgs.overlays = [inputs.nur.overlay ];
+           nixpkgs.overlays = [];
           })
 
         ];
@@ -101,7 +98,7 @@
             ];
           }
           ({
-           nixpkgs.overlays = [inputs.nur.overlay ];
+           nixpkgs.overlays = [];
           })
 
         ];
@@ -127,7 +124,7 @@
             ];
           }
           ({
-           nixpkgs.overlays = [inputs.nur.overlay ];
+           nixpkgs.overlays = [];
           })
 
         ];
