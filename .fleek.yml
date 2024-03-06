@@ -32,6 +32,7 @@ paths:
     - $HOME/.cargo/bin
 programs:
     - neovim
+    - eza
     - dircolors
 shell: zsh
 systems:

@@ -8,6 +8,7 @@
 
   # User specified programs 
     programs.neovim.enable = true; 
+    programs.eza.enable = true; 
     programs.dircolors.enable = true;
 
 }
