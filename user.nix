@@ -80,6 +80,13 @@
         };
       };
     };
+    tmux = {
+      enable = true;
+      keyMode = "vi";
+      extraConfig = ''
+        bind-key @ choose-window 'join-pane -h -s "%%"'
+      '';
+    };
     atuin = {
       enable = true;
       enableZshIntegration = true;
