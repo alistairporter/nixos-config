@@ -25,6 +25,10 @@
       enableAliases = true;
       git = true;
     };
+    bat = {
+      enable = true;
+      extraPackages = with pkgs.bat-extras; [ batdiff batman batgrep batwatch batpipe];
+    };
     starship = {
       enable = true;
       enableZshIntegration = true;
