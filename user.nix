@@ -103,6 +103,9 @@
         enter_accept = false;
       };
     };
+    alacrity = {
+      enable = true;
+    };
     neovim = {
       enable = true;
       vimAlias = true;
@@ -142,5 +145,8 @@
         set multibuffer
       '';
     };
+  };
+  home.xdg = {
+    enable = true;
   }; 
 }
