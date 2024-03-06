@@ -83,6 +83,7 @@
     tmux = {
       enable = true;
       keyMode = "vi";
+      terminal = "screen-256color";
       extraConfig = ''
         bind-key @ choose-window 'join-pane -h -s "%%"'
       '';
