@@ -15,6 +15,12 @@
 
     # Overlays
     
+    nur.url = "github:nix-community/NUR";
+    
+    
+    xhmm.url = "github:schuelermine/xhmm";
+    
+    
 
   };
 
@@ -46,7 +52,7 @@
             ];
           }
           ({
-           nixpkgs.overlays = [];
+           nixpkgs.overlays = [inputs.nur.overlay inputs.xhmm.overlay ];
           })
 
         ];
@@ -72,7 +78,7 @@
             ];
           }
           ({
-           nixpkgs.overlays = [];
+           nixpkgs.overlays = [inputs.nur.overlay inputs.xhmm.overlay ];
           })
 
         ];
@@ -98,7 +104,7 @@
             ];
           }
           ({
-           nixpkgs.overlays = [];
+           nixpkgs.overlays = [inputs.nur.overlay inputs.xhmm.overlay ];
           })
 
         ];
@@ -124,7 +130,7 @@
             ];
           }
           ({
-           nixpkgs.overlays = [];
+           nixpkgs.overlays = [inputs.nur.overlay inputs.xhmm.overlay ];
           })
 
         ];

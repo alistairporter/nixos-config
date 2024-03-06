@@ -16,7 +16,13 @@ git:
     enabled: true
 min_version: 0.8.4
 name: Fleek Configuration
-overlays: {}
+overlays:
+    nur:
+        url: github:nix-community/NUR
+        follow: false
+    xhmm:
+        url: github:schuelermine/xhmm
+        follow: false
 packages:
     - helix
     - antidote

@@ -103,9 +103,9 @@
         enter_accept = false;
       };
     };
-    alacritty = {
-      enable = true;
-    };
+#    alacritty = {
+#      enable = true;
+#    };
     neovim = {
       enable = true;
       vimAlias = true;
