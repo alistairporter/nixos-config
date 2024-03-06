@@ -103,7 +103,7 @@
         enter_accept = false;
       };
     };
-    alacrity = {
+    alacritty = {
       enable = true;
     };
     neovim = {
