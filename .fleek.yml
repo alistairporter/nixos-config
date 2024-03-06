@@ -26,11 +26,13 @@ packages:
     - atuin
     - starship
     - nano
+    - cheat
 paths:
     - $HOME/bin
     - $HOME/.local/bin
     - $HOME/.cargo/bin
 programs:
+    - bat
     - neovim
     - eza
     - dircolors
