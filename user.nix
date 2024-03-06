@@ -20,6 +20,11 @@
       };
       #syntaxHighlighting.enable = true;
     };
+    eza = {
+      enable = true;
+      enableAliases = true;
+      git = true;
+    };
     starship = {
       enable = true;
       enableZshIntegration = true;
