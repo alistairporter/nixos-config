@@ -146,7 +146,7 @@
       '';
     };
   };
-  home.xdg = {
+  xdg = {
     enable = true;
   }; 
 }
