@@ -24,6 +24,7 @@
       enable = true;
       enableZshIntegration = true;
       settings = {
+        '''
         add_newline = true
 
         format = "$character$username$hostname$all→ "
@@ -268,6 +269,7 @@
 
         [zig]
         symbol = "zig "
+        '''
       };
     };
     atuin = {
