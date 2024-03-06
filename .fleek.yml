@@ -20,9 +20,6 @@ overlays:
     nur:
         url: github:nix-community/NUR
         follow: false
-    xhmm:
-        url: github:schuelermine/xhmm
-        follow: false
 packages:
     - helix
     - antidote
