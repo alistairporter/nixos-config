@@ -7,7 +7,10 @@
   # Bling supplied programs
 
   # User specified programs 
+    programs.alacritty.enable = true; 
+    programs.bat.enable = true; 
     programs.neovim.enable = true; 
+    programs.eza.enable = true; 
     programs.dircolors.enable = true;
 
 }
