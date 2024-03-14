@@ -20,6 +20,9 @@ overlays:
     nur:
         follow: false
         url: github:nix-community/NUR
+#    rust:
+#        follow: flase
+#        url: github:oxalica/rust-overlay
 packages:
     - helix
     - antidote
