@@ -3,7 +3,7 @@
   programs = {
     zsh = {
       enable = true;
-      completionInit = "autoload -U compinit &amp;&amp; compinit -u";
+      completionInit = "autoload -U compinit && compinit -u";
       antidote = {
         enable = true;
         plugins = [
