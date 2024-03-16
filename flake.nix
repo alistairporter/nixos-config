@@ -18,9 +18,6 @@
     nur.url = "github:nix-community/NUR";
     
     
-    rust.url = "github:oxalica/rust-overlay";
-    
-    
 
   };
 
@@ -52,7 +49,7 @@
             ];
           }
           ({
-           nixpkgs.overlays = [inputs.nur.overlay inputs.rust.overlay ];
+           nixpkgs.overlays = [inputs.nur.overlay ];
           })
 
         ];
@@ -78,7 +75,7 @@
             ];
           }
           ({
-           nixpkgs.overlays = [inputs.nur.overlay inputs.rust.overlay ];
+           nixpkgs.overlays = [inputs.nur.overlay ];
           })
 
         ];
@@ -104,7 +101,7 @@
             ];
           }
           ({
-           nixpkgs.overlays = [inputs.nur.overlay inputs.rust.overlay ];
+           nixpkgs.overlays = [inputs.nur.overlay ];
           })
 
         ];
@@ -130,33 +127,7 @@
             ];
           }
           ({
-           nixpkgs.overlays = [inputs.nur.overlay inputs.rust.overlay ];
-          })
-
-        ];
-      };
-      
-      "deck@khazaddum" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
-        modules = [
-          ./home.nix 
-          ./path.nix
-          ./shell.nix
-          ./user.nix
-          ./aliases.nix
-          ./programs.nix
-          # Host Specific configs
-          ./khazaddum/deck.nix
-          ./khazaddum/custom.nix
-          # self-manage fleek
-          {
-            home.packages = [
-              fleek.packages.x86_64-linux.default
-            ];
-          }
-          ({
-           nixpkgs.overlays = [inputs.nur.overlay inputs.rust.overlay ];
+           nixpkgs.overlays = [inputs.nur.overlay ];
           })
 
         ];
