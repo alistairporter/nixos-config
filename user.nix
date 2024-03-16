@@ -17,6 +17,7 @@
          "ohmyzsh/ohmyzsh path:plugins/sudo"
          "ohmyzsh/ohmyzsh path:plugins/tmux"
          "ohmyzsh/ohmyzsh path:plugins/git"
+         "ohmyzsh/ohmyzsh path:plugins/docker"
         ];
       };
       #syntaxHighlighting.enable = true;
