@@ -122,7 +122,6 @@
         "fleek": "fleek",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_2",
-<<<<<<< Updated upstream
         "nur": "nur",
         "rust": "rust"
       }
@@ -159,9 +158,6 @@
         "owner": "nix-systems",
         "repo": "default",
         "type": "github"
-=======
-        "nur": "nur"
->>>>>>> Stashed changes
       }
     }
   },
