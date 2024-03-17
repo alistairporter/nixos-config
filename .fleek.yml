@@ -1,4 +1,10 @@
 aliases:
+    lsa: ls -lah
+    l: ls -lh
+    mv: mv -i
+    cp: cp -i
+    dud: du -d 1 -h
+    t: tail -f
     fleeks: cd ~/.local/share/fleek
     latest-fleek-version: nix run https://getfleek.dev/latest.tar.gz -- version
     update-fleek: nix run https://getfleek.dev/latest.tar.gz -- update
