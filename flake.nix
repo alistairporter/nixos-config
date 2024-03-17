@@ -18,6 +18,9 @@
     nur.url = "github:nix-community/NUR";
     
     
+    rust.url = "github:oxalica/rust-overlay";
+    
+    
 
   };
 
@@ -49,7 +52,7 @@
             ];
           }
           ({
-           nixpkgs.overlays = [inputs.nur.overlay ];
+           nixpkgs.overlays = [inputs.nur.overlay inputs.rust.overlay ];
           })
 
         ];
@@ -75,7 +78,7 @@
             ];
           }
           ({
-           nixpkgs.overlays = [inputs.nur.overlay ];
+           nixpkgs.overlays = [inputs.nur.overlay inputs.rust.overlay ];
           })
 
         ];
@@ -101,7 +104,7 @@
             ];
           }
           ({
-           nixpkgs.overlays = [inputs.nur.overlay ];
+           nixpkgs.overlays = [inputs.nur.overlay inputs.rust.overlay ];
           })
 
         ];
@@ -127,7 +130,7 @@
             ];
           }
           ({
-           nixpkgs.overlays = [inputs.nur.overlay ];
+           nixpkgs.overlays = [inputs.nur.overlay inputs.rust.overlay ];
           })
 
         ];
@@ -153,7 +156,7 @@
             ];
           }
           ({
-           nixpkgs.overlays = [inputs.nur.overlay ];
+           nixpkgs.overlays = [inputs.nur.overlay inputs.rust.overlay ];
           })
 
         ];
