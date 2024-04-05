@@ -19,8 +19,20 @@ $ apply-$(hostname)
 ```
 
 Your actual aliases are listed below:
+    cp = "cp -i";
+
+    dud = "du -d 1 -h";
+
     fleeks = "cd ~/.local/share/fleek";
 
+    l = "ls -lh";
+
     latest-fleek-version = "nix run https://getfleek.dev/latest.tar.gz -- version";
+
+    lsa = "ls -lah";
+
+    mv = "mv -i";
+
+    t = "tail -f";
 
     update-fleek = "nix run https://getfleek.dev/latest.tar.gz -- update";
