@@ -30,6 +30,7 @@
     pkgs.nano
     pkgs.cheat
     # Fleek Bling
+    pkgs.git
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
   ];
   fonts.fontconfig.enable = true; 
