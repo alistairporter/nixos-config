@@ -36,6 +36,8 @@ packages:
     - starship
     - nano
     - cheat
+    - sl
+    - lolcat
 paths:
     - $HOME/bin
     - $HOME/.local/bin
