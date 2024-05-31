@@ -29,8 +29,6 @@
     pkgs.starship
     pkgs.nano
     pkgs.cheat
-    pkgs.sl
-    pkgs.lolcat
     # Fleek Bling
     pkgs.git
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
