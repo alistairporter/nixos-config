@@ -8,6 +8,7 @@ aliases:
     fleeks: cd ~/.local/share/fleek
     latest-fleek-version: nix run https://getfleek.dev/latest.tar.gz -- version
     update-fleek: nix run https://getfleek.dev/latest.tar.gz -- update
+    neofetch: fastfetch
 allow_broken: false
 auto_gc: true
 bling: none
@@ -38,6 +39,7 @@ packages:
     - cheat
     - sl
     - lolcat
+    - fastfetch
 paths:
     - $HOME/bin
     - $HOME/.local/bin
