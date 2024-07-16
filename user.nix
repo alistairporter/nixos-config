@@ -134,9 +134,16 @@
 
   gtk = {
     enable = true;
-    font.package = pkgs.inter;
-    font.name = "Inter Variable";
-    font.size = 11; 
+    font = {
+      package =  pkgs.inter;
+      name = "Inter Variable";
+      size = 11;
+    };
+    cursorTheme = {
+      name = "Vimix Cursors";
+      package = pkgs.vimix-cursor-theme;
+      size = 24;
+    }; 
   };
   
   home.file = {
