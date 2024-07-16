@@ -136,7 +136,7 @@
     enable = true;
     font.package = pkgs.inter;
     font.name = "Inter Variable";
-    font.size = "11"; 
+    font.size = 11; 
   };
   
   home.file = {
