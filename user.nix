@@ -140,7 +140,7 @@
       size = 11;
     };
     cursorTheme = {
-      name = "Vimix Cursors";
+      name = "Vimix-Cursors";
       package = pkgs.vimix-cursor-theme;
       size = 24;
     }; 
