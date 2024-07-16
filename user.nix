@@ -149,7 +149,7 @@
   home.file = {
     ".nanorc" = {
       enable = true;
-      target = "./";
+#      target = "./";
       text = ''
         set atblanks
         set autoindent
