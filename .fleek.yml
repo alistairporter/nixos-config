@@ -1,26 +1,31 @@
 aliases:
-    lsa: ls -lah
-    l: ls -lh
-    mv: mv -i
+    apply-atlantis: nix run --impure home-manager/master -- -b bak switch --flake .#alistair@atlantis
+    apply-khazaddum: nix run --impure home-manager/master -- -b bak switch --flake .#deck@khazaddum
+    apply-midgard: nix run --impure home-manager/master -- -b bak switch --flake .#alistair@midgard
+    apply-morpheus: nix run --impure home-manager/master -- -b bak switch --flake .#alistair@morpheus
+    apply-olympus: nix run --impure home-manager/master -- -b bak switch --flake .#alistair@olympus
     cp: cp -i
     dud: du -d 1 -h
-    t: tail -f
     fleeks: cd ~/.local/share/fleek
+    l: ls -lh
     latest-fleek-version: nix run https://getfleek.dev/latest.tar.gz -- version
-    update-fleek: nix run https://getfleek.dev/latest.tar.gz -- update
+    lsa: ls -lah
+    mv: mv -i
     neofetch: fastfetch
+    t: tail -f
+    update-fleek: nix run https://getfleek.dev/latest.tar.gz -- update
 allow_broken: false
 auto_gc: true
 bling: none
 blocklist: []
 byo_git: false
-ejected: false
+ejected: true
 flakedir: .local/share/fleek
 git:
-    autocommit: true
-    autopull: true
-    autopush: true
-    enabled: true
+    autocommit: false
+    autopull: false
+    autopush: false
+    enabled: false
 min_version: 0.8.4
 name: Fleek Configuration
 overlays:

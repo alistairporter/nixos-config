@@ -1,6 +1,16 @@
 { pkgs, misc, ... }: {
   # DO NOT EDIT: This file is managed by fleek. Manual changes will be overwritten.
    home.shellAliases = {
+    "apply-atlantis" = "nix run --impure home-manager/master -- -b bak switch --flake .#alistair@atlantis";
+    
+    "apply-khazaddum" = "nix run --impure home-manager/master -- -b bak switch --flake .#deck@khazaddum";
+    
+    "apply-midgard" = "nix run --impure home-manager/master -- -b bak switch --flake .#alistair@midgard";
+    
+    "apply-morpheus" = "nix run --impure home-manager/master -- -b bak switch --flake .#alistair@morpheus";
+    
+    "apply-olympus" = "nix run --impure home-manager/master -- -b bak switch --flake .#alistair@olympus";
+    
     "cp" = "cp -i";
     
     "dud" = "du -d 1 -h";
