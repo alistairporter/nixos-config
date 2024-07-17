@@ -1,5 +1,9 @@
 { pkgs, misc, ... }: {
-  # FEEL FREE TO EDIT: This file is NOT managed by fleek. 
+  # FEEL FREE TO EDIT: This file is NOT managed by fleek.
+  
+  imports = [
+    ./customdconf.nix
+  ]; 
   programs = {
     zsh = {
       enable = true;
