@@ -31,8 +31,6 @@
     pkgs.cheat
     pkgs.sl
     pkgs.lolcat
-    pkgs.fastfetch
-    pkgs.glow
     # Fleek Bling
     pkgs.git
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })

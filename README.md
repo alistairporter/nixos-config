@@ -33,8 +33,6 @@ Your actual aliases are listed below:
 
     mv = "mv -i";
 
-    neofetch = "fastfetch";
-
     t = "tail -f";
 
     update-fleek = "nix run https://getfleek.dev/latest.tar.gz -- update";
