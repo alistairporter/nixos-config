@@ -1,8 +1,8 @@
 { pkgs, misc, ... }: {
   # FEEL FREE TO EDIT: This file is NOT managed by fleek.
   imports = [
-    ../customdconf.nix
-    ../sharedwithgui.nix
+#    ../customdconf.nix
+#    ../sharedwithgui.nix
   ]; 
   home.sessionPath =
   [
