@@ -10,9 +10,6 @@
     home-manager.url = "https://flakehub.com/f/nix-community/home-manager/0.1.tar.gz";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    # Fleek
-    fleek.url = "https://flakehub.com/f/ublue-os/fleek/*.tar.gz";
-
     # Overlays
     
     nur.url = "github:nix-community/NUR";
@@ -21,9 +18,7 @@
 
   };
 
-  outputs = { self, nixpkgs, home-manager, fleek, ... }@inputs: {
-    
-     packages.x86_64-linux.fleek = fleek.packages.x86_64-linux.default;
+  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
     
     # Available through 'home-manager --flake .#your-username@your-hostname'
     
@@ -42,12 +37,6 @@
           # Host Specific configs
           ./midgard/alistair.nix
           ./midgard/custom.nix
-          # self-manage fleek
-          {
-            home.packages = [
-              fleek.packages.x86_64-linux.default
-            ];
-          }
           ({
            nixpkgs.overlays = [inputs.nur.overlay ];
           })
@@ -69,11 +58,11 @@
           ./morpheus/alistair.nix
           ./morpheus/custom.nix
           # self-manage fleek
-          {
-            home.packages = [
-              fleek.packages.x86_64-linux.default
-            ];
-          }
+          #{
+          #  home.packages = [
+          #    fleek.packages.x86_64-linux.default
+          #  ];
+          #}
           ({
            nixpkgs.overlays = [inputs.nur.overlay ];
           })
@@ -94,12 +83,6 @@
           # Host Specific configs
           ./atlantis/alistair.nix
           ./atlantis/custom.nix
-          # self-manage fleek
-          {
-            home.packages = [
-              fleek.packages.x86_64-linux.default
-            ];
-          }
           ({
            nixpkgs.overlays = [inputs.nur.overlay ];
           })
@@ -120,12 +103,6 @@
           # Host Specific configs
           ./olympus/alistair.nix
           ./olympus/custom.nix
-          # self-manage fleek
-          {
-            home.packages = [
-              fleek.packages.x86_64-linux.default
-            ];
-          }
           ({
            nixpkgs.overlays = [inputs.nur.overlay ];
           })
@@ -146,12 +123,6 @@
           # Host Specific configs
           ./khazaddum/deck.nix
           ./khazaddum/custom.nix
-          # self-manage fleek
-          {
-            home.packages = [
-              fleek.packages.x86_64-linux.default
-            ];
-          }
           ({
            nixpkgs.overlays = [inputs.nur.overlay ];
           })
