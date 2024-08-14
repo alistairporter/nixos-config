@@ -14,7 +14,7 @@
       },
       "original": {
         "type": "tarball",
-        "url": "https://flakehub.com/f/ublue-os/fleek/%2A.tar.gz"
+        "url": "https://flakehub.com/f/ublue-os/fleek/*.tar.gz"
       }
     },
     "home-manager": {
