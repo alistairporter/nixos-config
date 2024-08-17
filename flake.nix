@@ -6,6 +6,9 @@
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    # Extra Home Manager Modules
+    xhmm.url = "github:schuelermine/xhmm";
+
     # Home manager
     home-manager.url = "https://flakehub.com/f/nix-community/home-manager/0.1.tar.gz";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -18,7 +21,7 @@
 
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, xhmm, ... }@inputs: {
     
     # Available through 'home-manager --flake .#your-username@your-hostname'
     
@@ -28,6 +31,7 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [
+          xhmm.homeManagerModules.all
           ./home.nix 
           ./path.nix
           ./shell.nix
@@ -50,6 +54,7 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [
+          xhmm.homeManagerModules.all
           ./home.nix 
           ./path.nix
           ./shell.nix
@@ -76,6 +81,7 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [
+          xhmm.homeManagerModules.all
           ./home.nix 
           ./path.nix
           ./shell.nix
@@ -96,6 +102,7 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [
+          xhmm.homeManagerModules.all
           ./home.nix 
           ./path.nix
           ./shell.nix
@@ -118,6 +125,7 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [
+          xhmm.homeManagerModules.all
           ./home.nix 
           ./path.nix
           ./shell.nix

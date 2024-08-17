@@ -1,4 +1,7 @@
-{ pkgs, misc, ... }: {
+{ pkgs, misc, inputs, ... }: {
+
+#  imports = [inputs.xhmm.homeManagerModules.console.nano];
+  
   programs = {
 
     bat = {
@@ -45,7 +48,26 @@
         nnoremap <C-f> :NERDTreeFind<CR>
         let NERDTreeShowHidden=1
       '';
+    };
 
+    nano = {
+      enable = true;
+      config = ''
+        set atblanks
+        set autoindent
+        set constantshow
+        set cutfromcursor
+        set indicator
+        set linenumbers
+        set minibar
+        set showcursor
+        set softwrap
+        set speller "aspell -x -c"
+        set trimblanks
+        set whitespace "»·"
+        set zap
+        set multibuffer
+      '';
     };
   };
 }

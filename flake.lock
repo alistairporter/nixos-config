@@ -54,7 +54,23 @@
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
-        "nur": "nur"
+        "nur": "nur",
+        "xhmm": "xhmm"
+      }
+    },
+    "xhmm": {
+      "locked": {
+        "lastModified": 1712416399,
+        "narHash": "sha256-Gvzs+lXHLVUw9V4LhRSvbYByg4CcLtycFnF0Bv16FBA=",
+        "owner": "schuelermine",
+        "repo": "xhmm",
+        "rev": "df7faec97e4a7d8c67a2b78ed194f9135428e31a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "schuelermine",
+        "repo": "xhmm",
+        "type": "github"
       }
     }
   },
