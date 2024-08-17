@@ -19,6 +19,16 @@ $ apply-$(hostname)
 ```
 
 Your actual aliases are listed below:
+    apply-atlantis = "nix run --impure home-manager/master -- -b bak switch --flake .#alistair@atlantis";
+
+    apply-khazaddum = "nix run --impure home-manager/master -- -b bak switch --flake .#deck@khazaddum";
+
+    apply-midgard = "nix run --impure home-manager/master -- -b bak switch --flake .#alistair@midgard";
+
+    apply-morpheus = "nix run --impure home-manager/master -- -b bak switch --flake .#alistair@morpheus";
+
+    apply-olympus = "nix run --impure home-manager/master -- -b bak switch --flake .#alistair@olympus";
+
     cp = "cp -i";
 
     dud = "du -d 1 -h";
