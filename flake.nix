@@ -35,6 +35,8 @@
           ./aliases.nix
           ./programs.nix
           # Host Specific configs
+          ./customdconf.nix
+          ./sharedwithgui.nix
           ./midgard/alistair.nix
           ./midgard/custom.nix
           ({
@@ -101,6 +103,8 @@
           ./aliases.nix
           ./programs.nix
           # Host Specific configs
+          ./customdconf.nix
+          ./sharedwithgui.nix
           ./olympus/alistair.nix
           ./olympus/custom.nix
           ({
@@ -121,6 +125,8 @@
           ./aliases.nix
           ./programs.nix
           # Host Specific configs
+          ./customdconf.nix
+          ./sharedwithgui.nix
           ./khazaddum/deck.nix
           ./khazaddum/custom.nix
           ({
