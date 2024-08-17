@@ -15,11 +15,14 @@
     
     "dud" = "du -d 1 -h";
     
-    "fleeks" = "cd ~/.local/share/fleek";
+#    "fleeks" = "cd ~/.local/share/fleek";
+    "fleeks" = "echo 'fleek is no more, the git repo is now located at ~/.config/home-manager and no you dont get a nice shortcut either'";
+
+    "fleek" = "echo 'fleek is no more, you need to manually sync the git repo at ~/.config/home-manager and use home-manager switch to apply instead!'";
     
     "l" = "ls -lh";
     
-    "latest-fleek-version" = "nix run https://getfleek.dev/latest.tar.gz -- version";
+#    "latest-fleek-version" = "nix run https://getfleek.dev/latest.tar.gz -- version";
     
     "lsa" = "ls -lah";
     
@@ -29,6 +32,6 @@
     
     "t" = "tail -f";
     
-    "update-fleek" = "nix run https://getfleek.dev/latest.tar.gz -- update";
+#    "update-fleek" = "nix run https://getfleek.dev/latest.tar.gz -- update";
     };
 }
