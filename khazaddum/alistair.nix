@@ -1,7 +1,7 @@
 { pkgs, misc, ... }: {
   # DO NOT EDIT: This file is managed by fleek. Manual changes will be overwritten.
-    home.username = "deck";
-    home.homeDirectory = "/home/deck";
+    home.username = "alistair";
+    home.homeDirectory = "/home/alistair";
     programs.git = {
         enable = true;
         aliases = {
@@ -18,8 +18,8 @@
         };
 
         signing = {
-            key = "~/.ssh/id_rsa";
-            signByDefault = builtins.stringLength "~/.ssh/id_rsa" > 0;
+            key = "~/.ssh/id_ed25519";
+            signByDefault = builtins.stringLength "~/.ssh/id_ed25519" > 0;
         };
 
         lfs.enable = true;

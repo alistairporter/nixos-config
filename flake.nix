@@ -121,7 +121,7 @@
         ];
       };
       
-      "deck@khazaddum" = home-manager.lib.homeManagerConfiguration {
+      "alistair@khazaddum" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [
@@ -135,7 +135,7 @@
           # Host Specific configs
           ./customdconf.nix
           ./sharedwithgui.nix
-          ./khazaddum/deck.nix
+          ./khazaddum/alistair.nix
           ./khazaddum/custom.nix
           ({
            nixpkgs.overlays = [inputs.nur.overlay ];
