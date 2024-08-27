@@ -7,6 +7,7 @@
     };
 
     netdata = {
+      enable = true;
       config = {
         global = { "memory mode" = "none"; };
         web = {
