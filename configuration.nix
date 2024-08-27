@@ -6,6 +6,7 @@
     ./packages.nix
     ./services/services.nix
     ./usersandgroups.nix
+    ./virtualisation.nix
   ];
 
   boot.tmp.cleanOnBoot = true;
