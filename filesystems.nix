@@ -1,6 +1,15 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
+
+
+  # Btrfs Scrubbing
+  services.btrfs.autoScrub = {
+    enable = true;
+    interval = "weekly";
+  };
+
+
   # Filesystems:
   fileSystems = {
   # add options to fs definitions in hardware-configuration.nix
