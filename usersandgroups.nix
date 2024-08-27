@@ -8,4 +8,7 @@
     shell = pkgs.zsh;
     hashedPassword = "SECRET_REDACTED";
   };
+  users.users.netdata = {
+    extraGroups = [ "docker" ];
+  };
 }
