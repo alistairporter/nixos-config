@@ -47,9 +47,14 @@
               allowedIPs = ["10.10.10.2/32"];
             }
             {
+              name = "borealis";
+              publicKey = "TjcatBBmpfBskSL6p8eEKkMqtLZ2QpLLo4OUEZP9NTo=";
+              allowedIPs = ["10.10.10.3/32"];
+            }
+            {
               name = "olympus";
               publicKey = "vXL+6bfS0uM3hpT0LYbj1GkaH+2sMk9+bYR4hydBo1M=";
-              allowedIPs = ["10.10.10.3/32"];
+              allowedIPs = ["10.10.10.4/32"];
             }
           ];
         };    
