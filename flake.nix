@@ -97,6 +97,27 @@
 
         ];
       };
+
+      "alistair@borealis" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+        extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
+        modules = [
+          xhmm.homeManagerModules.all
+          ./home.nix 
+          ./path.nix
+          ./shell.nix
+          ./user.nix
+          ./aliases.nix
+          ./programs.nix
+          # Host Specific configs
+          ./borealis/alistair.nix
+          ./borealis/custom.nix
+          ({
+           nixpkgs.overlays = [inputs.nur.overlay ];
+          })
+
+        ];
+      };
       
       "alistair@olympus" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
