@@ -7,7 +7,7 @@
   networking.wireguard = {
     enable = true;
     interfaces = {
-      "wgtunnelatl" = {
+      "wgtunnelinfra" = {
         privateKey = "SECRET_REDACTED";
         ips = ["10.10.10.2/32"];
         peers = [
@@ -15,7 +15,7 @@
             name = "atlantis";
             endpoint = "aporter.xyz:51821";
             publicKey = "eYrWhvMGJc8BFadkwOhVQUQf/3OFOLiybYvE/JK7gXM=";
-            allowedIPs = ["10.10.10.1/32"];
+            allowedIPs = ["10.10.10.0/24"];
             persistentKeepalive = 25;
           }
         ];
