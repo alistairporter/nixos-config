@@ -17,8 +17,11 @@
     
     nur.url = "github:nix-community/NUR";
     
+    nixGL = {
+      url = "github:nix-community/nixGL/310f8e49a149e4c9ea52f1adf70cdc768ec53f8a";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     
-
   };
 
   outputs = { self, nixpkgs, home-manager, xhmm, ... }@inputs: {
@@ -46,7 +49,11 @@
           ({
            nixpkgs.overlays = [inputs.nur.overlay ];
           })
-
+          # todo: remove when https://github.com/nix-community/home-manager/pull/5355 gets merged:
+          (builtins.fetchurl {
+            url = "https://raw.githubusercontent.com/Smona/home-manager/nixgl-compat/modules/misc/nixgl.nix";
+            sha256 = "f14874544414b9f6b068cfb8c19d2054825b8531f827ec292c2b0ecc5376b305";
+          })
         ];
       };
       
