@@ -10,6 +10,12 @@
       ./hardware-configuration.nix
     ];
 
+  sops.defaultSopsFile = ./secrets/secrets.yaml;
+  sops.age.sshKeyPaths = [ /etc/ssh/ssh_host_ed25519_key ];
+  sops.secrets.wg_privkey_borealis = {};
+
+#  sops.secrets.wgprivborealis = 
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -29,7 +35,8 @@
     enable = true;
     interfaces = {
       "wgtunnelinfra" = {
-        privateKey = "SECRET_REDACTED";
+#        privateKey = "SECRET_REDACTED";
+        privateKeyFile = config.sops.secrets.wg_privkey_borealis.path;
         ips = ["10.10.10.3/32"];
         peers = [
           {

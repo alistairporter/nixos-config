@@ -13,7 +13,7 @@
     sops-nix.url = "github:Mic92/sops-nix";
   };
 
-  outputs = { self, nixpkgs, ... }:
+  outputs = { self, nixpkgs, sops-nix, ... }:
     let
       lib = nixpkgs.lib;
     in {
