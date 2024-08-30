@@ -21,7 +21,7 @@
         borealis = lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ./configuration.nix
+            ./borealis/configuration.nix
             sops-nix.nixosModules.sops
           ];
       };
