@@ -36,10 +36,16 @@
     wireguard = {
       enable = true;
       interfaces = {
-        "wgtunnelatl" = {
+        "wgtunnelinfra" = {
           privateKey = "SECRET_REDACTED";
           ips = ["10.10.10.1/24"];
           listenPort = 51821;
+          postSetup = ''
+            ${pkgs.iptables}/bin/iptables -A FORWARD -i wgtunnelinfra -o wgtunnelinfra -m conntrack --ctstate NEW -j ACCEPT
+          '';
+          postShutdown = ''
+            ${pkgs.iptables}/bin/iptables -D FORWARD -i wgtunnelinfra -o wgtunnelinfra -m conntrack --ctstate NEW -j ACCEPT
+          '';
           peers = [
             {
               name = "atlantis";
