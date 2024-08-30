@@ -8,7 +8,8 @@
     enable = true;
     interfaces = {
       "wgtunnelinfra" = {
-        privateKey = "SECRET_REDACTED";
+#        privateKey = "SECRET_REDACTED";
+        privateKeyFile = config.sops.secrets.wg_privkey_atlantis.path;
         ips = ["10.10.10.2/32"];
         peers = [
           {
