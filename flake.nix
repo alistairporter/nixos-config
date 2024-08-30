@@ -18,15 +18,25 @@
       lib = nixpkgs.lib;
     in {
       nixosConfigurations = {
+
         borealis = lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
             ./borealis/configuration.nix
             sops-nix.nixosModules.sops
           ];
+        };
+        
         atlantis = lib.nixosSystem {
           system = "x86_64-linux";
           modules = [ ./atlantis/configuration.nix ];
+        };
+        
+        morpheus = lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [ ./morpheus/configuration.nix ];
+        };
+
       };
     };
   };
