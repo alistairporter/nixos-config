@@ -9,6 +9,8 @@
 
     # or any branch you want:
     # nixpkgs.url = "nixpkgs/{BRANCH-NAME}";
+
+    sops-nix.url = "github:Mic92/sops-nix";
   };
 
   outputs = { self, nixpkgs, ... }:
@@ -18,7 +20,10 @@
       nixosConfigurations = {
         borealis = lib.nixosSystem {
           system = "x86_64-linux";
-          modules = [ ./configuration.nix ];
+          modules = [
+            ./configuration.nix
+            sops-nix.nixosModules.sops
+          ];
       };
     };
   };
