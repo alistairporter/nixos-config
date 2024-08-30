@@ -37,7 +37,8 @@
       enable = true;
       interfaces = {
         "wgtunnelinfra" = {
-          privateKey = "SECRET_REDACTED";
+#          privateKey = "SECRET_REDACTED";
+          privateKeyFile = config.sops.secrets.wg_privkey_morpheus_infra.path;
           ips = ["10.10.10.1/24"];
           listenPort = 51821;
           postSetup = ''
@@ -65,7 +66,8 @@
           ];
         };    
         "wgtunnelvpn" = {
-          privateKey = "SECRET_REDACTED";
+#          privateKey = "SECRET_REDACTED";
+          privateKeyFile = config.sops.secrets.wg_privkey_morpheus_vpn.path;
           ips = ["10.0.0.1/24"];
           listenPort = 51820;
           postSetup = ''
