@@ -1,7 +1,10 @@
 keys:
   - &admin_alistair 26DBBF47BEDF8C96B28E379DB8D445B0BBCCF273
   - &server_borealis age158rsk6lxx3sk0zq02xzs644m5kngkvr753sdwzc4p09rsyllq3rs69s8sk
+  - &server_morpheus age1gsqwykg4640kudawx257ya7xd3a83plw0f9qtzzqatl8tsvqyefqs58wcv
+  - &server_atlantis age1evgwalt49rkrzl3fnqpcp8g8ms6mt45etq6092c7n6q5k39da43qzdan8p
   - &sshkey_alistairatmidgard age1zj5rdt94p0nz6zf208f0refux2waj7w62yyg8dxlh9ktjhr3tvtquwzcmh
+  - &sshkey_alistairatatlantis age1872s3vy0z3e27apsvdd7jwr7m82fmesnw85gz28c5cfd3gn58d2q9ky0q0
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini|binary)$
     shamir_threshold: 1
@@ -11,4 +14,7 @@ creation_rules:
 #        merge:
        - age:
          - *server_borealis
+         - *server_morpheus
+         - *server_atlantis
          - *sshkey_alistairatmidgard
+         - *sshkey_alistairatatlantis
