@@ -24,6 +24,9 @@
             ./borealis/configuration.nix
             sops-nix.nixosModules.sops
           ];
+        atlantis = lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [ ./atlantis/configuration.nix ];
       };
     };
   };
