@@ -68,6 +68,11 @@
               publicKey = "VN2Qr2ShRbpGW+V8XyFjERjqiTPjytFy0ZeIZBOn7Fw=";
               allowedIPs = ["10.10.10.5/32"];
             }
+            {
+              name = "alistairpixel5";
+              publicKey = "6h3sn7Q6+E8DzpW5O7nlUt15qdIgJr+yubWB5Ev6jHo=";
+              allowedIPs = ["10.10.10.6/32"];
+            }
           ];
         };    
         "wgtunnelvpn" = {
