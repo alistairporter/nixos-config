@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./virtualisation.nix
     ];
 
   sops.defaultSopsFile = ../secrets/borealis.yaml;
@@ -94,7 +95,7 @@
   users.users.alistair = {
     isNormalUser = true;
     shell = pkgs.zsh;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
     hashedPassword = "SECRET_REDACTED";
   #   packages = with pkgs; [
   #     firefox
