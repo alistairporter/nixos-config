@@ -27,11 +27,17 @@
         };
         atlantis = lib.nixosSystem {
           system = "x86_64-linux";
-          modules = [ ./atlantis/configuration.nix ];
+          modules = [
+            ./atlantis/configuration.nix
+            sops-nix.nixosModules.sops
+          ];
         };
         morpheus = lib.nixosSystem {
           system = "x86_64-linux";
-          modules = [ ./morpheus/configuration.nix ];
+          modules = [
+            ./morpheus/configuration.nix
+            sops-nix.nixosModules.sops
+          ];
         };
       };
     };

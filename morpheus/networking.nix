@@ -63,6 +63,16 @@
               publicKey = "vXL+6bfS0uM3hpT0LYbj1GkaH+2sMk9+bYR4hydBo1M=";
               allowedIPs = ["10.10.10.4/32"];
             }
+            {
+              name = "praclarush";
+              publicKey = "VN2Qr2ShRbpGW+V8XyFjERjqiTPjytFy0ZeIZBOn7Fw=";
+              allowedIPs = ["10.10.10.5/32"];
+            }
+            {
+              name = "alistairpixel5";
+              publicKey = "6h3sn7Q6+E8DzpW5O7nlUt15qdIgJr+yubWB5Ev6jHo=";
+              allowedIPs = ["10.10.10.6/32"];
+            }
           ];
         };    
         "wgtunnelvpn" = {
@@ -88,9 +98,14 @@
               allowedIPs = ["10.0.0.3/32"];
             }
             {
-              name ="alistairsteamdeck";
+              name = "alistairsteamdeck";
               publicKey = "wBiOzaNwhvTEIzesU2mj9TfsbAPZpr7tTSvMKlPV9kc=";
               allowedIPs = ["10.0.0.4/32"];
+            }
+            {
+              name = "praclarush";
+              publicKey = "QApm0IY7QMXC2/KtdCooCFjXTimYVSe9bGeEUFG3/x0=";
+              allowedIPs = ["10.0.0.5/32"];
             }
           ];
         };
