@@ -16,7 +16,6 @@
     iptables
     gnupg
     pinentry
-    wakeonlan
     pinentry-curses
     prometheus-node-exporter
   ];
