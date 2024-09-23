@@ -36,6 +36,9 @@
           # Morpheus
           ${mkChildNode "3d560d1c-edee-4557-8f2f-e31d1335aa5b" "10.10.10.1"}
 
+          # Borealis
+          ${mkChildNode "059d3be9-c156-4e08-b876-c8490330b31b" "10.10.10.3"}
+          
           #
           ${mkChildNode "e3a6ddf5-b14a-40c5-85fe-88db72c767d5" "192.168.1.* *"}
 
