@@ -4,5 +4,6 @@
   imports = [
     ./ssh.nix
     ./reverseproxy.nix
+    ./socksproxy.nix
   ];
 }

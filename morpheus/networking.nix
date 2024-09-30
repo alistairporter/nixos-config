@@ -17,6 +17,7 @@
         22    # ssh
         80    # http
         443   # https
+        1080  # socks proxy
         2202  # gitea hackery
         9100  # prometheus node exporter
         19132 # minecraft bedrock tcp
