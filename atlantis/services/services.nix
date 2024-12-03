@@ -5,5 +5,6 @@
     ./avahi.nix
     ./samba.nix
     ./ssh.nix
+    ./tailscale.nix
   ];
 }

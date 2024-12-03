@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
       ./virtualisation.nix
       ./monitoring/monitoring.nix
+      ./services/services.nix
     ];
 
   sops.defaultSopsFile = ../secrets/borealis.yaml;
