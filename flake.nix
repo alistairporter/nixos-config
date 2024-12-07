@@ -11,9 +11,14 @@
     # nixpkgs.url = "nixpkgs/{BRANCH-NAME}";
 
     sops-nix.url = "github:Mic92/sops-nix";
+
+    nixvirt = {
+      url = "https://flakehub.com/f/AshleyYakeley/NixVirt/*.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, sops-nix, ... }:
+  outputs = { self, nixpkgs, sops-nix, nixvirt, ... }:
     let
       lib = nixpkgs.lib;
     in {
@@ -30,6 +35,7 @@
           modules = [
             ./atlantis/configuration.nix
             sops-nix.nixosModules.sops
+            nixvirt.nixosModules.default
           ];
         };
         morpheus = lib.nixosSystem {
