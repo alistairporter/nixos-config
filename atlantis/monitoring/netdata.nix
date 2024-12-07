@@ -38,6 +38,9 @@
 
           # Borealis
           ${mkChildNode "059d3be9-c156-4e08-b876-c8490330b31b" "10.10.10.3"}
+
+          # Praclarush
+          ${mkChildNode "e6473a79-02de-4050-8bd2-ee206b00beec" "10.10.10.*"}
           
           #
           ${mkChildNode "e3a6ddf5-b14a-40c5-85fe-88db72c767d5" "192.168.1.* *"}
