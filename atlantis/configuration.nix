@@ -24,6 +24,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Set kernel stuff
+  boot.kernelModules = ["nct6775"];
+
   # Set your time zone.
   time.timeZone = "Europe/London";
 

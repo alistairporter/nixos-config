@@ -31,6 +31,7 @@
     pciutils
     wakeonlan
     smartmontools
+    lm_sensors
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
