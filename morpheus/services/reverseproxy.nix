@@ -17,34 +17,24 @@
           mode tcp
           default_backend wireguard
 
+        frontend mc
+          bind *:25565
+          mode tcp
+          default_backend minecraft
+
+        frontend forgejossh
+          bind *:2202
+          mode tcp
+          default_backend forgejossh
+
+        backend forgejossh
+          server atlantis 10.10.10.2:2222
+
+        backend minecraft
+          server s1 10.10.10.2:25565 check send-proxy-v2
+
         backend wireguard
           server s1 10.10.10.2:8080 check send-proxy-v2
-      '';
-    };
-    
-    nginx = {
-      enable = true;
-      streamConfig = 
-      ''
-        # gitea stuff
-        upstream atlantisgitea-ssh {
-          server 10.10.10.2:2222;
-        }
-        server {
-          listen 2202;
-          proxy_pass atlantisgitea-ssh;
-        }
-
-        # minecraft
-
-        server {
-          listen 25565;
-          proxy_pass 10.10.10.2:25565;
-        }
-        server {
-          listen 19132 udp;
-          proxy_pass 10.10.10.2:19132;
-        }
       '';
     };
   };
