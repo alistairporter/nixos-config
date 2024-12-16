@@ -25,6 +25,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Set kernel stuff
+  boot.kernelPackages = pkgs.linuxPackages_xanmod;
   boot.kernelModules = ["nct6775"];
 
   # Set your time zone.
