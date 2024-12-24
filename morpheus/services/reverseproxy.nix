@@ -9,21 +9,21 @@
       ''
         frontend http                                                                                                                                            
           mode http
-          bind :80
+          bind [::]:80 v4v6
           redirect scheme https code 301
 
         frontend https
-          bind *:443
+          bind [::]:443 v4v6
           mode tcp
           default_backend wireguard
 
         frontend mc
-          bind *:25565
+          bind [::]:25565 v4v6
           mode tcp
           default_backend minecraft
 
         frontend forgejossh
-          bind *:2202
+          bind [::]:2202 v4v6
           mode tcp
           default_backend forgejossh
 
