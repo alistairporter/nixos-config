@@ -22,7 +22,7 @@
     enable = true;
     description = "Beszel Agent Service";
     environment = {
-      PORT = 45876;
+      PORT = "45876";
       KEY = "$(cat ${config.sops.secrets.beszel_key_atlantis.path})";
     };
 
