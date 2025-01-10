@@ -17,6 +17,7 @@
       UPSCABLE usb
       UPSTYPE usb
       NISIP 0.0.0.0
+      MINUTES 10
     '';
   };
 }
