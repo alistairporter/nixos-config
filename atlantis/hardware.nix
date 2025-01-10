@@ -4,12 +4,10 @@
   # Hardware:
   ## nvidia stuff
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+  hardware.nvidia.open = true;
   hardware.nvidia-container-toolkit.enable = true;
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-  };
+  hardware.graphics.enable = true;
+  
   ## apcupsd for ups
   services.apcupsd = {
     enable = true;
