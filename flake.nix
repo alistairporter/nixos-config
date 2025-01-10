@@ -2,7 +2,7 @@
   description = "My nixos systems in a flake!";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-24.05";
+    nixpkgs.url = "nixpkgs/nixos-24.11";
 
     # use the following for unstable:
     # nixpkgs.url = "nixpkgs/nixos-unstable";

@@ -15,8 +15,8 @@
     flatpak
     firefox
     calibre
-    gnome.gnome-software
-    gnome.gnome-disk-utility
+    gnome-software
+    gnome-disk-utility
     baobab
     baszel
     vim

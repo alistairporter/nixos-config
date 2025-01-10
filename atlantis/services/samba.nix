@@ -3,25 +3,12 @@
 {
   services.samba = {
     enable = true;
-    enableNmbd = true;
-    enableWinbindd = true;
+    nmbd.enable = true;
+    winbindd.enable = true;
     nsswins = true;
-    securityType = "user";
+    settings.global.security = "user";
     openFirewall = true;
-#    extraConfig = ''
-#      workgroup = WORKGROUP
-#      server string = smbnix
-#      netbios name = smbnix
-#      security = user 
-#      #use sendfile = yes
-#      #max protocol = smb2
-#      # note: localhost is the ipv6 localhost ::1
-#      hosts allow = 192.168.0. 127.0.0.1 localhost
-#      hosts deny = 0.0.0.0/0
-#      guest account = nobody
-#      map to guest = bad user
-#    '';
-    shares = {
+    settings = {
       Files = {
         comment = "Files on NAS";
         path = "/media/Files";
