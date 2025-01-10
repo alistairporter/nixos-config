@@ -24,10 +24,11 @@
     environment = {
       PORT = "45876";
     };
-    environmentFile = "${config.sops.secrets.beszel_key_atlantis.path}";
+    path = [ pkgs.linuxPackages.nvidia_x11 ];
     after = ["network.target"];
     serviceConfig = {
       ExecStart = "${pkgs.beszel}/bin/beszel-agent";
+      EnvironmentFile = "${config.sops.secrets.beszel_key_atlantis.path}";
     };
 
     wantedBy = [ "multi-user.target" ];
