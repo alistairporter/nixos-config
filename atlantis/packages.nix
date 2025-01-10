@@ -18,6 +18,7 @@
     gnome.gnome-software
     gnome.gnome-disk-utility
     baobab
+    baszel
     vim
     wget
     htop
