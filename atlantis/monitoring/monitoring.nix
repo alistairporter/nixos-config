@@ -23,12 +23,14 @@
     description = "Beszel Agent Service";
     environment = {
       PORT = 45876;
-      KEY = "${$(cat ${config.sops.secrets.beszel_key_atlantis.path})";
+      KEY = "$(cat ${config.sops.secrets.beszel_key_atlantis.path})";
     };
-    after = "network.target";
+
+    after = ["network.target"];
     serviceConfig = {
-      ExecStart = "${pkgs.baszel}/bin/beszel-agent";
+      ExecStart = "${pkgs.beszel}/bin/beszel-agent";
     };
+
     wantedBy = [ "multi-user.target" ];
   };
 }
