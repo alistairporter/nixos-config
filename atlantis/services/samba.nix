@@ -3,9 +3,9 @@
 {
   services.samba = {
     enable = true;
-    nmbd.enable = true;
-    winbindd.enable = true;
-    nsswins = true;
+    nmbd.enable = false;
+    winbindd.enable = false;
+    nsswins = false;
     settings.global.security = "user";
     openFirewall = true;
     settings = {
