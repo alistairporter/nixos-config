@@ -33,7 +33,7 @@
     pkgs.glow
     # Fleek Bling
     pkgs.git
-    (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
+    pkgs.nerd-fonts.fira-code
   ];
   fonts.fontconfig.enable = true; 
   home.stateVersion =

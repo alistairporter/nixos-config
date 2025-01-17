@@ -47,7 +47,7 @@
           ./midgard/alistair.nix
           ./midgard/custom.nix
           ({
-           nixpkgs.overlays = [inputs.nur.overlay ];
+           nixpkgs.overlays = [inputs.nur.overlays.default ];
           })
           # todo: remove when https://github.com/nix-community/home-manager/pull/5355 gets merged:
           (builtins.fetchurl {
@@ -78,7 +78,7 @@
           #  ];
           #}
           ({
-           nixpkgs.overlays = [inputs.nur.overlay ];
+           nixpkgs.overlays = [inputs.nur.overlays.default ];
           })
 
         ];
@@ -99,7 +99,7 @@
           ./atlantis/alistair.nix
           ./atlantis/custom.nix
           ({
-           nixpkgs.overlays = [inputs.nur.overlay ];
+           nixpkgs.overlays = [inputs.nur.overlays.default ];
           })
 
         ];
@@ -120,7 +120,7 @@
           ./borealis/alistair.nix
           ./borealis/custom.nix
           ({
-           nixpkgs.overlays = [inputs.nur.overlay ];
+           nixpkgs.overlays = [inputs.nur.overlays.default ];
           })
 
         ];
@@ -143,7 +143,7 @@
           ./olympus/alistair.nix
           ./olympus/custom.nix
           ({
-           nixpkgs.overlays = [inputs.nur.overlay ];
+           nixpkgs.overlays = [inputs.nur.overlays.default ];
           })
 
         ];
@@ -166,7 +166,7 @@
           ./khazaddum/alistair.nix
           ./khazaddum/custom.nix
           ({
-           nixpkgs.overlays = [inputs.nur.overlay ];
+           nixpkgs.overlays = [inputs.nur.overlays.default ];
           })
 
         ];
