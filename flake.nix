@@ -13,7 +13,7 @@
     sops-nix.url = "github:Mic92/sops-nix";
 
     nixvirt = {
-      url = "https://flakehub.com/f/AshleyYakeley/NixVirt/*.tar.gz";
+      url = 'https://flakehub.com/f/AshleyYakeley/NixVirt/0.5.0.tar.gz';
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -28,6 +28,7 @@
           modules = [
             ./borealis/configuration.nix
             sops-nix.nixosModules.sops
+            proxmox-nixos.nixosModules.proxmox-ve
           ];
         };
         atlantis = lib.nixosSystem {
