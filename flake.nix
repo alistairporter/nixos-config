@@ -15,7 +15,7 @@
     proxmox-nixos.url = "github:SaumonNet/proxmox-nixos";
 
     nixvirt = {
-      url = 'https://flakehub.com/f/AshleyYakeley/NixVirt/0.5.0.tar.gz';
+      url = "https://flakehub.com/f/AshleyYakeley/NixVirt/0.5.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
