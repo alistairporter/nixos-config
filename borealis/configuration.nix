@@ -14,7 +14,7 @@
     ];
 
   sops.defaultSopsFile = ../secrets/borealis.yaml;
-  sops.age.sshKeyPaths = [ /etc/ssh/ssh_host_ed25519_key ];
+  sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
   sops.secrets.wg_privkey_borealis = {};
 
 #  sops.secrets.wgprivborealis = 
