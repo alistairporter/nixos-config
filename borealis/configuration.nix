@@ -8,7 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./virtualisation.nix
+      ./virtualisation/virtualisation.nix
       ./monitoring/monitoring.nix
       ./networking.nix
       ./services/services.nix
@@ -67,7 +67,7 @@
   users.users.alistair = {
     isNormalUser = true;
     shell = pkgs.zsh;
-    extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker" "incus-admin"]; # Enable ‘sudo’ for the user.
     hashedPassword = "SECRET_REDACTED";
   #   packages = with pkgs; [
   #     firefox
