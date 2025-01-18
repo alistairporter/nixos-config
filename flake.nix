@@ -12,15 +12,13 @@
 
     sops-nix.url = "github:Mic92/sops-nix";
 
-    proxmox-nixos.url = "github:SaumonNet/proxmox-nixos";
-
     nixvirt = {
       url = "https://flakehub.com/f/AshleyYakeley/NixVirt/0.5.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, sops-nix, proxmox-nixos, nixvirt, ... }:
+  outputs = { self, nixpkgs, sops-nix, nixvirt, ... }:
     let
       lib = nixpkgs.lib;
     in {
@@ -30,7 +28,6 @@
           modules = [
             ./borealis/configuration.nix
             sops-nix.nixosModules.sops
-            proxmox-nixos.nixosModules.proxmox-ve
           ];
         };
         atlantis = lib.nixosSystem {
@@ -39,7 +36,6 @@
             ./atlantis/configuration.nix
             sops-nix.nixosModules.sops
             nixvirt.nixosModules.default
-            proxmox-nixos.nixosModules.proxmox-ve
           ];
         };
         morpheus = lib.nixosSystem {
