@@ -9,7 +9,7 @@
   users.users.alistair = {
     isNormalUser = true;
     createHome = true;
-    extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker" "incus-admin"]; # Enable ‘sudo’ for the user.
     shell = pkgs.zsh;
     uid = 1000;
     openssh.authorizedKeys.keys = [
