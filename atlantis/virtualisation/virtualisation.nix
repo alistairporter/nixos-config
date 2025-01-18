@@ -2,6 +2,10 @@
 { config, lib, pkgs, ... }:
 
 {
+
+  imports = [
+    ./incus.nix
+  ];
   # Virtulisation:
 
   virtualisation.docker.enable = true;
