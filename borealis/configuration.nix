@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
       ./virtualisation.nix
       ./monitoring/monitoring.nix
+      ./networking.nix
       ./services/services.nix
     ];
 
@@ -30,36 +31,8 @@
     "/swap".options = [ "noatime" ];
   };
 
-  networking.hostName = "borealis"; # Define your hostname.
-  # Pick only one of the below networking options.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
-  networking.wireguard = {
-    enable = true;
-    interfaces = {
-      "wgtunnelinfra" = {
-#        privateKey = "SECRET_REDACTED";
-        privateKeyFile = config.sops.secrets.wg_privkey_borealis.path;
-        ips = ["10.10.10.3/32"];
-        peers = [
-          {
-            name = "atlantis";
-            endpoint = "aporter.xyz:51821";
-            publicKey = "eYrWhvMGJc8BFadkwOhVQUQf/3OFOLiybYvE/JK7gXM=";
-            allowedIPs = ["10.10.10.0/24"];
-            persistentKeepalive = 25;
-          }
-        ];
-      };
-    };
-  };
-
   # Set your time zone.
   time.timeZone = "Europe/London";
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Select internationalisation properties.
   # i18n.defaultLocale = "en_US.UTF-8";
@@ -71,9 +44,6 @@
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
-
-
-  
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -137,12 +107,6 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  networking.firewall.enable = false;
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
