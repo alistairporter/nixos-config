@@ -17,7 +17,7 @@
       ./security.nix
       ./services/services.nix
       ./usersandgroups.nix
-      ./virtualisation.nix
+      ./virtualisation/virtualisation.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
