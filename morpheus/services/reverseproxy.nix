@@ -17,10 +17,14 @@
           mode tcp
           default_backend wireguard
 
-        frontend mc
+        frontend minecraft
           bind [::]:25565 v4v6
           mode tcp
           default_backend minecraft
+
+#        frontend minecraft-voice
+#          bind udp@[::]:24454 v4v6
+#          default_backend minecraft-voice
 
         frontend forgejossh
           bind [::]:2202 v4v6
@@ -28,13 +32,36 @@
           default_backend forgejossh
 
         backend forgejossh
-          server atlantis 10.10.10.2:2222
+          server atlantisv4 10.10.10.2:2222
 
         backend minecraft
-          server s1 10.10.10.2:25565 check send-proxy-v2
+          server atlantisv4 10.10.10.2:25565 check send-proxy-v2
+
+#        backend minecraft-voice
+#          server atlantisv4 udp@10.10.10.2:24454 check send-proxy-v2
 
         backend wireguard
-          server s1 10.10.10.2:8080 check send-proxy-v2
+          server atlantisv4 10.10.10.2:8080 check send-proxy-v2
+      '';
+    };
+
+    nginx = {
+      enable = true;
+      streamConfig = 
+      ''
+        #
+        # Only using this for udp proxying until haproxy removes their head from their arses.
+        
+        # minecraft geyser
+        server {
+          listen 19132 udp;
+          proxy_pass 10.10.10.2:19132;
+        }
+        # minecraft voice
+        server {
+          listen 24454 udp;
+          proxy_pass 10.10.10.2:24454;
+        }
       '';
     };
   };
