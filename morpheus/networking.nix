@@ -8,6 +8,7 @@
     firewall = {
       allowedUDPPorts = [
         19132 # minecraft bedrock udp
+        24454 # minecraft voice
         51820 # wireguard vpn udp
         51821 # wireguard server tunnel udp
         51822 # wireguard docker udp
