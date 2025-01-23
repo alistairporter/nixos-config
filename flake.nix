@@ -12,13 +12,18 @@
 
     sops-nix.url = "github:Mic92/sops-nix";
 
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    }; 
+
     nixvirt = {
       url = "https://flakehub.com/f/AshleyYakeley/NixVirt/0.5.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, sops-nix, nixvirt, ... }:
+  outputs = { self, nixpkgs, sops-nix, lix-module, nixvirt, ... }:
     let
       lib = nixpkgs.lib;
     in {
@@ -27,6 +32,7 @@
           system = "x86_64-linux";
           modules = [
             ./borealis/configuration.nix
+            lix-module.nixosModules.default
             sops-nix.nixosModules.sops
           ];
         };
@@ -35,6 +41,7 @@
           modules = [
             ./atlantis/configuration.nix
             sops-nix.nixosModules.sops
+            lix-module.nixosModules.default
             nixvirt.nixosModules.default
           ];
         };
@@ -42,6 +49,7 @@
           system = "x86_64-linux";
           modules = [
             ./morpheus/configuration.nix
+            lix-module.nixosModules.default
             sops-nix.nixosModules.sops
           ];
         };
