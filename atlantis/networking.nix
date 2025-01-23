@@ -3,6 +3,9 @@
 {
   # Networking:
   networking.hostName = "atlantis";
+
+  networking.nftables.enable = true;
+  
 #  networking.networkmanager.enable = true;
   networking.wireguard = {
     enable = true;
