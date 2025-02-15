@@ -28,6 +28,9 @@
   boot.kernelPackages = pkgs.linuxPackages_xanmod;
   boot.kernelModules = ["nct6775"];
 
+  # SystemD stuff
+  boot.initrd.systemd.extraConfig = "DefaultLimitNOFILE=4096:524288";
+
   # Set your time zone.
   time.timeZone = "Europe/London";
 
