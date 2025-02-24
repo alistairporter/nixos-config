@@ -49,11 +49,11 @@
           ({
            nixpkgs.overlays = [inputs.nur.overlays.default ];
           })
-          # todo: remove when https://github.com/nix-community/home-manager/pull/5355 gets merged:
-          (builtins.fetchurl {
-            url = "https://raw.githubusercontent.com/Smona/home-manager/nixgl-compat/modules/misc/nixgl.nix";
-            sha256 = "f14874544414b9f6b068cfb8c19d2054825b8531f827ec292c2b0ecc5376b305";
-          })
+#          # todo: remove when https://github.com/nix-community/home-manager/pull/5355 gets merged:
+#          (builtins.fetchurl {
+#            url = "https://raw.githubusercontent.com/Smona/home-manager/nixgl-compat/modules/misc/nixgl.nix";
+#            sha256 = "f14874544414b9f6b068cfb8c19d2054825b8531f827ec292c2b0ecc5376b305";
+#          })
         ];
       };
       
