@@ -19,6 +19,8 @@
   home.packages = [
     # user selected packages
     pkgs.helix
+    pkgs.rust-analyzer
+    pkgs.texlab
     pkgs.antidote
     pkgs.htop
     pkgs.btop
