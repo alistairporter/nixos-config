@@ -5,6 +5,7 @@
     ./aliases.nix
     ./starship.nix
     ./atuin.nix
+    ./thefuck.nix
     ./utilities.nix
     ./ssh.nix
     ./git.nix    
