@@ -1,6 +1,5 @@
 {
-  # DO NOT EDIT: This file is managed by fleek. Manual changes will be overwritten.
-  description = "Fleek Configuration";
+  description = "Nix HomeManager Configuration";
 
   inputs = {
     # Nixpkgs
@@ -35,17 +34,11 @@
         extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [
           xhmm.homeManagerModules.all
-          ./home.nix 
-          ./path.nix
-          ./shell.nix
-          ./user.nix
-          ./aliases.nix
-          ./programs.nix
-          # Host Specific configs
-          ./customdconf.nix
-          ./sharedwithgui.nix
-          ./midgard/alistair.nix
-          ./midgard/custom.nix
+          ./common
+          ./features/gui
+          ./features/desktops/gnome.nix
+          ./nixpkgs.nix
+          ./midgard.nix
           ({
            nixpkgs.overlays = [inputs.nur.overlays.default ];
           })
@@ -62,21 +55,9 @@
         extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [
           xhmm.homeManagerModules.all
-          ./home.nix 
-          ./path.nix
-          ./shell.nix
-          ./user.nix
-          ./aliases.nix
-          ./programs.nix
-          # Host Specific configs
-          ./morpheus/alistair.nix
-          ./morpheus/custom.nix
-          # self-manage fleek
-          #{
-          #  home.packages = [
-          #    fleek.packages.x86_64-linux.default
-          #  ];
-          #}
+          ./common
+          ./nixpkgs.nix
+          ./morpheus.nix
           ({
            nixpkgs.overlays = [inputs.nur.overlays.default ];
           })
@@ -89,15 +70,11 @@
         extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [
           xhmm.homeManagerModules.all
-          ./home.nix 
-          ./path.nix
-          ./shell.nix
-          ./user.nix
-          ./aliases.nix
-          ./programs.nix
-          # Host Specific configs
-          ./atlantis/alistair.nix
-          ./atlantis/custom.nix
+          ./common
+          ./nixpkgs.nix
+          ./features/gui
+          ./features/desktops/gnome.nix
+          ./atlantis.nix
           ({
            nixpkgs.overlays = [inputs.nur.overlays.default ];
           })
@@ -110,15 +87,9 @@
         extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [
           xhmm.homeManagerModules.all
-          ./home.nix 
-          ./path.nix
-          ./shell.nix
-          ./user.nix
-          ./aliases.nix
-          ./programs.nix
-          # Host Specific configs
-          ./borealis/alistair.nix
-          ./borealis/custom.nix
+          ./common
+          ./nixpkgs.nix
+          ./borealis.nix
           ({
            nixpkgs.overlays = [inputs.nur.overlays.default ];
           })
@@ -131,17 +102,11 @@
         extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [
           xhmm.homeManagerModules.all
-          ./home.nix 
-          ./path.nix
-          ./shell.nix
-          ./user.nix
-          ./aliases.nix
-          ./programs.nix
-          # Host Specific configs
-          ./customdconf.nix
-          ./sharedwithgui.nix
-          ./olympus/alistair.nix
-          ./olympus/custom.nix
+          ./common
+          ./nixpkgs.nix
+          ./features/gui
+          ./features/desktops/gnome.nix
+          ./olympus.nix
           ({
            nixpkgs.overlays = [inputs.nur.overlays.default ];
           })
@@ -154,17 +119,11 @@
         extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [
           xhmm.homeManagerModules.all
-          ./home.nix 
-          ./path.nix
-          ./shell.nix
-          ./user.nix
-          ./aliases.nix
-          ./programs.nix
-          # Host Specific configs
-          ./customdconf.nix
-          ./sharedwithgui.nix
-          ./khazaddum/alistair.nix
-          ./khazaddum/custom.nix
+          ./common
+          ./nixpkgs.nix
+          ./features/gui
+          ./features/desktops/gnome.nix
+          ./khazaddum.nix
           ({
            nixpkgs.overlays = [inputs.nur.overlays.default ];
           })

@@ -1,6 +1,9 @@
 { pkgs, misc, ... }: {
-  # DO NOT EDIT: This file is managed by fleek. Manual changes will be overwritten.
-   home.shellAliases = {
+
+#
+# shell aliases
+#
+  home.shellAliases = {
     "apply-atlantis" = "nix run --impure home-manager/master -- -b bak switch --flake .#alistair@atlantis";
     
     "apply-khazaddum" = "nix run --impure home-manager/master -- -b bak switch --flake .#deck@khazaddum";
@@ -31,7 +34,5 @@
     "neofetch" = "fastfetch";
     
     "t" = "tail -f";
-    
-#    "update-fleek" = "nix run https://getfleek.dev/latest.tar.gz -- update";
-    };
+  };
 }
