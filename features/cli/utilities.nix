@@ -1,4 +1,4 @@
-{ pkgs, misc, ... }: {
+{ pkgs, misc, inputs, ... }: {
 #
 # Shell essential programs:
 #
@@ -19,7 +19,7 @@
   programs.dircolors.enable = true;
 
   # shell multiplexer
-  tmux = {
+  programs.tmux = {
     enable = true;
     keyMode = "vi";
     terminal = "screen-256color";
@@ -42,8 +42,6 @@
     fd # Better find
     httpie # Better curl
     jq # JSON pretty printer and manipulator
-    trekscii # Cute startrek cli printer
-
     htop # better top
     btop # even better top
     fastfetch # better neofetch
@@ -51,7 +49,6 @@
     lolcat # for the lols
     cheat # no fecking clue what this does tbh
     glow # markdown renderer
-    
     nixd # Nix LSP
     alejandra # Nix formatter
     nixfmt-rfc-style

@@ -5,6 +5,7 @@
   programs.zsh = {
     enable = true;
     enableCompletion = true;
+    enableVteIntegration = true;
     completionInit = "autoload -U compinit && compinit -u";
     profileExtra = ''
       [ -r ~/.nix-profile/etc/profile.d/nix.sh ] && source  ~/.nix-profile/etc/profile.d/nix.sh
