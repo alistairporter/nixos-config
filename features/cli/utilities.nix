@@ -30,9 +30,12 @@
       bind '"' split-window -v -c "#{pane_current_path}"
     '';
   };
+  
+  programs.nix-index-database.comma.enable = true;
+  programs.nix-index.enable = true;
 
   home.packages = with pkgs; [
-    comma # Install and run programs by sticking a , before them
+#    comma # Install and run programs by sticking a , before them
     distrobox # Nice escape hatch, integrates docker images with my environment
 
     bc # Calculator

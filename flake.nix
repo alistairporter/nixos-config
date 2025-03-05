@@ -8,6 +8,10 @@
     # Extra Home Manager Modules
     xhmm.url = "github:schuelermine/xhmm";
 
+    # Nix Index Database
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+    
     # Home manager
     home-manager.url = "https://flakehub.com/f/nix-community/home-manager/0.1.tar.gz";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -23,7 +27,7 @@
     
   };
 
-  outputs = { self, nixpkgs, home-manager, xhmm, ... }@inputs: {
+  outputs = { self, nixpkgs, nix-index-database, home-manager, xhmm, ... }@inputs: {
     
     # Available through 'home-manager --flake .#your-username@your-hostname'
     
@@ -34,6 +38,7 @@
         extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [
           xhmm.homeManagerModules.all
+          nix-index-database.hmModules.nix-index
           ./common
           ./features/gui
           ./features/desktops/gnome.nix
@@ -55,6 +60,7 @@
         extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [
           xhmm.homeManagerModules.all
+          nix-index-database.hmModules.nix-index
           ./common
           ./nixpkgs.nix
           ./morpheus.nix
@@ -70,6 +76,7 @@
         extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [
           xhmm.homeManagerModules.all
+          nix-index-database.hmModules.nix-index
           ./common
           ./nixpkgs.nix
           ./features/gui
@@ -87,6 +94,7 @@
         extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [
           xhmm.homeManagerModules.all
+          nix-index-database.hmModules.nix-index
           ./common
           ./nixpkgs.nix
           ./borealis.nix
@@ -102,6 +110,7 @@
         extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [
           xhmm.homeManagerModules.all
+          nix-index-database.hmModules.nix-index
           ./common
           ./nixpkgs.nix
           ./features/gui
@@ -119,6 +128,7 @@
         extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [
           xhmm.homeManagerModules.all
+          nix-index-database.hmModules.nix-index
           ./common
           ./nixpkgs.nix
           ./features/gui
