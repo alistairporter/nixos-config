@@ -1,4 +1,4 @@
-{ config, pkgs, misc, ... }: {
+{ config, pkgs, misc, lib, ... }: {
   # DO NOT EDIT: This file is managed by fleek. Manual changes will be overwritten.
 
   imports = [
@@ -32,5 +32,5 @@
     username = lib.mkDefault "alistair";
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
     sessionPath = ["$HOME/.local/bin"];
-  }
+  };
 }

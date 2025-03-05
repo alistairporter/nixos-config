@@ -5,5 +5,5 @@
     pkgs.helix
     pkgs.rust-analyzer
     pkgs.texlab
-  };
+  ];
 }

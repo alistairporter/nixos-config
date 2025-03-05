@@ -4,5 +4,5 @@
     ./helix.nix
     ./neovim.nix
     ./micro.nix
-  ]
+  ];
 }
