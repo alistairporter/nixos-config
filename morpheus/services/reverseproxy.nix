@@ -62,6 +62,11 @@
           listen 24454 udp;
           proxy_pass 10.10.10.2:24454;
         }
+        # minecraft voice 2
+        server {
+          listen 24455 udp;
+          proxy_pass 10.10.10.2:24455;
+        }
       '';
     };
   };
