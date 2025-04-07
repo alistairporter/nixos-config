@@ -18,7 +18,8 @@
   sops.secrets.wg_privkey_morpheus_infra = {};
   sops.secrets.wg_privkey_morpheus_vpn = {};
   sops.secrets.microsocks_password_morpheus = {};
-
+  sops.secrets.beszel_key_morpheus = {};
+  
   time.timeZone = "Europe/London";
 
   system = {
