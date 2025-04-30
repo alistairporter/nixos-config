@@ -14,6 +14,7 @@
     python3Full
     flatpak
     firefox
+    ffmpeg-full
     calibre
     gnome-software
     gnome-disk-utility
