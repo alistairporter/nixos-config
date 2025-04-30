@@ -3,6 +3,8 @@
   home.packages = [
     pkgs.nerd-fonts.fira-code
     pkgs.inter
+    pkgs.corefonts
+    pkgs.vistafonts
   ];
   
   fonts.fontconfig.enable = true; 
