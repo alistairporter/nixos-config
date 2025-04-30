@@ -40,6 +40,8 @@
   sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
   sops.secrets.wg_privkey_atlantis = {};
   sops.secrets.beszel_key_atlantis = {};
+  sops.secrets.nut_admin_password = {};
+  sops.secrets.nut_observer_password = {};
   # Not compatible with flakes :(
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
