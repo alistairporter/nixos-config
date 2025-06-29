@@ -3,6 +3,7 @@ keys:
   - &server_borealis age158rsk6lxx3sk0zq02xzs644m5kngkvr753sdwzc4p09rsyllq3rs69s8sk
   - &server_morpheus age1gsqwykg4640kudawx257ya7xd3a83plw0f9qtzzqatl8tsvqyefqs58wcv
   - &server_atlantis age1evgwalt49rkrzl3fnqpcp8g8ms6mt45etq6092c7n6q5k39da43qzdan8p
+  - &server_celestis age1w8704pcuyp2xe4ls0tz7h02palu75frpr4d6l8s222ntk645v5rsccf5en
   - &sshkey_alistairatmidgard age1zj5rdt94p0nz6zf208f0refux2waj7w62yyg8dxlh9ktjhr3tvtquwzcmh
   - &sshkey_alistairatatlantis age1872s3vy0z3e27apsvdd7jwr7m82fmesnw85gz28c5cfd3gn58d2q9ky0q0
   - &sshkey_alistairatolympus age1u3x4qlnwl5lqa7umv8ptn8s739xa63dl2sw6lwzugyzhxmdrhyush25fsd
@@ -17,6 +18,7 @@ creation_rules:
          - *server_borealis
          - *server_morpheus
          - *server_atlantis
+         - *server_celestis
          - *sshkey_alistairatmidgard
          - *sshkey_alistairatatlantis
          - *sshkey_alistairatolympus
