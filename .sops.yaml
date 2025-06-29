@@ -5,6 +5,7 @@ keys:
   - &server_atlantis age1evgwalt49rkrzl3fnqpcp8g8ms6mt45etq6092c7n6q5k39da43qzdan8p
   - &sshkey_alistairatmidgard age1zj5rdt94p0nz6zf208f0refux2waj7w62yyg8dxlh9ktjhr3tvtquwzcmh
   - &sshkey_alistairatatlantis age1872s3vy0z3e27apsvdd7jwr7m82fmesnw85gz28c5cfd3gn58d2q9ky0q0
+  - &sshkey_alistairatolympus age1u3x4qlnwl5lqa7umv8ptn8s739xa63dl2sw6lwzugyzhxmdrhyush25fsd
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini|binary)$
     shamir_threshold: 1
@@ -18,3 +19,4 @@ creation_rules:
          - *server_atlantis
          - *sshkey_alistairatmidgard
          - *sshkey_alistairatatlantis
+         - *sshkey_alistairatolympus
