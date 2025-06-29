@@ -60,6 +60,15 @@
     pulse.enable = true;
   };
 
+  hardware.raspberry-pi."3" = {
+    audio.enable = true;
+    digi-amp-plus = {
+      enable = true;
+      unmuteAmp = false;
+      autoMuteAmp = false;
+    };
+  };
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
