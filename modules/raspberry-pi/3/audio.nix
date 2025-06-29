@@ -2,11 +2,11 @@
 { config, lib, pkgs, ... }:
 
 let
-  cfg = config.hardware.raspberry-pi."4".audio;
+  cfg = config.hardware.raspberry-pi."3".audio;
 in
 {
   options.hardware = {
-    raspberry-pi."4".audio = {
+    raspberry-pi."3".audio = {
       enable = lib.mkEnableOption ''
         configuration for audio
       '';
