@@ -33,7 +33,9 @@
         celestis = lib.nixosSystem {
           system = "aarch64-linux";
           modules = [
-            nixos-hardware.nixosModules.raspberry-pi-3
+            "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+            #nixos-hardware.nixosModules.raspberry-pi-3
+            ./modules/raspberry-pi/3/default.nix
             ./celestis/configuration.nix
 #            lix-module.nixosModules.default
             sops-nix.nixosModules.sops
