@@ -29,6 +29,8 @@ in
     };
   };
   config = lib.mkIf cfg.enable {
+    hardware.raspberry-pi."3".apply-overlays-dtmerge.enable = lib.mkDefault true;
+  
     hardware.deviceTree = {
       overlays = [
         # Adapted from https://github.com/NixOS/nixos-hardware/blob/master/raspberry-pi/4/digi-amp-plus.nix
