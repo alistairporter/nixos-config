@@ -10,6 +10,8 @@
     # or any branch you want:
     # nixpkgs.url = "nixpkgs/{BRANCH-NAME}";
 
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
     sops-nix.url = "github:Mic92/sops-nix";
 
     lix-module = {
@@ -23,11 +25,20 @@
     };
   };
 
-  outputs = { self, nixpkgs, sops-nix, lix-module, nixvirt, ... }:
+  outputs = { self, nixpkgs, nixos-hardware, sops-nix, lix-module, nixvirt, ... }:
     let
       lib = nixpkgs.lib;
     in {
       nixosConfigurations = {
+        celestis = lib.nixosSystem {
+          system = "aarch64-linux";
+          modules = [
+            nixos-hardware.nixosModules.raspberry-pi-3
+            ./celestis/configuration.nix
+#            lix-module.nixosModules.default
+            sops-nix.nixosModules.sops
+          ];
+        };
         borealis = lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
