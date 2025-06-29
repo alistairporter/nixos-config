@@ -4,5 +4,6 @@
   imports = [
     ./tailscale.nix
     ./avahi.nix
+    ./squeezelite.nix
   ];
 }
