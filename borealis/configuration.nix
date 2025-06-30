@@ -18,6 +18,7 @@
   sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
   sops.secrets.wg_privkey_borealis = {};
   sops.secrets.beszel_key_borealis = {};
+  sops.secrets.nix_secretkey_borealis = {};
 #  sops.secrets.wgprivborealis = 
 
   # Use the systemd-boot EFI boot loader.
@@ -133,6 +134,8 @@
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "24.05"; # Did you read the comment?
+
+  nix.settings.secret-key-files = [ "${config.sops.secrets.nix_secretkey_borealis.path}" ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes"];
   nixpkgs.config.allowUnfree = true;

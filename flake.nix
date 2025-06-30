@@ -12,6 +12,9 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
+    # Add deploy-rs as Flake input from GitHub
+    deploy-rs.url = "github:serokell/deploy-rs";
+    
     sops-nix.url = "github:Mic92/sops-nix";
 
     lix-module = {
@@ -25,7 +28,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, sops-nix, lix-module, nixvirt, ... }:
+  outputs = { self, nixpkgs, nixos-hardware, deploy-rs, sops-nix, lix-module, nixvirt, ... }:
     let
       lib = nixpkgs.lib;
     in {
@@ -65,6 +68,20 @@
             lix-module.nixosModules.default
             sops-nix.nixosModules.sops
           ];
+        };
+      };
+
+      deploy.nodes = {
+        celestis = {
+          hostname = "celestis.dropbear-monster.ts.net";
+          profiles.system = {
+            sshUser = "alistair";
+            sshOpts = [ "-t" ];
+            magicRollback = false;
+            path = deploy-rs.lib.aarch64-linux.activate.nixos
+                     self.nixosConfigurations.celestis;
+            user = "root";
+          };
         };
       };
     };
