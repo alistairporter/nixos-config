@@ -1,0 +1,118 @@
+aliases:
+    apply-atlantis: nix run --impure home-manager/master -- -b bak switch --flake .#alistair@atlantis
+    apply-khazaddum: nix run --impure home-manager/master -- -b bak switch --flake .#deck@khazaddum
+    apply-midgard: nix run --impure home-manager/master -- -b bak switch --flake .#alistair@midgard
+    apply-morpheus: nix run --impure home-manager/master -- -b bak switch --flake .#alistair@morpheus
+    apply-olympus: nix run --impure home-manager/master -- -b bak switch --flake .#alistair@olympus
+    cp: cp -i
+    dud: du -d 1 -h
+    fleeks: cd ~/.local/share/fleek
+    l: ls -lh
+    latest-fleek-version: nix run https://getfleek.dev/latest.tar.gz -- version
+    lsa: ls -lah
+    mv: mv -i
+    neofetch: fastfetch
+    t: tail -f
+    update-fleek: nix run https://getfleek.dev/latest.tar.gz -- update
+allow_broken: false
+auto_gc: true
+bling: none
+blocklist: []
+byo_git: false
+ejected: true
+flakedir: .local/share/fleek
+git:
+    autocommit: false
+    autopull: false
+    autopush: false
+    enabled: false
+min_version: 0.8.4
+name: Fleek Configuration
+overlays:
+    nur:
+        follow: false
+        url: github:nix-community/NUR
+packages:
+    - helix
+    - antidote
+    - htop
+    - btop
+    - jq
+    - atuin
+    - starship
+    - nano
+    - cheat
+    - sl
+    - lolcat
+    - fastfetch
+    - glow
+paths:
+    - $HOME/bin
+    - $HOME/.local/bin
+    - $HOME/.cargo/bin
+programs:
+    - alacritty
+    - bat
+    - neovim
+    - eza
+    - dircolors
+shell: zsh
+systems:
+    - arch: x86_64
+      home: ""
+      hostname: midgard
+      os: linux
+      user:
+        email: alistair_porter@outlook.com
+        name: Alistair Porter
+        ssh_private_key_file: ~/.ssh/id_rsa
+        ssh_public_key_file: ~/.ssh/id_rsa.pub
+        username: alistair
+      username: alistair
+    - arch: x86_64
+      home: ""
+      hostname: morpheus
+      os: linux
+      user:
+        email: alistair_porter@outlook.com
+        name: alistair
+        ssh_private_key_file: ~/.ssh/id_rsa
+        ssh_public_key_file: ~/.ssh/id_rsa.pub
+        username: alistair
+      username: alistair
+    - arch: x86_64
+      home: ""
+      hostname: atlantis
+      os: linux
+      user:
+        email: alistair_porter@outlook.com
+        name: Alistair Porter
+        ssh_private_key_file: ~/.ssh/id_rsa
+        ssh_public_key_file: ~/.ssh/id_rsa.pub
+        username: alistair
+      username: alistair
+    - arch: x86_64
+      home: ""
+      hostname: olympus
+      os: linux
+      user:
+        email: alistair_porter@outlook.com
+        name: Alistair Porter
+        ssh_private_key_file: ~/.ssh/id_rsa
+        ssh_public_key_file: ~/.ssh/id_rsa.pub
+        username: alistair
+      username: alistair
+    - arch: x86_64
+      home: ""
+      hostname: khazaddum
+      os: linux
+      user:
+        email: alistair@aporter.xyz
+        name: Alistair Porter
+        ssh_private_key_file: ~/.ssh/id_rsa
+        ssh_public_key_file: ~/.ssh/id_rsa.pub
+        username: deck
+      username: deck
+track: nixos-unstable
+unfree: true
+users: []
