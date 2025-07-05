@@ -155,8 +155,7 @@
         "nix-index-database": "nix-index-database",
         "nixGL": "nixGL",
         "nixpkgs": "nixpkgs",
-        "nur": "nur",
-        "xhmm": "xhmm"
+        "nur": "nur"
       }
     },
     "treefmt-nix": {
@@ -177,21 +176,6 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
-        "type": "github"
-      }
-    },
-    "xhmm": {
-      "locked": {
-        "lastModified": 1712416399,
-        "narHash": "sha256-Gvzs+lXHLVUw9V4LhRSvbYByg4CcLtycFnF0Bv16FBA=",
-        "owner": "schuelermine",
-        "repo": "xhmm",
-        "rev": "df7faec97e4a7d8c67a2b78ed194f9135428e31a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "schuelermine",
-        "repo": "xhmm",
         "type": "github"
       }
     }
