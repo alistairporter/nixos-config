@@ -6,7 +6,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # Extra Home Manager Modules
-    xhmm.url = "github:schuelermine/xhmm";
+#    xhmm.url = "github:schuelermine/xhmm";
 
     # Nix Index Database
     nix-index-database.url = "github:nix-community/nix-index-database";
@@ -27,7 +27,7 @@
     
   };
 
-  outputs = { self, nixpkgs, nix-index-database, home-manager, xhmm, ... }@inputs: {
+  outputs = { self, nixpkgs, nix-index-database, home-manager, ... }@inputs: {
     
     # Available through 'home-manager --flake .#your-username@your-hostname'
     
@@ -37,7 +37,7 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [
-          xhmm.homeManagerModules.all
+          ./modules/home-manager/programs/nano.nix
           nix-index-database.hmModules.nix-index
           ./common
           ./features/gui
@@ -59,7 +59,7 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [
-          xhmm.homeManagerModules.all
+          ./modules/home-manager/programs/nano.nix
           nix-index-database.hmModules.nix-index
           ./common
           ./nixpkgs.nix
@@ -75,7 +75,7 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [
-          xhmm.homeManagerModules.all
+          ./modules/home-manager/programs/nano.nix
           nix-index-database.hmModules.nix-index
           ./common
           ./nixpkgs.nix
@@ -93,7 +93,7 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [
-          xhmm.homeManagerModules.all
+          ./modules/home-manager/programs/nano.nix
           nix-index-database.hmModules.nix-index
           ./common
           ./nixpkgs.nix
@@ -109,7 +109,7 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [
-          xhmm.homeManagerModules.all
+          ./modules/home-manager/programs/nano.nix
           nix-index-database.hmModules.nix-index
           ./common
           ./nixpkgs.nix
@@ -127,7 +127,7 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [
-          xhmm.homeManagerModules.all
+          ./modules/home-manager/programs/nano.nix
           nix-index-database.hmModules.nix-index
           ./common
           ./nixpkgs.nix
