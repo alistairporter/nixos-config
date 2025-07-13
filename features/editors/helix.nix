@@ -31,19 +31,20 @@
       "!.gitignore"
     ];
     settings = {
-      theme = "base16"; # set theme to one that passes through terminal colours
+      theme = "catppuccin_macchiato"; # set theme to one that doesn't make my eyes bleed
       editor = {
+        true-color = true;
         bufferline = "multiple"; # show currently open buffers weh multiple exist
         cursorline = true; # highliegt lines with cursors
         line-number = "relative"; # use relative line numbers
-        rules = [120]; #show a ruler a col 120
+#        rules = [120]; #show a ruler a col 120
         lsp = {
           auto-signature-help = false; # disables popups of signature parameter help
           display-messages = true; #show lsp messages in the status line
         };
         cursor-shape = {
-          # Show a bar cursor in insert mode, a block cursor in normal mode, and underline cursor in select mode
-          insert = "bar";
+          # Show a block cursor in insert mode, a block cursor in normal mode, and underline cursor in select mode
+          insert = "block";
           normal = "block";
           select = "underline";
         };
@@ -62,20 +63,24 @@
           other-lines = "disable"; # Don't expand diagnostics unless the cursor is on the line
         };
       };
-      keys.normal = {
-        # This adds support for navigate between open buffers using Alt , and Alt ., as well as closing the current buffer with Alt w
-        "A-," = "goto_previous_buffer";
-        "A-." = "goto_next_buffer";
-        "A-w" = ":buffer-close";
-        "A-/" = "repeat_last_motion";
+      
+      keys = {
+        normal = {
+          # This adds support for navigate between open buffers using Alt , and Alt ., as well as closing the current buffer with Alt w
+          "A-," = "goto_previous_buffer";
+          "A-." = "goto_next_buffer";
+          "A-w" = ":buffer-close";
+          "A-/" = "repeat_last_motion";
 
-        # add "unselect line" with Shift x
-        "A-x" = "extend_to_line_bounds";
-        "X" = "select_line_above";
-      };
-      keys.select = {
-        "A-x" = "extend_to_line_bounds";
-        "X" = "select_line_above";
+          # add "unselect line" with Shift x
+          "A-x" = "extend_to_line_bounds";
+          "X" = "select_line_above";
+        };
+        
+        select = {
+          "A-x" = "extend_to_line_bounds";
+          "X" = "select_line_above";
+        };
       };
     };
   };
