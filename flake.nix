@@ -3,8 +3,8 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    
     # Extra Home Manager Modules
 #    xhmm.url = "github:schuelermine/xhmm";
 
@@ -13,7 +13,7 @@
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     
     # Home manager
-    home-manager.url = "https://flakehub.com/f/nix-community/home-manager/0.1.tar.gz";
+    home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # Overlays
@@ -38,7 +38,7 @@
         extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [
           ./modules/home-manager/programs/nano.nix
-          nix-index-database.hmModules.nix-index
+          nix-index-database.homeModules.nix-index
           ./common
           ./features/gui
           ./features/desktops/gnome.nix
@@ -60,7 +60,7 @@
         extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [
           ./modules/home-manager/programs/nano.nix
-          nix-index-database.hmModules.nix-index
+          nix-index-database.homeModules.nix-index
           ./common
           ./nixpkgs.nix
           ./morpheus.nix
@@ -76,7 +76,7 @@
         extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [
           ./modules/home-manager/programs/nano.nix
-          nix-index-database.hmModules.nix-index
+          nix-index-database.homeModules.nix-index
           ./common
           ./nixpkgs.nix
           ./features/gui
@@ -94,7 +94,7 @@
         extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [
           ./modules/home-manager/programs/nano.nix
-          nix-index-database.hmModules.nix-index
+          nix-index-database.homeModules.nix-index
           ./common
           ./nixpkgs.nix
           ./borealis.nix
@@ -110,7 +110,7 @@
         extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [
           ./modules/home-manager/programs/nano.nix
-          nix-index-database.hmModules.nix-index
+          nix-index-database.homeModules.nix-index
           ./common
           ./nixpkgs.nix
           ./features/gui
@@ -128,7 +128,7 @@
         extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [
           ./modules/home-manager/programs/nano.nix
-          nix-index-database.hmModules.nix-index
+          nix-index-database.homeModules.nix-index
           ./common
           ./nixpkgs.nix
           ./features/gui
