@@ -13,7 +13,7 @@
   # services.printing.enable = true;
 
   # Enable sound.
-  # hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.enable = true;
   # OR
   # services.pipewire = {
   #   enable = true;
@@ -26,6 +26,7 @@
     enable = true;
 #    defaultWindowManager = "${pkgs.xfce4-session}/bin/xfce4-session";
     defaultWindowManager = "xfce4-session";
+    audio.enable = true;
   };
   
   # Enable touchpad support (enabled default in most desktopManager).
