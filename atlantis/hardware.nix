@@ -41,6 +41,10 @@
   };
 
   custom.server.watchdogd.enable = true;
+  custom.server.scheduledreboot = {
+    enable = true;
+    time = "04:00:00";
+  };
 
   # services.watchdogd = {
   #   enable = true;
