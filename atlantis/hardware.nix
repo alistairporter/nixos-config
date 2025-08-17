@@ -40,6 +40,16 @@
     ];
   };
 
+  custom.server.watchdogd.enable = true;
+
+  # services.watchdogd = {
+  #   enable = true;
+  #   settings = {
+  #     "ping" = "1.1.1.1";
+  #     # "ping" = "8.8.8.8";
+  #   };
+  # };
+
 #  ## apcupsd for ups
 #  services.apcupsd = {
 #    enable = false;

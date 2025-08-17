@@ -56,6 +56,7 @@
           system = "x86_64-linux";
           modules = [
             ./atlantis/configuration.nix
+            ./modules
             sops-nix.nixosModules.sops
             lix-module.nixosModules.default
             nixvirt.nixosModules.default

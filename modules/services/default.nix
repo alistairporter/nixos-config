@@ -1,0 +1,5 @@
+{
+  imports = [
+    ./watchdogd.nix
+  ];
+}
