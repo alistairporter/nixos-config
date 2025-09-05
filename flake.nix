@@ -40,7 +40,7 @@
             "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
             #nixos-hardware.nixosModules.raspberry-pi-3
             ./modules/raspberry-pi/3/default.nix
-            ./celestis/configuration.nix
+            ./hosts/celestis/configuration.nix
 #            lix-module.nixosModules.default
             sops-nix.nixosModules.sops
           ];
@@ -49,7 +49,7 @@
           system = "x86_64-linux";
           modules = [
             ./modules/default.nix
-            ./borealis/configuration.nix
+            ./hosts/borealis/configuration.nix
             lix-module.nixosModules.default
             sops-nix.nixosModules.sops
           ];
@@ -58,7 +58,7 @@
           system = "x86_64-linux";
           modules = [
             ./modules/default.nix
-            ./atlantis/configuration.nix
+            ./hosts/atlantis/configuration.nix
             ./modules
             sops-nix.nixosModules.sops
             lix-module.nixosModules.default
@@ -69,7 +69,7 @@
           system = "x86_64-linux";
           modules = [
             ./modules/default.nix
-            ./morpheus/configuration.nix
+            ./hosts/morpheus/configuration.nix
             lix-module.nixosModules.default
             sops-nix.nixosModules.sops
           ];
