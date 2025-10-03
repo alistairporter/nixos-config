@@ -18,6 +18,7 @@
     calibre
     gnome-software
     gnome-disk-utility
+    gparted
     baobab
     vim
     wget
