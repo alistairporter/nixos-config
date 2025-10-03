@@ -13,7 +13,7 @@
   zramSwap.enable = true;
 
   #Secrets
-  sops.defaultSopsFile = ../secrets/morpheus.yaml;
+  sops.defaultSopsFile = ../../secrets/morpheus.yaml;
   sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
   sops.secrets.wg_privkey_morpheus_infra = {};
   sops.secrets.wg_privkey_morpheus_vpn = {};
