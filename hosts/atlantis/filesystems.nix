@@ -9,6 +9,39 @@
     interval = "weekly";
   };
 
+  # Snapraid
+  services.snapraid = {
+    enable = true;
+    parityFiles = [
+      "/mnt/disks/pd1/snapraid.parity"
+    ];
+    contentFiles = [
+      "/var/snapraid.content"
+      "/mnt/snapraidContent/md1/snapraid.content"
+      # "/mnt/snapraidContent/md2/snapraid.content"
+      # "/mnt/snapraidContent/md3/snapraid.content"
+      "/mnt/snapraidContent/md4/snapraid.content"
+      "/mnt/snapraidContent/md5/snapraid.content"
+      "/mnt/snapraidContent/md6/snapraid.content"
+    ];
+    dataDisks = {
+      d1 = "/mnt/disks/md1";
+      # d2 = "/mnt/disks/md2";
+      # d3 = "/mnt/disks/md3";
+      d4 = "/mnt/disks/md4";
+      d5 = "/mnt/disks/md5";
+      d6 = "/mnt/disks/md6";
+    };
+    exclude = [
+      "*.unrecoverable"
+      "/tmp/"
+      "/lost+found/"
+      "downloads/"
+      "appdata/"
+      "*.!sync"
+      "/.snapshots/"
+    ];
+  };
 
   # Filesystems:
   fileSystems = {
