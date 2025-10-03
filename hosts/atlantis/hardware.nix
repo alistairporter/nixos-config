@@ -42,7 +42,7 @@
 
   custom.server.watchdogd.enable = true;
   custom.server.scheduledreboot = {
-    enable = true;
+    enable = false;
     time = "04:00:00";
   };
 
