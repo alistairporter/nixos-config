@@ -65,6 +65,17 @@
             sops-nix.nixosModules.sops
           ];
         };
+        midgard = lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./modules/default.nix
+            ./hosts/midgard/configuration.nix
+            ./hosts/midgard/hardware-configuration.nix
+            nixos-hardware.nixosModules.lenovo-thinkpad-t480
+            lix-module.nixosModules.default
+            sops-nix.nixosModules.sops
+          ];
+        };
         morpheus = lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
