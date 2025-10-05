@@ -33,16 +33,15 @@
       lib = nixpkgs.lib;
     in {
       nixosConfigurations = {
-        celestis = lib.nixosSystem {
-          system = "aarch64-linux";
+        atlantis = lib.nixosSystem {
+          system = "x86_64-linux";
           modules = [
             ./modules/default.nix
-            "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
-            #nixos-hardware.nixosModules.raspberry-pi-3
-            ./modules/raspberry-pi/3/default.nix
-            ./hosts/celestis/configuration.nix
-#            lix-module.nixosModules.default
+            ./hosts/atlantis/configuration.nix
+            ./modules
             sops-nix.nixosModules.sops
+            lix-module.nixosModules.default
+            nixvirt.nixosModules.default
           ];
         };
         borealis = lib.nixosSystem {
@@ -54,15 +53,16 @@
             sops-nix.nixosModules.sops
           ];
         };
-        atlantis = lib.nixosSystem {
-          system = "x86_64-linux";
+        celestis = lib.nixosSystem {
+          system = "aarch64-linux";
           modules = [
             ./modules/default.nix
-            ./hosts/atlantis/configuration.nix
-            ./modules
+            "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+            #nixos-hardware.nixosModules.raspberry-pi-3
+            ./modules/raspberry-pi/3/default.nix
+            ./hosts/celestis/configuration.nix
+#            lix-module.nixosModules.default
             sops-nix.nixosModules.sops
-            lix-module.nixosModules.default
-            nixvirt.nixosModules.default
           ];
         };
         morpheus = lib.nixosSystem {
