@@ -48,6 +48,13 @@
           normal = "block";
           select = "underline";
         };
+        soft-wrap = {
+          enable = true;
+          max-wrap = 20;
+          max-indent-retain = 40;
+          wrap-indicator = "↪";
+          wrap-at-text-width = false;
+        };
         indent-guides = {
           # Render indentation guides
           character = "╎";
