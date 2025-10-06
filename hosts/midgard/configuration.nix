@@ -22,10 +22,28 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.kernelPackages = pkgs.linuxPackages_xanmod;
+
+  # enable plymouth splashscreen
+  boot.plymouth.enable = true;
+
+  # Enable "Silent boot"
+  boot.consoleLogLevel = 3;
+  boot.initrd.verbose = false;
+  boot.kernelParams = [
+      "quiet"
+      "splash"
+      "boot.shell_on_fail"
+      "udev.log_priority=3"
+      "rd.systemd.show_status=auto"
+    ];
+
   networking.hostName = "midgard"; # Define your hostname.
 
   # Configure network connections interactively with nmcli or nmtui.
   networking.networkmanager.enable = true;
+
+  services.tailscale.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/London";
@@ -81,7 +99,7 @@
     ];
   };
 
-  programs.firefox.enable = true;
+  # programs.firefox.enable = true;
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
