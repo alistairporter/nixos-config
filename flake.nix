@@ -2,7 +2,7 @@
   description = "My nixos systems in a flake!";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-24.11";
+    nixpkgs.url = "nixpkgs/nixos-25.05";
 
     # use the following for unstable:
     # nixpkgs.url = "nixpkgs/nixos-unstable";
@@ -68,12 +68,12 @@
         midgard = lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ./modules/default.nix
+            # ./modules/default.nix
             ./hosts/midgard/configuration.nix
             ./hosts/midgard/hardware-configuration.nix
             nixos-hardware.nixosModules.lenovo-thinkpad-t480
             lix-module.nixosModules.default
-            sops-nix.nixosModules.sops
+            # sops-nix.nixosModules.sops
           ];
         };
         morpheus = lib.nixosSystem {
