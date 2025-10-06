@@ -2,6 +2,8 @@
 
   home.packages = [
     pkgs.nerd-fonts.fira-code
+    pkgs.nerd-fonts.fira-mono
+    pkgs.fira
     pkgs.inter
     pkgs.corefonts
     pkgs.vistafonts
