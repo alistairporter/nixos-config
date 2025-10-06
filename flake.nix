@@ -130,11 +130,10 @@
           modules = [
             ./modules/home-manager/programs/nano.nix
             nix-index-database.homeModules.nix-index
-            ./common
-            ./features/gui
-            ./features/desktops/gnome.nix
-            ./nixpkgs.nix
-            ./midgard.nix
+            ./home-manager/common
+            ./home-manager/features/gui
+            ./home-manager/features/desktops/gnome.nix
+            ./home-manager/hosts/midgard.nix
             ({
              nixpkgs.overlays = [inputs.nur.overlays.default ];
             })
@@ -152,9 +151,8 @@
           modules = [
             ./modules/home-manager/programs/nano.nix
             nix-index-database.homeModules.nix-index
-            ./common
-            ./nixpkgs.nix
-            ./morpheus.nix
+            ./home-manager/common
+            ./home-manager/hosts/morpheus.nix
             ({
              nixpkgs.overlays = [inputs.nur.overlays.default ];
             })
@@ -168,11 +166,10 @@
           modules = [
             ./modules/home-manager/programs/nano.nix
             nix-index-database.homeModules.nix-index
-            ./common
-            ./nixpkgs.nix
-            ./features/gui
-            ./features/desktops/gnome.nix
-            ./atlantis.nix
+            ./home-manager/common
+            ./home-manager/features/gui
+            ./home-manager/features/desktops/gnome.nix
+            ./home-manager/hosts/atlantis.nix
             ({
              nixpkgs.overlays = [inputs.nur.overlays.default ];
             })
@@ -186,9 +183,8 @@
           modules = [
             ./modules/home-manager/programs/nano.nix
             nix-index-database.homeModules.nix-index
-            ./common
-            ./nixpkgs.nix
-            ./borealis.nix
+            ./home-manager/common
+            ./home-manager/hosts/borealis.nix
             ({
              nixpkgs.overlays = [inputs.nur.overlays.default ];
             })
@@ -202,11 +198,10 @@
           modules = [
             ./modules/home-manager/programs/nano.nix
             nix-index-database.homeModules.nix-index
-            ./common
-            ./nixpkgs.nix
-            ./features/gui
-            ./features/desktops/gnome.nix
-            ./olympus.nix
+            ./home-manager/common
+            ./home-manager/features/gui
+            ./home-manager/features/desktops/gnome.nix
+            ./home-manager/hosts/olympus.nix
             ({
              nixpkgs.overlays = [inputs.nur.overlays.default ];
             })
@@ -220,11 +215,10 @@
           modules = [
             ./modules/home-manager/programs/nano.nix
             nix-index-database.homeModules.nix-index
-            ./common
-            ./nixpkgs.nix
-            ./features/gui
-            ./features/desktops/gnome.nix
-            ./khazaddum.nix
+            ./home-manager/common
+            ./home-manager/features/gui
+            ./home-manager/features/desktops/gnome.nix
+            ./home-manager/hosts/khazaddum.nix
             ({
              nixpkgs.overlays = [inputs.nur.overlays.default ];
             })
