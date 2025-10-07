@@ -119,6 +119,12 @@
     git
     helix
     zsh
+    lm_sensors
+    ptyxis
+    fira
+    fira-code
+    nerd-fonts.fira-code
+    nerd-fonts.fira-mono
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
