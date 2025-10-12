@@ -38,6 +38,13 @@
     home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    # NixOS Secureboot
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.2";
+
+      # Optional but recommended to limit the size of your system closure.
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Overlays
     
@@ -49,7 +56,7 @@
     };
   };
 
-  outputs = inputs@ { self, nixpkgs, nixos-hardware, deploy-rs, sops-nix, lix-module, nixvirt, home-manager, nix-index-database, nur, nixGL, ... }:
+  outputs = inputs@ { self, nixpkgs, nixos-hardware, deploy-rs, sops-nix, lix-module, nixvirt, home-manager, lanzaboote, nix-index-database, nur, nixGL, ... }:
     let
       lib = nixpkgs.lib;
     in {
@@ -94,6 +101,8 @@
             ./hosts/midgard/hardware-configuration.nix
             nixos-hardware.nixosModules.lenovo-thinkpad-t480
             lix-module.nixosModules.default
+            lanzaboote.nixosModules.lanzaboote
+            ./hosts/midgard/lanzaboote.nix
             # sops-nix.nixosModules.sops
           ];
         };
