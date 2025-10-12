@@ -106,6 +106,17 @@
             sops-nix.nixosModules.sops
           ];
         };
+        olympus = lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            # ./modules/default.nix
+            ./hosts/olympus/configuration.nix
+            ./hosts/olympus/hardware-configuration.nix
+            nixos-hardware.nixosModules.lenovo-thinkpad-t480
+            lix-module.nixosModules.default
+            # sops-nix.nixosModules.sops
+          ];
+        };
       };
 
       deploy.nodes = {
