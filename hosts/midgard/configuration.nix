@@ -70,13 +70,6 @@
 #    useXkbConfig = true; # use xkb.options in tty.
 #  };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  services.flatpak.enable = true;
-
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
@@ -120,7 +113,6 @@
     helix
     zsh
     lm_sensors
-    ptyxis
     fira
     fira-code
     nerd-fonts.fira-code
