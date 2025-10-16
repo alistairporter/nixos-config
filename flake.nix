@@ -96,14 +96,16 @@
         midgard = lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            # ./modules/default.nix
-            ./hosts/midgard/configuration.nix
-            ./hosts/midgard/hardware-configuration.nix
+            ./modules/default.nix
             nixos-hardware.nixosModules.lenovo-thinkpad-t480
+            nixos-hardware.nixosModules.common-gpu-intel-kaby-lake
             lix-module.nixosModules.default
             lanzaboote.nixosModules.lanzaboote
-            ./hosts/midgard/lanzaboote.nix
             # sops-nix.nixosModules.sops
+            ./hosts/midgard/configuration.nix
+            ./hosts/midgard/hardware-configuration.nix
+            ./hosts/midgard/gnome.nix
+            ./hosts/midgard/lanzaboote.nix
           ];
         };
         morpheus = lib.nixosSystem {
