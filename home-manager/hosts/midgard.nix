@@ -11,5 +11,9 @@
     any-nix-shell zsh --info-right | source /dev/stdin
   '';
   
-  home.packages = [ pkgs.sops pkgs.any-nix-shell ];  
+  home.packages = [ pkgs.sops pkgs.any-nix-shell ];
+  services.nextcloud-client = {
+    enable = true;
+    startInBackground = true;
+  };
 }
