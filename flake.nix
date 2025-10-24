@@ -64,9 +64,9 @@
         atlantis = lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ./modules/default.nix
+            ./modules/nixos
             ./hosts/atlantis/configuration.nix
-            ./modules
+            # ./modules
             sops-nix.nixosModules.sops
             lix-module.nixosModules.default
             nixvirt.nixosModules.default
@@ -75,28 +75,28 @@
         borealis = lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ./modules/default.nix
+            ./modules/nixos
             ./hosts/borealis/configuration.nix
             lix-module.nixosModules.default
             sops-nix.nixosModules.sops
           ];
         };
-        celestis = lib.nixosSystem {
-          system = "aarch64-linux";
-          modules = [
-            ./modules/default.nix
-            "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
-            #nixos-hardware.nixosModules.raspberry-pi-3
-            ./modules/raspberry-pi/3/default.nix
-            ./hosts/celestis/configuration.nix
-#            lix-module.nixosModules.default
-            sops-nix.nixosModules.sops
-          ];
-        };
+#         celestis = lib.nixosSystem {
+#           system = "aarch64-linux";
+#           modules = [
+#             ./modules/default.nix
+#             "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+#             #nixos-hardware.nixosModules.raspberry-pi-3
+#             ./modules/raspberry-pi/3/default.nix
+#             ./hosts/celestis/configuration.nix
+# #            lix-module.nixosModules.default
+#             sops-nix.nixosModules.sops
+#           ];
+#         };
         midgard = lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ./modules/default.nix
+            ./modules/nixos
             nixos-hardware.nixosModules.lenovo-thinkpad-t480
             nixos-hardware.nixosModules.common-gpu-intel-kaby-lake
             lix-module.nixosModules.default
@@ -111,16 +111,16 @@
         morpheus = lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ./modules/default.nix
+            ./modules/nixos
             ./hosts/morpheus/configuration.nix
-            lix-module.nixosModules.default
+            # lix-module.nixosModules.default
             sops-nix.nixosModules.sops
           ];
         };
         olympus = lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            # ./modules/default.nix
+            # ./modules/nixos
             ./hosts/olympus/configuration.nix
             ./hosts/olympus/hardware-configuration.nix
             nixos-hardware.nixosModules.lenovo-thinkpad-t480
