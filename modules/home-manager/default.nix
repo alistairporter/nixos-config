@@ -1,3 +1,5 @@
 {
-  nano = import ./nano.nix;
+  imports = [
+    ./nano.nix
+  ];
 }
