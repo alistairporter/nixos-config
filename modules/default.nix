@@ -1,7 +1,0 @@
-{ flake, ...}:
-
-{
-  imports = [
-    ./services
-  ];
-}
