@@ -34,6 +34,7 @@
     wakeonlan
     smartmontools
     lm_sensors
+    xdg-utils
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
