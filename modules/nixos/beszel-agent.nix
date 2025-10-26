@@ -1,92 +1,121 @@
-# from ironicbadger's repo at https://github.com/ironicbadger/nix-config/blob/68af310c51b5e1e8810c542c325331b3c8c68c36/modules/beszel-agent.nix
-#  modules/beszel-agent.nix
-{ config, lib, pkgs, ... }:
-
-with lib;
-
+# backport beszel-agent module from 25.11
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 let
-  cfg = config.services.beszel-agent;
-in {
-  options.services.beszel-agent = {
-    enable = mkEnableOption "Beszel agent service";
+  cfg = config.services.beszel.agent;
+in
+{
+  meta.maintainers = with lib.maintainers; [
+    BonusPlay
+    arunoruto
+  ];
 
-    # package = mkOption {
-    #   type = types.package;
-    #   default = pkgs.beszel;
-    #   description = "The beszel package to use.";
-    # };
-
-    port = mkOption {
-      type = types.port;
-      default = 45876;
-      description = "Port number for the beszel agent to listen on.";
+  options.services.beszel.agent = {
+    enable = lib.mkEnableOption "beszel agent";
+    package = lib.mkPackageOption pkgs "beszel" { };
+    openFirewall = (lib.mkEnableOption "") // {
+      description = "Whether to open the firewall port (default 45876).";
     };
 
-    key = mkOption {
-      type = types.str;
-      default = "\"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFIkr64nTWbuhU7l+VrLO7lPDRgh2LVqTtrIberNge1j\"";
-      description = "SSH key for the beszel agent.";
-    };
+    environment = lib.mkOption {
+      type = lib.types.attrsOf lib.types.str;
+      default = { };
+      description = ''
+        Environment variables for configuring the beszel-agent service.
+        This field will end up public in /nix/store, for secret values (such as `KEY`) use `environmentFile`.
 
-    extraFilesystems = mkOption {
-      type = types.listOf types.str;
-      default = ["/"];
-      description = "List of additional filesystems to monitor.";
+        See <https://www.beszel.dev/guide/environment-variables#agent> for available options.
+      '';
     };
-
-    user = mkOption {
-      type = types.str;
-      default = "root";
-      description = "User account under which the service runs.";
+    environmentFile = lib.mkOption {
+      type = lib.types.nullOr lib.types.path;
+      default = null;
+      description = ''
+        File path containing environment variables for configuring the beszel-agent service in the format of an EnvironmentFile. See {manpage}`systemd.exec(5)`.
+      '';
     };
-
-    groups = mkOption {
-      type = types.listOf types.str;
-      default = ["root"];
-      description = "Groups under which the service runs.";
-    };
-
-    restartSec = mkOption {
-      type = types.int;
-      default = 5;
-      description = "Time to wait before restarting the service.";
-    };
-
-    gpu = mkOption {
-      type = types.bool;
-      default = false;
-      description = "Sets env var to enable GPU monitoring.";
+    extraPath = lib.mkOption {
+      type = lib.types.listOf lib.types.package;
+      default = [ ];
+      description = ''
+        Extra packages to add to beszel path (such as nvidia-smi or rocm-smi).
+      '';
     };
   };
 
-  config = mkIf cfg.enable {
-    # users.users.${cfg.user} = {
-    #   isSystemUser = true;
-    #   group = builtins.head cfg.groups;
-    #   extraGroups = builtins.tail cfg.groups;
-    #   description = "Beszel Agent service user";
-    # };
-
-    # #users.groups.${cfg.group} = {};
-    # users.groups = builtins.listToAttrs (map (g: { name = g; value = {}; }) cfg.groups);
-
+  config = lib.mkIf cfg.enable {
     systemd.services.beszel-agent = {
-      description = "Beszel Agent Service";
-      after = [ "network.target" ];
+      description = "Beszel Server Monitoring Agent";
+
       wantedBy = [ "multi-user.target" ];
+      wants = [ "network-online.target" ];
+      after = [ "network-online.target" ];
+
+      environment = cfg.environment;
+      path =
+        cfg.extraPath
+        ++ lib.optionals (builtins.elem "nvidia" config.services.xserver.videoDrivers) [
+          (lib.getBin config.hardware.nvidia.package)
+        ]
+        ++ lib.optionals (builtins.elem "amdgpu" config.services.xserver.videoDrivers) [
+          (lib.getBin pkgs.rocmPackages.rocm-smi)
+        ]
+        ++ lib.optionals (builtins.elem "intel" config.services.xserver.videoDrivers) [
+          (lib.getBin pkgs.intel-gpu-tools)
+        ];
 
       serviceConfig = {
-        Environment = [
-          "KEY=${cfg.key}"
-          "EXTRA_FILESYSTEMS=${concatStringsSep "," cfg.extraFilesystems}"
-          "PATH=/run/current-system/sw/bin:$PATH"
-        ];
-        ExecStart = "/run/current-system/sw/bin/beszel-agent";
-        User = cfg.user;
-        Group = builtins.head cfg.groups;
-        Restart = "always";
-        RestartSec = cfg.restartSec;
+        ExecStart = ''
+          ${cfg.package}/bin/beszel-agent
+        '';
+
+        EnvironmentFile = cfg.environmentFile;
+
+        # adds ability to monitor docker/podman containers
+        SupplementaryGroups =
+          lib.optionals config.virtualisation.docker.enable [ "docker" ]
+          ++ lib.optionals (
+            config.virtualisation.podman.enable && config.virtualisation.podman.dockerSocket.enable
+          ) [ "podman" ];
+
+        DynamicUser = true;
+        User = "beszel-agent";
+        LockPersonality = true;
+        NoNewPrivileges = true;
+        PrivateTmp = true;
+        PrivateUsers = true;
+        ProtectClock = true;
+        ProtectControlGroups = "strict";
+        ProtectHome = "read-only";
+        ProtectHostname = true;
+        ProtectKernelLogs = true;
+        ProtectKernelModules = true;
+        ProtectKernelTunables = true;
+        ProtectSystem = "strict";
+        Restart = "on-failure";
+        RestartSec = "30s";
+        RestrictRealtime = true;
+        RestrictSUIDSGID = true;
+        SystemCallArchitectures = "native";
+        SystemCallErrorNumber = "EPERM";
+        SystemCallFilter = [ "@system-service" ];
+        Type = "simple";
+        UMask = 27;
       };
     };
+
+    networking.firewall.allowedTCPPorts = lib.mkIf cfg.openFirewall [
+      (
+        if (builtins.hasAttr "PORT" cfg.environment) then
+          (lib.strings.toInt cfg.environment.PORT)
+        else
+          45876
+      )
+    ];
   };
 }
+
