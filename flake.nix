@@ -83,18 +83,6 @@
             sops-nix.nixosModules.sops
           ];
         };
-#         celestis = lib.nixosSystem {
-#           system = "aarch64-linux";
-#           modules = [
-#             ./modules/default.nix
-#             "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
-#             #nixos-hardware.nixosModules.raspberry-pi-3
-#             ./modules/raspberry-pi/3/default.nix
-#             ./hosts/celestis/configuration.nix
-# #            lix-module.nixosModules.default
-#             sops-nix.nixosModules.sops
-#           ];
-#         };
         midgard = lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
@@ -132,21 +120,7 @@
         };
       };
 
-      deploy.nodes = {
-        celestis = {
-          hostname = "celestis.dropbear-monster.ts.net";
-          profiles.system = {
-            sshUser = "alistair";
-            sshOpts = [ "-t" ];
-            interactiveSudo = true;
-            magicRollback = false;
-            path = deploy-rs.lib.aarch64-linux.activate.nixos self.nixosConfigurations.celestis;
-            user = "root";
-          };
-        };
-      };
-      
-      homeConfigurations = {
+       homeConfigurations = {
     
         "alistair@midgard" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
@@ -251,8 +225,6 @@
         };
       };
 
-      # This is highly advised, and will prevent many possible mistakes
-      checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
     };
   
 }
