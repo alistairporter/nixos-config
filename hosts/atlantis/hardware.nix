@@ -40,7 +40,7 @@
     ];
   };
 
-  custom.server.watchdogd.enable = true;
+  # custom.server.watchdogd.enable = true;
   custom.server.scheduledreboot = {
     enable = false;
     time = "04:00:00";
