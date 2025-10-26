@@ -19,6 +19,8 @@
     sops-nix.url = "github:Mic92/sops-nix";
 
     # Lix a fork of the nix package manager
+    # Replaced with a module in ./modules/nixos/lix.nix
+    # due to excessive build times on weaker systems
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.2-1.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -68,7 +70,7 @@
             ./hosts/atlantis/configuration.nix
             # ./modules
             sops-nix.nixosModules.sops
-            lix-module.nixosModules.default
+            # lix-module.nixosModules.default
             nixvirt.nixosModules.default
           ];
         };
@@ -77,7 +79,7 @@
           modules = [
             ./modules/nixos
             ./hosts/borealis/configuration.nix
-            lix-module.nixosModules.default
+            # lix-module.nixosModules.default
             sops-nix.nixosModules.sops
           ];
         };
@@ -99,7 +101,7 @@
             ./modules/nixos
             nixos-hardware.nixosModules.lenovo-thinkpad-t480
             nixos-hardware.nixosModules.common-gpu-intel-kaby-lake
-            lix-module.nixosModules.default
+            # lix-module.nixosModules.default
             lanzaboote.nixosModules.lanzaboote
             # sops-nix.nixosModules.sops
             ./hosts/midgard/configuration.nix
@@ -124,7 +126,7 @@
             ./hosts/olympus/configuration.nix
             ./hosts/olympus/hardware-configuration.nix
             nixos-hardware.nixosModules.lenovo-thinkpad-t480
-            lix-module.nixosModules.default
+            # lix-module.nixosModules.default
             # sops-nix.nixosModules.sops
           ];
         };
