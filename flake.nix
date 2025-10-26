@@ -110,11 +110,13 @@
         olympus = lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            # ./modules/nixos
+            ./modules/nixos
             ./hosts/olympus/configuration.nix
             ./hosts/olympus/hardware-configuration.nix
-            nixos-hardware.nixosModules.lenovo-thinkpad-t480
-            # lix-module.nixosModules.default
+            nixos-hardware.nixosModules.gigabyte-b550
+            nixos-hardware.nixosModules.common-cpu-amd
+            nixos-hardware.nixosModules.common-cpu-amd-pstate
+            nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
             # sops-nix.nixosModules.sops
           ];
         };
