@@ -23,7 +23,7 @@ in
             /dts-v1/;
             /plugin/;
             / {
-              compatible = "brcm,bcm2710";
+              compatible = "brcm,bcm2837";
               fragment@0 {
                 target = <&audio>;
 
