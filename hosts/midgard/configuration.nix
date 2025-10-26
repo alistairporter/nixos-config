@@ -117,6 +117,9 @@
     fira-code
     nerd-fonts.fira-code
     nerd-fonts.fira-mono
+    uv
+    python3
+    pipx
   ];
 
   # provide comapibility environment for precompile binaries without witing nixpkgs declarations for them each time.
