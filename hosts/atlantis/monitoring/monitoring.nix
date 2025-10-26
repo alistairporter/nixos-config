@@ -18,19 +18,9 @@
 
   # Beszel Agent:
   #
-  systemd.services.beszel = {
+  services.beszel.agent = {
     enable = true;
-    description = "Beszel Agent Service";
-    environment = {
-      PORT = "45876";
-    };
-    path = [ pkgs.linuxPackages.nvidia_x11 ];
-    after = ["network.target"];
-    serviceConfig = {
-      ExecStart = "${pkgs.beszel}/bin/beszel-agent";
-      EnvironmentFile = "${config.sops.secrets.beszel_key_atlantis.path}";
-    };
-
-    wantedBy = [ "multi-user.target" ];
+    environmentFile = "${config.sops.secrets.beszel_key_atlantis.path}";
   };
+
 }
