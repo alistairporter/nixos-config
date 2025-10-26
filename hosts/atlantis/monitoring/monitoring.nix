@@ -20,6 +20,9 @@
   #
   services.beszel.agent = {
     enable = true;
+    environment = {
+      "EXTRA_FILESYSTEMS" = "/media/MiscFiles,/media/Files";
+    };
     environmentFile = "${config.sops.secrets.beszel_key_atlantis.path}";
   };
 
