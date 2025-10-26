@@ -9,11 +9,11 @@
     enable = true;
     settings = {
       log.level = "INFO";
-      api.endpoint = "http://10.10.10.2:8081";
+      api.endpoint = "http://atlantis:8081";
     };
   };
   
-  # Prometheus Collector
+  # Prometheus Exporter
   services.prometheus.exporters.node.enable = true; 
 
   # Beszel Agent:
