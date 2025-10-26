@@ -21,13 +21,6 @@
 
   systemd.network.enable = true;
 
-  services.resolved = {
-    # Disable local DNS stub listener on 127.0.0.53
-    extraConfig = ''
-      DNSStubListener=no
-    '';
-  };
-
   systemd.network.networks."10-wan" = {
     matchConfig.Name = "enp0s31f6";
     networkConfig = {
