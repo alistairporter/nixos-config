@@ -35,7 +35,7 @@ in
       overlays = [
         # Adapted from https://github.com/NixOS/nixos-hardware/blob/master/raspberry-pi/4/digi-amp-plus.nix
         # changes:
-        # - modified top-level "compatible" field from bcm2711 to bcm2710
+        # - modified top-level "compatible" field from bcm2711 to bcm2835
         # - s/i2s/i2s_clk_producer/ (name on bcm2710 platform)
         {
           name = "iqaudio-digiampplus-overlay";
@@ -44,7 +44,7 @@ in
             /plugin/;
 
             / {
-              compatible = "brcm,bcm2710";
+              compatible = "brcm,bcm2837";
 
               fragment@0 {
                 target = <&i2s_clk_producer>;

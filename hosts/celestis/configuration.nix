@@ -61,7 +61,7 @@
   };
 
   hardware.raspberry-pi."3" = {
-    audio.enable = true;
+    audio.enable = false;
     digi-amp-plus = {
       enable = true;
       unmuteAmp = false;
@@ -137,6 +137,8 @@
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "25.05"; # Did you read the comment?
 
+  nix.settings.extra-substituters = [ "https://nix-community.cachix.org" ];
+  nix.settings.extra-trusted-public-keys = [ "borealis:VLddXo8LR+wOqatDR0G2jesRyDnQw182xJpKFHVenOo=" "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
   nix.settings.experimental-features = [ "nix-command" "flakes"];
   nixpkgs.config.allowUnfree = true;
 

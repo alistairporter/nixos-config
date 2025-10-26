@@ -25,7 +25,11 @@
   # Enables the generation of /boot/extlinux/extlinux.conf
   boot.loader.generic-extlinux-compatible.enable = lib.mkDefault true;
 
-  hardware.deviceTree.filter = lib.mkDefault "bcm2710-rpi-*.dtb";
+  hardware.i2c.enable = true;
+  hardware.deviceTree = {
+    enable = true;
+    filter = lib.mkDefault "bcm2837-rpi-3-*.dtb";
+  };
 
 
   assertions = [

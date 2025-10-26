@@ -136,9 +136,9 @@
           profiles.system = {
             sshUser = "alistair";
             sshOpts = [ "-t" ];
+            interactiveSudo = true;
             magicRollback = false;
-            path = deploy-rs.lib.aarch64-linux.activate.nixos
-                     self.nixosConfigurations.celestis;
+            path = deploy-rs.lib.aarch64-linux.activate.nixos self.nixosConfigurations.celestis;
             user = "root";
           };
         };
@@ -248,6 +248,9 @@
           ];
         };
       };
+
+      # This is highly advised, and will prevent many possible mistakes
+      checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
     };
   
 }

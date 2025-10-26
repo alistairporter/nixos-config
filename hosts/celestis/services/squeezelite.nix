@@ -2,7 +2,7 @@
 
 {
   services.squeezelite = {
-    enable = true;
+    enable = false;
     pulseAudio = true;
   };
 }
