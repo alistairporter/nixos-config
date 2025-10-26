@@ -4,12 +4,11 @@
   imports = [
     ./netdata.nix
   ];
-  services = {
-    prometheus.exporters.node = {
-      enable = true;
-    };
+  # Prometheus Exporter
+  services.prometheus.exporters.node = {
+    enable = true;
   };
-
+  
   # Beszel Agent:
   #
   services.beszel.agent = {
