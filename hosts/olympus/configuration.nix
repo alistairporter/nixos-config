@@ -128,6 +128,7 @@
     fira-code
     nerd-fonts.fira-code
     nerd-fonts.fira-mono
+    argyllcms
   ];
 
 
