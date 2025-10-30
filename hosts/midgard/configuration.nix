@@ -10,6 +10,9 @@
   #     <nixos-hardware/lenovo/thinkpad/t480>
   #     ./hardware-configuration.nix
   #   ];
+  imports = [
+    ./gnome-boxes.nix
+  ];
 
   fileSystems = {
     "/".options = [ "compress=zstd" ];
@@ -121,6 +124,11 @@
     python3
     pipx
   ];
+
+  custom.gnome-boxes = {
+    enable = true;
+    vm-priv-accounts = [ "alistair" ];
+  };
 
   # provide comapibility environment for precompile binaries without witing nixpkgs declarations for them each time.
   programs.nix-ld = {                                                                                                                                                             
