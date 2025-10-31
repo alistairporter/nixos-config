@@ -16,7 +16,13 @@
         bind [::]:443 v4v6
         mode tcp
         default_backend wireguard
-
+        
+      frontend prometheus
+        bind :8405
+        mode http
+        http-request use-service prometheus-exporter
+        no log
+      
       frontend minecraft
         bind [::]:25565 v4v6
         mode tcp
