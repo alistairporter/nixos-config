@@ -1,11 +1,27 @@
-{ config, pkgs, misc, lib, ... }: {
-  # DO NOT EDIT: This file is managed by fleek. Manual changes will be overwritten.
-
+{ pkgs, config, lib,  ... }: {
   imports = [
-    ../features/cli
-    ../features/editors
+    ./shell
+    ./helix.nix
+    ./nano.nix
+    ./thefuck.nix
+    ./nix-your-shell.nix
+    ./utilities.nix
+    ./ssh.nix
+    ./git.nix    
   ];
+  
+  home = {
+    stateVersion = "22.11"; # To figure this out (in-case it changes) you can comment out the line and see what version it expected.
+    username = lib.mkDefault "alistair";
+    homeDirectory = lib.mkDefault "/home/${config.home.username}";
+    sessionPath = [
+      "$HOME/.local/bin"
+      "$HOME/.cargo/bin"
+      "$HOME/.local/bin"
+    ];
+  };
 
+   
   xdg = {
     enable = true;
   }; 
@@ -37,10 +53,4 @@
     git.enable = true;
   };
   
-  home = {
-    stateVersion = "22.11"; # To figure this out (in-case it changes) you can comment out the line and see what version it expected.
-    username = lib.mkDefault "alistair";
-    homeDirectory = lib.mkDefault "/home/${config.home.username}";
-    sessionPath = ["$HOME/.local/bin"];
-  };
 }

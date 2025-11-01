@@ -47,7 +47,12 @@
       # Optional but recommended to limit the size of your system closure.
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    
+    zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    
     # Overlays
     
     nur.url = "github:nix-community/NUR";
@@ -58,7 +63,7 @@
     };
   };
 
-  outputs = inputs@ { self, nixpkgs, nixos-hardware, deploy-rs, sops-nix, lix-module, nixvirt, home-manager, lanzaboote, nix-index-database, nur, nixGL, ... }:
+  outputs = inputs@ { self, nixpkgs, nixos-hardware, deploy-rs, sops-nix, lix-module, nixvirt, home-manager, lanzaboote, nix-index-database, zen-browser, nur, nixGL, ... }:
     let
       lib = nixpkgs.lib;
     in {
@@ -123,42 +128,6 @@
       };
 
        homeConfigurations = {
-    
-        "alistair@midgard" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
-          modules = [
-            ./modules/home-manager
-            nix-index-database.homeModules.nix-index
-            ./home-manager/common
-            ./home-manager/features/gui
-            ./home-manager/features/desktops/gnome.nix
-            ./home-manager/hosts/midgard.nix
-            ({
-             nixpkgs.overlays = [inputs.nur.overlays.default ];
-            })
-  #          # todo: remove when https://github.com/nix-community/home-manager/pull/5355 gets merged:
-  #          (builtins.fetchurl {
-  #            url = "https://raw.githubusercontent.com/Smona/home-manager/nixgl-compat/modules/misc/nixgl.nix";
-  #            sha256 = "f14874544414b9f6b068cfb8c19d2054825b8531f827ec292c2b0ecc5376b305";
-  #          })
-          ];
-        };
-      
-        "alistair@morpheus" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
-          modules = [
-            ./modules/home-manager
-            nix-index-database.homeModules.nix-index
-            ./home-manager/common
-            ./home-manager/hosts/morpheus.nix
-            ({
-             nixpkgs.overlays = [inputs.nur.overlays.default ];
-            })
-
-          ];
-        };
       
         "alistair@atlantis" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
@@ -166,10 +135,9 @@
           modules = [
             ./modules/home-manager
             nix-index-database.homeModules.nix-index
-            ./home-manager/common
-            ./home-manager/features/gui
-            ./home-manager/features/desktops/gnome.nix
-            ./home-manager/hosts/atlantis.nix
+            ./home-manager
+            ./home-manager/gui
+            ./home-manager/gui/gnome.nix
             ({
              nixpkgs.overlays = [inputs.nur.overlays.default ];
             })
@@ -183,25 +151,7 @@
           modules = [
             ./modules/home-manager
             nix-index-database.homeModules.nix-index
-            ./home-manager/common
-            ./home-manager/hosts/borealis.nix
-            ({
-             nixpkgs.overlays = [inputs.nur.overlays.default ];
-            })
-
-          ];
-        };
-      
-        "alistair@olympus" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
-          modules = [
-            ./modules/home-manager
-            nix-index-database.homeModules.nix-index
-            ./home-manager/common
-            ./home-manager/features/gui
-            ./home-manager/features/desktops/gnome.nix
-            ./home-manager/hosts/olympus.nix
+            ./home-manager
             ({
              nixpkgs.overlays = [inputs.nur.overlays.default ];
             })
@@ -215,18 +165,62 @@
           modules = [
             ./modules/home-manager
             nix-index-database.homeModules.nix-index
-            ./home-manager/common
-            ./home-manager/features/gui
-            ./home-manager/features/desktops/gnome.nix
-            ./home-manager/hosts/khazaddum.nix
+            ./home-manager
+            ./home-manager/gui
+            ./home-manager/gui/gnome.nix
             ({
              nixpkgs.overlays = [inputs.nur.overlays.default ];
             })
 
           ];
         };
-      };
+    
+        "alistair@midgard" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+          extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
+          modules = [
+            ./modules/home-manager
+            nix-index-database.homeModules.nix-index
+            ./home-manager
+            ./home-manager/gui
+            ./home-manager/gui/gnome.nix
+            ({
+             nixpkgs.overlays = [inputs.nur.overlays.default ];
+            })
+          ];
+        };
+      
+        "alistair@morpheus" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+          extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
+          modules = [
+            ./modules/home-manager
+            nix-index-database.homeModules.nix-index
+            ./home-manager
+            ({
+             nixpkgs.overlays = [inputs.nur.overlays.default ];
+            })
 
+          ];
+        };
+      
+        "alistair@olympus" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+          extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
+          modules = [
+            ./modules/home-manager
+            nix-index-database.homeModules.nix-index
+            ./home-manager
+            ./home-manager/gui
+            ./home-manager/gui/gnome.nix
+            ({
+             nixpkgs.overlays = [inputs.nur.overlays.default ];
+            })
+
+          ];
+        };
+
+      };
     };
   
 }
