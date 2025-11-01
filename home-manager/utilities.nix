@@ -50,6 +50,7 @@
     btop # even better top
     fastfetch # better neofetch
     sl # encourage better typing
+    sops # secret managment
     lolcat # for the lols
     cheat # no fecking clue what this does tbh
     glow # markdown renderer
