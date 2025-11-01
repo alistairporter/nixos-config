@@ -3,7 +3,7 @@
     ./shell
     ./helix.nix
     ./nano.nix
-    ./thefuck.nix
+    ./pay-respects.nix
     ./nix-your-shell.nix
     ./utilities.nix
     ./ssh.nix
