@@ -95,7 +95,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.alistair = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker"]; # Enable ‘sudo’ for the user.
     uid = 1000;
     shell = pkgs.zsh;
     packages = with pkgs; [
@@ -130,6 +130,11 @@
     vm-priv-accounts = [ "alistair" ];
   };
 
+  virtualisation.docker = {
+    enable = true;
+    storageDriver = "btrfs";
+  };
+  
   # provide comapibility environment for precompile binaries without witing nixpkgs declarations for them each time.
   programs.nix-ld = {                                                                                                                                                             
     enable = true;                                                                                                                                                                
