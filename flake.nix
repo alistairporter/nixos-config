@@ -101,6 +101,29 @@
             ./hosts/midgard/hardware-configuration.nix
             ./hosts/midgard/gnome.nix
             ./hosts/midgard/lanzaboote.nix
+            
+            inputs.home-manager.nixosModules.home-manager  # Enable Home Manager as a NixOS module
+
+            {
+              # Use system pkgs and let HM install user packages
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+
+              # Pass the same extra arguments that your standalone config had
+              home-manager.extraSpecialArgs = { inherit inputs; };
+
+              home-manager.users.alistair = {
+                imports = [
+                  ./modules/home-manager
+                  inputs.nix-index-database.homeModules.nix-index
+                  ./home-manager
+                  ./home-manager/gui
+                  ./home-manager/gui/gnome.nix
+                ];
+
+                # nixpkgs.overlays = [ inputs.nur.overlays.default ];
+              };
+            }
           ];
         };
         morpheus = lib.nixosSystem {
@@ -175,20 +198,20 @@
           ];
         };
     
-        "alistair@midgard" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
-          modules = [
-            ./modules/home-manager
-            nix-index-database.homeModules.nix-index
-            ./home-manager
-            ./home-manager/gui
-            ./home-manager/gui/gnome.nix
-            ({
-             nixpkgs.overlays = [inputs.nur.overlays.default ];
-            })
-          ];
-        };
+        # "alistair@midgard" = home-manager.lib.homeManagerConfiguration {
+        #   pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+        #   extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
+        #   modules = [
+        #     ./modules/home-manager
+        #     nix-index-database.homeModules.nix-index
+        #     ./home-manager
+        #     ./home-manager/gui
+        #     ./home-manager/gui/gnome.nix
+        #     ({
+        #      nixpkgs.overlays = [inputs.nur.overlays.default ];
+        #     })
+        #   ];
+        # };
       
         "alistair@morpheus" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
