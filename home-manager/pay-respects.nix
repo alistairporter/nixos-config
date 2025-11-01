@@ -1,8 +1,8 @@
 { pkgs, misc, ... }: {
 #
-# thefuck for awesome comand correction
+# pay-respects for awesome comand correction
 #
-  programs.thefuck = {
+  programs.pay-respects = {
     enable = true;
     enableZshIntegration = true;
     enableBashIntegration = true;
