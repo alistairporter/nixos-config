@@ -60,6 +60,12 @@
     ];
   };
 
+  environment.systemPackages = with pkgs; [
+    calibre
+    mergerfs
+    mergerfs-tools
+  ];
+
   # Scrutiny Collector
   services.scrutiny.collector = {
     enable = true;
@@ -68,6 +74,7 @@
       api.endpoint = "http://atlantis:8081";
     };
   };
+
   # Beszel Agent:
   #
   services.beszel.agent = {

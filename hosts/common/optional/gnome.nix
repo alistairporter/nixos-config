@@ -26,5 +26,16 @@
     papers #use the modern version of evince
     loupe # use the modern gnome image viewer
     ptyxis # use a nicer terminal emulator than gnome-console
+    argyllcms # something to try fix colour calibration
+    baobab # disk usage viewer
+    gnome-disk-utility # gnome disks
+    gparted # gparted
+    nautilus-python
+    nautilus-open-any-terminal
   ];
+
+  programs.nautilus-open-any-terminal = {
+    enable = true;
+    terminal = "ptyxis";
+  };
 }

@@ -7,6 +7,7 @@
     ./fonts.nix
     ./gtk.nix
     ./nextcloud.nix
+    ./ptyxis.nix
     ./zen.nix
   ];
 
