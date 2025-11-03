@@ -20,6 +20,7 @@
     ../common/optional/systemd-boot.nix
     ../common/optional/tailscale-exit-node.nix
     ../common/optional/docker.nix
+    ../common/optional/gpustuff.nix
     ../common/optional/incus.nix
     ../common/optional/xrdp-xfce.nix
   ];
