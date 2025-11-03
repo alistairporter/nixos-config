@@ -28,6 +28,7 @@
   networking = {
     hostName = "atlantis";
     useDHCP = true;
+    nftables.enable = true;
   };
 
   networking.wireguard = {
