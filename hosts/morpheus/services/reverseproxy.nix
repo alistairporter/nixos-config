@@ -20,10 +20,6 @@
         mode tcp
         default_backend minecraft
 
-#        frontend minecraft-voice
-#          bind udp@[::]:24454 v4v6
-#          default_backend minecraft-voice
-
       frontend forgejossh
         bind [::]:2202 v4v6
         mode tcp
@@ -36,9 +32,6 @@
       backend minecraft
         # server atlantisv4 10.10.10.2:25565 check send-proxy-v2
         server atlantisv4 atlantis.dropbear-monster.ts.net:25565 check send-proxy-v2
-
-#        backend minecraft-voice
-#          server atlantisv4 udp@10.10.10.2:24454 check send-proxy-v2
 
       backend wireguard
         # server atlantisv4 10.10.10.2:8080 check send-proxy-v2
@@ -71,14 +64,24 @@
         # proxy_pass 10.10.10.2:24455;
         proxy_pass atlantis.dropbear-monster.ts.net:24455;
       }
-      # http3 quic
-      server {
-        listen 443 udp;
-        proxy_pass atlantis.dropbear-monster.ts.net:443;
-      }
     '';
   };
 
+  networking.firewall = {
+    allowedUDPPorts = [
+      19132 # minecraft bedrock udp
+      24454 # minecraft voice
+      24455 # minecraft voice 2
+    ];
+    allowedTCPPorts = [
+      80    # http
+      443   # https
+      2202  # gitea hackery
+      9100  # prometheus node exporter
+      19132 # minecraft bedrock tcp
+      25565 # minecraft java
+    ];
+  };
   # make proxies start after tailscale has to ensure host resolution works.
   #
   systemd.services.haproxy.after = ["tailscaled.service"];
