@@ -11,7 +11,6 @@
     iptables
     lm_sensors
     nano 
-    nvtopPackages.full
     pciutils
     pipx
     python3Full

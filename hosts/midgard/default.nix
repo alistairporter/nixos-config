@@ -16,6 +16,7 @@
     ../common/optional/quietboot.nix
     ../common/optional/secure-boot.nix
     ../common/optional/gnome.nix
+    ../common/optional/gpustuff.nix
     ../common/optional/flatpak.nix
     ../common/optional/pipewire.nix
     ../common/optional/gnome-boxes.nix
