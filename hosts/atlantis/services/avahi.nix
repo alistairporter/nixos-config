@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   services.avahi = {
     enable = true;
     ipv4 = true;
@@ -8,7 +11,7 @@
     nssmdns4 = true;
     nssmdns6 = true;
     openFirewall = true;
-    allowInterfaces = [ "eno1" "lo" ];
+    allowInterfaces = ["eno1" "lo"];
     extraServiceFiles = {
       ssh = "${pkgs.avahi}/etc/avahi/services/ssh.service";
       smb = ''
@@ -22,7 +25,7 @@
         <port>445</port>
         </service>
         </service-group>
-        '';
+      '';
     };
     publish = {
       enable = true;

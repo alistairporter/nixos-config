@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   services = {
     microsocks = {
       enable = true;
@@ -18,5 +21,5 @@
     sopsFile = ../secrets.yaml;
   };
 
-  networking.firewall.allowedTCPPorts = [ config.services.microsocks.port ];
+  networking.firewall.allowedTCPPorts = [config.services.microsocks.port];
 }

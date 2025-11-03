@@ -2,9 +2,8 @@
   description = "My nixos systems in a flake!";
 
   inputs = {
-
     # Nixpkgs:
-    # 
+    #
     # use the following for unstable:
     # nixpkgs.url = "nixpkgs/nixos-unstable";
 
@@ -17,8 +16,8 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable"; # allow access to newer packages from unstable though overlay at 'overlays/default.nix'
 
     systems.url = "github:nix-systems/default-linux";
-    
-    # Hardware configs by nixos community optimal for various machines. 
+
+    # Hardware configs by nixos community optimal for various machines.
     hardware.url = "github:NixOS/nixos-hardware/master";
 
     # Home manager
@@ -33,7 +32,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-    
+
     # SOPS secret managment
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -51,13 +50,13 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
     # NixOS Secureboot
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.2";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
     zen-browser = {
       # url = "github:youwen5/zen-browser-flake";
       url = "github:0xc000022070/zen-browser-flake";
@@ -68,11 +67,10 @@
     nix-gl = {
       url = "github:nix-community/nixgl";
       inputs.nixpkgs.follows = "nixpkgs";
-    };    
+    };
     # Overlays
-    
+
     nur.url = "github:nix-community/NUR";
-    
   };
 
   outputs = {
@@ -94,7 +92,7 @@
     );
   in {
     inherit lib;
-    
+
     # Import my nixos and home-manager modules
     nixosModules = import ./modules/nixos;
     homeManagerModules = import ./modules/home-manager;
@@ -151,20 +149,17 @@
         };
       };
     };
-      
+
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = {
-
       "alistair@khazaddum" = lib.homeManagerConfiguration {
-        modules = [ ./home/alistair/khazaddum.nix ./home/alistair/nixpkgs.nix ];
+        modules = [./home/alistair/khazaddum.nix ./home/alistair/nixpkgs.nix];
         pkgs = pkgsFor.x86_64-linux;
         extraSpecialArgs = {
           inherit inputs outputs;
         };
       };
     };
-
   };
-  
 }

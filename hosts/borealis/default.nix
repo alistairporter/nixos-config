@@ -45,7 +45,7 @@
     enable = true;
     interfaces = {
       "wgtunnelinfra" = {
-#        privateKey = "SECRET_REDACTED";
+        #        privateKey = "SECRET_REDACTED";
         privateKeyFile = config.sops.secrets.wg_privkey_borealis.path;
         ips = ["10.10.10.3/32"];
         peers = [
@@ -73,10 +73,10 @@
   };
 
   fileSystems = {
-    "/".options = [ "compress=zstd" ];
-    "/home".options = [ "compress=zstd" ];
-    "/nix".options = [ "compress=zstd" "noatime" ];
-    "/swap".options = [ "noatime" ];
+    "/".options = ["compress=zstd"];
+    "/home".options = ["compress=zstd"];
+    "/nix".options = ["compress=zstd" "noatime"];
+    "/swap".options = ["noatime"];
   };
 
   # Beszel Agent:

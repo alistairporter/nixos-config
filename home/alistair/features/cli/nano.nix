@@ -1,7 +1,11 @@
-{ pkgs, misc, inputs, ... }: {
+{
+  pkgs,
+  misc,
+  inputs,
+  ...
+}: {
+  #  imports = [inputs.xhmm.homeManagerModules.console.nano];
 
-#  imports = [inputs.xhmm.homeManagerModules.console.nano];
-  
   programs.nano = {
     enable = true;
     config = ''

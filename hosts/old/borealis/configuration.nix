@@ -1,37 +1,39 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-{ config, lib, pkgs, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./virtualisation/virtualisation.nix
-      ./monitoring/monitoring.nix
-      ./networking.nix
-      ./services/services.nix
-    ];
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./virtualisation/virtualisation.nix
+    ./monitoring/monitoring.nix
+    ./networking.nix
+    ./services/services.nix
+  ];
 
   sops.defaultSopsFile = ../../secrets/borealis.yaml;
-  sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+  sops.age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
   sops.secrets.wg_privkey_borealis = {};
   sops.secrets.beszel_key_borealis = {};
   sops.secrets.nix_secretkey_borealis = {};
-#  sops.secrets.wgprivborealis = 
+  #  sops.secrets.wgprivborealis =
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+  boot.binfmt.emulatedSystems = ["aarch64-linux"];
 
   fileSystems = {
-    "/".options = [ "compress=zstd" ];
-    "/home".options = [ "compress=zstd" ];
-    "/nix".options = [ "compress=zstd" "noatime" ];
-    "/swap".options = [ "noatime" ];
+    "/".options = ["compress=zstd"];
+    "/home".options = ["compress=zstd"];
+    "/nix".options = ["compress=zstd" "noatime"];
+    "/swap".options = ["noatime"];
   };
 
   # Set your time zone.
@@ -70,15 +72,15 @@
   users.users.alistair = {
     isNormalUser = true;
     shell = pkgs.zsh;
-    extraGroups = [ "wheel" "docker" "incus-admin"]; # Enable ‘sudo’ for the user.
+    extraGroups = ["wheel" "docker" "incus-admin"]; # Enable ‘sudo’ for the user.
     hashedPassword = "SECRET_REDACTED";
-  #   packages = with pkgs; [
-  #     firefox
-  #     tree
-  #   ];
+    #   packages = with pkgs; [
+    #     firefox
+    #     tree
+    #   ];
   };
   users.users.hass = {
-    openssh.authorizedKeys.keys = [ "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDrcQ7vpeANSs2xXEp16XM2ctW5ZmMPa+7vvZIhCfMj2RJ/vrrdHbJkgfnTsU45Z6t/+WClClWvfO0yWKSZUgvfo+g+1YixSUC3ZfHw6rv5U/uGP1Y/0/JBcyiapSKQTYIeqN/6Ic35ehRD/vDFjdJoC4fUfmdpbWMkHlu7ZArhDDzVKjT2r6CgnGwEYzM6dD0dxwAXLJwWxHdEDm/tBwbQNmjZVIPJw6QMTJQwabO4c5uvtAJ4V1BUT0qTLaoxHw/7l6v0AeegpFTiMLHkmFTh01b3wfGoMZmoSSJhhg0oXHkbQ9NcoatrtNtf9Xibjf5GQEpVj7CmfLP7mlmjgZJJtT1QpIoe/Bi7XFHnWi8O06cn6QWTPptMISghyDUbbwROYBCq+tAbWmW7j7g/cXyrBzlCv/lSX1F1WdSf72g/12MwlPPRhV9KCf2bJX4c/9uS6SQJx2LB+hS9C5eFTLyvsSnND84HLbEnxRd0OSPctNFcltkk6aJ6KOXbGSqJgOM= root@atlantis" ];
+    openssh.authorizedKeys.keys = ["ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDrcQ7vpeANSs2xXEp16XM2ctW5ZmMPa+7vvZIhCfMj2RJ/vrrdHbJkgfnTsU45Z6t/+WClClWvfO0yWKSZUgvfo+g+1YixSUC3ZfHw6rv5U/uGP1Y/0/JBcyiapSKQTYIeqN/6Ic35ehRD/vDFjdJoC4fUfmdpbWMkHlu7ZArhDDzVKjT2r6CgnGwEYzM6dD0dxwAXLJwWxHdEDm/tBwbQNmjZVIPJw6QMTJQwabO4c5uvtAJ4V1BUT0qTLaoxHw/7l6v0AeegpFTiMLHkmFTh01b3wfGoMZmoSSJhhg0oXHkbQ9NcoatrtNtf9Xibjf5GQEpVj7CmfLP7mlmjgZJJtT1QpIoe/Bi7XFHnWi8O06cn6QWTPptMISghyDUbbwROYBCq+tAbWmW7j7g/cXyrBzlCv/lSX1F1WdSf72g/12MwlPPRhV9KCf2bJX4c/9uS6SQJx2LB+hS9C5eFTLyvsSnND84HLbEnxRd0OSPctNFcltkk6aJ6KOXbGSqJgOM= root@atlantis"];
     isNormalUser = true;
   };
   # disable root account
@@ -135,10 +137,8 @@
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "24.05"; # Did you read the comment?
 
-  nix.settings.secret-key-files = [ "${config.sops.secrets.nix_secretkey_borealis.path}" ];
+  nix.settings.secret-key-files = ["${config.sops.secrets.nix_secretkey_borealis.path}"];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes"];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
   nixpkgs.config.allowUnfree = true;
-
 }
-

@@ -1,4 +1,8 @@
-{ config, pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
     ./monitoring/monitoring.nix
@@ -14,12 +18,12 @@
 
   #Secrets
   sops.defaultSopsFile = ../../secrets/morpheus.yaml;
-  sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+  sops.age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
   sops.secrets.wg_privkey_morpheus_infra = {};
   sops.secrets.wg_privkey_morpheus_vpn = {};
   sops.secrets.microsocks_password_morpheus = {};
   sops.secrets.beszel_key_morpheus = {};
-  
+
   time.timeZone = "Europe/London";
 
   system = {
@@ -30,9 +34,9 @@
     };
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes"];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
   nix.optimise.automatic = true;
-  nix.optimise.dates = [ "03:45" ];
+  nix.optimise.dates = ["03:45"];
 
   lix.enable = true;
-}  
+}

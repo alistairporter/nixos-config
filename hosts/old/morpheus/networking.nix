@@ -1,7 +1,9 @@
-{ config, lib, pkgs, ... }:
-
 {
-
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   networking = {
     hostName = "morpheus";
     domain = "";
@@ -16,12 +18,12 @@
         54914 # transmission peer?
       ];
       allowedTCPPorts = [
-        22    # ssh
-        80    # http
-        443   # https
-        1080  # socks proxy
-        2202  # gitea hackery
-        9100  # prometheus node exporter
+        22 # ssh
+        80 # http
+        443 # https
+        1080 # socks proxy
+        2202 # gitea hackery
+        9100 # prometheus node exporter
         19132 # minecraft bedrock tcp
         25565 # minecraft java
         51820 # wireguard vpn tcp
@@ -29,18 +31,18 @@
         51822 # wireguard docker tcp
       ];
     };
-    
+
     nat = {
       enable = true;
       externalInterface = "ens6";
-      internalInterfaces = [ "wgtunnelvpn" ];
+      internalInterfaces = ["wgtunnelvpn"];
     };
-    
+
     wireguard = {
       enable = true;
       interfaces = {
         "wgtunnelinfra" = {
-#          privateKey = "SECRET_REDACTED";
+          #          privateKey = "SECRET_REDACTED";
           privateKeyFile = config.sops.secrets.wg_privkey_morpheus_infra.path;
           ips = ["10.10.10.1/24" "fd00:dead:beef::1/128"];
           listenPort = 51821;
@@ -77,9 +79,9 @@
               allowedIPs = ["10.10.10.6/32" "fd00:dead:beef::6/128"];
             }
           ];
-        };    
+        };
         "wgtunnelvpn" = {
-#          privateKey = "SECRET_REDACTED";
+          #          privateKey = "SECRET_REDACTED";
           privateKeyFile = config.sops.secrets.wg_privkey_morpheus_vpn.path;
           ips = ["10.0.0.1/24"];
           listenPort = 51820;

@@ -1,12 +1,15 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   services = {
     openssh = {
       enable = true;
       settings.PasswordAuthentication = true;
       settings.PermitRootLogin = "no";
-#      moduliFile = "";
+      #      moduliFile = "";
       extraConfig = "StreamLocalBindUnlink yes";
     };
   };

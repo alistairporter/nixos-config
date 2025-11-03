@@ -4,11 +4,9 @@
   config,
   pkgs,
   ...
-}:
-let
+}: let
   cfg = config.services.beszel.agent;
-in
-{
+in {
   meta.maintainers = with lib.maintainers; [
     BonusPlay
     arunoruto
@@ -16,14 +14,16 @@ in
 
   options.services.beszel.agent = {
     enable = lib.mkEnableOption "beszel agent";
-    package = lib.mkPackageOption pkgs "beszel" { };
-    openFirewall = (lib.mkEnableOption "") // {
-      description = "Whether to open the firewall port (default 45876).";
-    };
+    package = lib.mkPackageOption pkgs "beszel" {};
+    openFirewall =
+      (lib.mkEnableOption "")
+      // {
+        description = "Whether to open the firewall port (default 45876).";
+      };
 
     environment = lib.mkOption {
       type = lib.types.attrsOf lib.types.str;
-      default = { };
+      default = {};
       description = ''
         Environment variables for configuring the beszel-agent service.
         This field will end up public in /nix/store, for secret values (such as `KEY`) use `environmentFile`.
@@ -40,7 +40,7 @@ in
     };
     extraPath = lib.mkOption {
       type = lib.types.listOf lib.types.package;
-      default = [ ];
+      default = [];
       description = ''
         Extra packages to add to beszel path (such as nvidia-smi or rocm-smi).
       '';
@@ -51,9 +51,9 @@ in
     systemd.services.beszel-agent = {
       description = "Beszel Server Monitoring Agent";
 
-      wantedBy = [ "multi-user.target" ];
-      wants = [ "network-online.target" ];
-      after = [ "network-online.target" ];
+      wantedBy = ["multi-user.target"];
+      wants = ["network-online.target"];
+      after = ["network-online.target"];
 
       environment = cfg.environment;
       path =
@@ -77,10 +77,10 @@ in
 
         # adds ability to monitor docker/podman containers
         SupplementaryGroups =
-          lib.optionals config.virtualisation.docker.enable [ "docker" ]
+          lib.optionals config.virtualisation.docker.enable ["docker"]
           ++ lib.optionals (
             config.virtualisation.podman.enable && config.virtualisation.podman.dockerSocket.enable
-          ) [ "podman" ];
+          ) ["podman"];
 
         DynamicUser = true;
         User = "beszel-agent";
@@ -102,7 +102,7 @@ in
         RestrictSUIDSGID = true;
         SystemCallArchitectures = "native";
         SystemCallErrorNumber = "EPERM";
-        SystemCallFilter = [ "@system-service" ];
+        SystemCallFilter = ["@system-service"];
         Type = "simple";
         UMask = 27;
       };
@@ -110,12 +110,10 @@ in
 
     networking.firewall.allowedTCPPorts = lib.mkIf cfg.openFirewall [
       (
-        if (builtins.hasAttr "PORT" cfg.environment) then
-          (lib.strings.toInt cfg.environment.PORT)
-        else
-          45876
+        if (builtins.hasAttr "PORT" cfg.environment)
+        then (lib.strings.toInt cfg.environment.PORT)
+        else 45876
       )
     ];
   };
 }
-

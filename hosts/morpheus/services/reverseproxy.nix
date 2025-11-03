@@ -1,11 +1,13 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   services.haproxy = {
     enable = true;
-    config =
-    ''
-      frontend http                                                                                                                                            
+    config = ''
+      frontend http
         mode http
         bind [::]:80 v4v6
         redirect scheme https code 301
@@ -41,11 +43,10 @@
 
   services.nginx = {
     enable = true;
-    streamConfig = 
-    ''
+    streamConfig = ''
       #
       # Only using this for udp proxying until haproxy removes their head from their arses.
-      
+
       # minecraft geyser
       server {
         listen 19132 udp;
@@ -74,10 +75,10 @@
       24455 # minecraft voice 2
     ];
     allowedTCPPorts = [
-      80    # http
-      443   # https
-      2202  # gitea hackery
-      9100  # prometheus node exporter
+      80 # http
+      443 # https
+      2202 # gitea hackery
+      9100 # prometheus node exporter
       19132 # minecraft bedrock tcp
       25565 # minecraft java
     ];

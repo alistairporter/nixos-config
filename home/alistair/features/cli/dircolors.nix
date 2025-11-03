@@ -1,6 +1,6 @@
 {
   # dircolours
-  programs.dircolors ={
+  programs.dircolors = {
     enable = true;
     enableBashIntegration = true;
     enableZshIntegration = true;

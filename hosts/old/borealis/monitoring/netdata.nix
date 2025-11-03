@@ -1,13 +1,16 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   systemd.services.netdata.serviceConfig.CapabilityBoundingSet = ["CAP_SETGID" "CAP_DAC_OVERRIDE" "CAP_DAC_READ_SEARCH" "CAP_FOWNER" "CAP_SYS_RAWIO" "CAP_SETPCAP" "CAP_SYS_ADMIN" "CAP_PERFMON" "CAP_SYS_PTRACE" "CAP_SYS_RESOURCE" "CAP_NET_RAW" "CAP_SYS_CHROOT" "CAP_NET_ADMIN" "CAP_SETGID" "CAP_SETUID" "CAP_CHOWN"];
   systemd.services.netdata.path = [pkgs.jq];
   services = {
     netdata = {
       enable = true;
       config = {
-        global = { "memory mode" = "none"; };
+        global = {"memory mode" = "none";};
         plugins = {
           "ebpf" = "yes";
         };

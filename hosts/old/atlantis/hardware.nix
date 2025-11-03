@@ -1,13 +1,16 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   # Hardware:
   ## nvidia stuff
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
   hardware.nvidia.open = true;
   hardware.nvidia-container-toolkit.enable = true;
   hardware.graphics.enable = true;
-  
+
   power.ups = {
     enable = true;
     mode = "netserver";
@@ -16,7 +19,7 @@
       "admin" = {
         passwordFile = config.sops.secrets.nut_admin_password.path;
         actions = ["set" "fsd"];
-        instcmds = [ "all" ];
+        instcmds = ["all"];
         upsmon = "primary";
       };
       "observer" = {
@@ -54,14 +57,14 @@
   #   };
   # };
 
-#  ## apcupsd for ups
-#  services.apcupsd = {
-#    enable = false;
-#    configText = ''
-#      UPSCABLE usb
-#      UPSTYPE usb
-#      NISIP 0.0.0.0
-#      MINUTES 10
-#    '';
-#  };
+  #  ## apcupsd for ups
+  #  services.apcupsd = {
+  #    enable = false;
+  #    configText = ''
+  #      UPSCABLE usb
+  #      UPSTYPE usb
+  #      NISIP 0.0.0.0
+  #      MINUTES 10
+  #    '';
+  #  };
 }

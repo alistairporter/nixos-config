@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ...}:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   users.users.alistair = {
     extraGroups = ["wheel" "networkmanager" "docker"];
     isNormalUser = true;
@@ -9,6 +12,6 @@
     hashedPassword = "SECRET_REDACTED";
   };
   users.users.netdata = {
-    extraGroups = [ "docker" ];
+    extraGroups = ["docker"];
   };
 }

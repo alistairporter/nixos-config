@@ -1,4 +1,9 @@
-{ pkgs, misc, inputs, ... }: {
+{
+  pkgs,
+  misc,
+  inputs,
+  ...
+}: {
   imports = [
     ./aliases.nix
     ./atuin.nix

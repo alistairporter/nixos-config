@@ -1,9 +1,12 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  ...
+}: {
   nat = {
     enable = true;
     externalInterface = "ens6";
-    internalInterfaces = [ "wgtunnelvpn" ];
+    internalInterfaces = ["wgtunnelvpn"];
   };
 
   wireguard = {
@@ -46,7 +49,7 @@
             allowedIPs = ["10.10.10.6/32" "fd00:dead:beef::6/128"];
           }
         ];
-      };    
+      };
       "wgtunnelvpn" = {
         privateKeyFile = config.sops.secrets.wg_privkey_morpheus_vpn.path;
         ips = ["10.0.0.1/24"];
@@ -91,8 +94,8 @@
   };
 
   # allow wireguard traffic through firewall.
-  networking.firewall= {
-    allowedTCPPorts = [ config.wireguard.interfaces."wgtunnelinfra".listenPort config.wireguard.interfaces."wgtunnelvpn".listenPort ];
-    allowedUDPPorts = [ config.wireguard.interfaces."wgtunnelinfra".listenPort config.wireguard.interfaces."wgtunnelvpn".listenPort ];
+  networking.firewall = {
+    allowedTCPPorts = [config.wireguard.interfaces."wgtunnelinfra".listenPort config.wireguard.interfaces."wgtunnelvpn".listenPort];
+    allowedUDPPorts = [config.wireguard.interfaces."wgtunnelinfra".listenPort config.wireguard.interfaces."wgtunnelvpn".listenPort];
   };
 }

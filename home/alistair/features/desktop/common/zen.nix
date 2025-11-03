@@ -1,8 +1,4 @@
-{
-  inputs,
-   ...
-}:
-{
+{inputs, ...}: {
   # home.nix
   imports = [
     inputs.zen-browser.homeModules.beta

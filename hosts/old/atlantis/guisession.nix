@@ -1,9 +1,12 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
-  services.xserver.videoDrivers = [ "intel" "nvidia" ];
+  services.xserver.videoDrivers = ["intel" "nvidia"];
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -24,11 +27,11 @@
   services.xserver.desktopManager.xfce.enable = true;
   services.xrdp = {
     enable = true;
-#    defaultWindowManager = "${pkgs.xfce4-session}/bin/xfce4-session";
+    #    defaultWindowManager = "${pkgs.xfce4-session}/bin/xfce4-session";
     defaultWindowManager = "xfce4-session";
     audio.enable = true;
   };
-  
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
@@ -39,11 +42,11 @@
   #   keyMap = "us";
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
-  
-  # XDG stuff 
+
+  # XDG stuff
   xdg = {
     portal.enable = true;
-    portal.extraPortals = [ pkgs.xdg-desktop-portal-xapp pkgs.xdg-desktop-portal-gtk ];
+    portal.extraPortals = [pkgs.xdg-desktop-portal-xapp pkgs.xdg-desktop-portal-gtk];
     terminal-exec.enable = true;
   };
 }
