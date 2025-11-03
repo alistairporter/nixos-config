@@ -8,7 +8,7 @@
   services.xserver.videoDrivers = ["intel" "nvidia"];
 
   # Enable sound for xrdp session, doesn't yet support pipewire as of 20251101 :(
-  hardware.pulseaudio.enable = true;
+  services.pulseaudio.enable = true;
 
   # setup XFCE environment for xrdp session.
   services.xserver.desktopManager.xfce.enable = true;
