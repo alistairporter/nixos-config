@@ -1,24 +1,91 @@
 keys:
-  - &admin_alistair 26DBBF47BEDF8C96B28E379DB8D445B0BBCCF273
-  - &server_borealis age158rsk6lxx3sk0zq02xzs644m5kngkvr753sdwzc4p09rsyllq3rs69s8sk
-  - &server_morpheus age1gsqwykg4640kudawx257ya7xd3a83plw0f9qtzzqatl8tsvqyefqs58wcv
-  - &server_atlantis age1evgwalt49rkrzl3fnqpcp8g8ms6mt45etq6092c7n6q5k39da43qzdan8p
-  - &server_celestis age1w8704pcuyp2xe4ls0tz7h02palu75frpr4d6l8s222ntk645v5rsccf5en
-  - &sshkey_alistairatmidgard age1zj5rdt94p0nz6zf208f0refux2waj7w62yyg8dxlh9ktjhr3tvtquwzcmh
-  - &sshkey_alistairatatlantis age1872s3vy0z3e27apsvdd7jwr7m82fmesnw85gz28c5cfd3gn58d2q9ky0q0
-  - &sshkey_alistairatolympus age1u3x4qlnwl5lqa7umv8ptn8s739xa63dl2sw6lwzugyzhxmdrhyush25fsd
+  - &users:
+    - &admin_alistair 26DBBF47BEDF8C96B28E379DB8D445B0BBCCF273
+    - &sshkey_alistairatatlantis age1872s3vy0z3e27apsvdd7jwr7m82fmesnw85gz28c5cfd3gn58d2q9ky0q0
+    - &sshkey_alistairatborealis age1m6cw76f3y7nkch2leym8dnaygswhu3jh64mtqgnp6lljxpkx2aqsay276v
+    - &sshkey_alistairatmidgard age1zj5rdt94p0nz6zf208f0refux2waj7w62yyg8dxlh9ktjhr3tvtquwzcmh
+    - &sshkey_alistairatmorpheus age12nd0dlze27qwptxkwvk5she98x3dm9fhqkxtwhw04weyjr6tpfxsd3hh78
+    - &sshkey_alistairatolympus age1u3x4qlnwl5lqa7umv8ptn8s739xa63dl2sw6lwzugyzhxmdrhyush25fsd
+  - &hosts:
+    - &machine_borealis age158rsk6lxx3sk0zq02xzs644m5kngkvr753sdwzc4p09rsyllq3rs69s8sk
+    - &machine_morpheus age1gsqwykg4640kudawx257ya7xd3a83plw0f9qtzzqatl8tsvqyefqs58wcv
+    - &machine_atlantis age1evgwalt49rkrzl3fnqpcp8g8ms6mt45etq6092c7n6q5k39da43qzdan8p
+    - &machine_midgard age15djtam9z8fflgx94wnr6ph8xr27742tft54xcvj67fkw9kuudswqhth8mr
+    - &machine_olympus age15pmxvczjklhzx7srzej5z35n3qf8xcs6tgn6tsknzuf3l7hv4ptqek4mkk
 creation_rules:
-  - path_regex: secrets/[^/]+\.(yaml|json|env|ini|binary)$
+  - path_regex: home/alistair/secrets.ya?ml$
     shamir_threshold: 1
     key_groups:
-#      - pgp:
-#        - *admin_alistair
-#        merge:
-       - age:
-         - *server_borealis
-         - *server_morpheus
-         - *server_atlantis
-         - *server_celestis
+     - pgp:
+         - *admin_alistair
+       age:
+         - *sshkey_alistairatatlantis 
+         - *sshkey_alistairatborealis 
+         - *sshkey_alistairatmidgard 
+         - *sshkey_alistairatmorpheus 
+         - *sshkey_alistairatolympus
+  - path_regex: hosts/common/secrets.ya?ml$
+    shamir_threshold: 1
+    key_groups:
+     - pgp:
+         - *admin_alistair
+       age:
+         - *machine_borealis
+         - *machine_morpheus
+         - *machine_atlantis
+         - *machine_midgard
+         - *machine_olympus
          - *sshkey_alistairatmidgard
          - *sshkey_alistairatatlantis
          - *sshkey_alistairatolympus
+  - path_regex: hosts/atlantis/secrets.ya?ml$
+    shamir_threshold: 1
+    key_groups:
+      - age:
+          - *sshkey_alistairatmidgard
+          - *sshkey_alistairatatlantis
+          - *sshkey_alistairatolympus
+          - *machine_atlantis
+        pgp:
+          - *admin_alistair
+  - path_regex: hosts/borealis/secrets.ya?ml$
+    shamir_threshold: 1
+    key_groups:
+      - age:
+          - *sshkey_alistairatmidgard
+          - *sshkey_alistairatatlantis
+          - *sshkey_alistairatolympus
+          - *machine_borealis
+        pgp:
+          - *admin_alistair
+  - path_regex: hosts/midgard/secrets.ya?ml$
+    shamir_threshold: 1
+    key_groups:
+      - age:
+          - *sshkey_alistairatmidgard
+          - *sshkey_alistairatatlantis
+          - *sshkey_alistairatolympus
+          - *machine_midgard
+        pgp:
+          - *admin_alistair
+  - path_regex: hosts/morpheus/secrets.ya?ml$
+    shamir_threshold: 1
+    key_groups:
+      - age:
+          - *sshkey_alistairatmidgard
+          - *sshkey_alistairatatlantis
+          - *sshkey_alistairatolympus
+          - *machine_morpheus
+        pgp:
+          - *admin_alistair
+  - path_regex: hosts/olympus/secrets.ya?ml$
+    shamir_threshold: 1
+    key_groups:
+      - age:
+          - *sshkey_alistairatmidgard
+          - *sshkey_alistairatatlantis
+          - *sshkey_alistairatolympus
+          - *machine_olympus
+        pgp:
+          - *admin_alistair
+         

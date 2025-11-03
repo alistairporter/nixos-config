@@ -1,8 +1,5 @@
 {
-  imports = [
-    # ./watchdogd.nix
-    ./lix.nix
-    ./scheduledreboot.nix
-    ./beszel-agent.nix
-  ];
+  lix = import ./lix.nix;
+  scheduled-reboot = import ./scheduledreboot.nix;
+  beszel-agent = import ./beszel-agent.nix;
 }
