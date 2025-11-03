@@ -23,6 +23,7 @@
     ../common/optional/gpustuff.nix
     ../common/optional/incus.nix
     ../common/optional/xrdp-xfce.nix
+    ../common/optional/avahi.nix
   ];
 
   networking = {
