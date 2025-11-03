@@ -3,7 +3,10 @@
   lib,
   ...
 }: {
-  imports = [./global];
+  imports = [
+    ./global
+    ./features/desktop/xfce
+  ];
 
   # Disable impermanence
   home.persistence = lib.mkForce {};

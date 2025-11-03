@@ -1,18 +1,17 @@
 {pkgs, ...}:{
   imports = [
     ../common
-    ./dconf.nix
   ];
   # Enable xdg-desktop-portal and GTK backend
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [
-      xdg-desktop-portal-gnome
+      xdg-desktop-portal-xapp
       xdg-desktop-portal-gtk
     ];
 
     config = {
-      common.default = [ "gnome" "gtk" ];
+      common.default = [ "xapp" "gtk" ];
     };
   };
 }
