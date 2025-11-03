@@ -32,5 +32,4 @@
   #   then "prefer-light"
   #   else "default";
 
-  xdg.portal.enable = true;
 }

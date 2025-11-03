@@ -63,13 +63,13 @@ with lib.hm.gvariant; {
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
       binding = "<Control><Alt>KP_Delete";
-      command = "flatpak run io.missioncenter.MissionCenter";
+      command = "missioncenter";
       name = "Mission Center";
     };
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
       binding = "<Control><Shift>Escape";
-      command = "flatpak run io.missioncenter.MissionCenter";
+      command = "missioncenter";
       name = "Mission Center";
     };
   };
