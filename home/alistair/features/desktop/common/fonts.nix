@@ -15,6 +15,8 @@
     nerd-fonts.fira-code # terminal fonts
     nerd-fonts.fira-mono # more terminal fonts
     fira # yet more terminal fonts
+    fira-code # even more terminal fonts
+    fira-mono # yet still more terminal fonts
     inter # ui font
     corefonts # windows fonts
     vista-fonts # more windows fonts

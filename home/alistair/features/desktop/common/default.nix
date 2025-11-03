@@ -12,6 +12,7 @@
   ];
 
   home.packages = with pkgs; [
+    xdg-terminal-exec-mkhl # required for some gnome features to work regarding terminals.
     libnotify # notififcations stuff
     vlc # swissarmy knife of video and audio
     bitwarden-cli # cli passwords
