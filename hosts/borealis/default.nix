@@ -27,6 +27,15 @@
 
   networking.nftables.enable = true;
 
+  networking.firewall = {
+    allowedTCPPorts = [
+      6052 # esphome
+      8099 # zigbee2mqtt
+      8123 # hass
+      8095 # mass
+    ];
+    allowedUDPPorts = [ ];
+  };
   systemd.network.enable = true;
 
   systemd.network.networks."10-wan" = {
@@ -83,8 +92,10 @@
   #
   services.beszel.agent = {
     enable = true;
+    openFirewall = true;
     environmentFile = "${config.sops.secrets.beszel_key_borealis.path}";
   };
+
   sops.secrets.beszel_key_borealis = {
     sopsFile = ./secrets.yaml;
   };
