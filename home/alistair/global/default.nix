@@ -34,7 +34,7 @@
   };
 
   sops.age.sshKeyPaths = ["/home/alistair/.ssh/id_ed25519"];
-  
+
   home = {
     username = lib.mkDefault "alistair";
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
@@ -62,4 +62,3 @@
     # };
   };
 }
-

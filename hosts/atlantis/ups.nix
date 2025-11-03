@@ -1,4 +1,4 @@
-{ config, ... }:{
+{config, ...}: {
   power.ups = {
     enable = true;
     mode = "netserver";
@@ -7,7 +7,7 @@
       "admin" = {
         passwordFile = config.sops.secrets.nut_admin_password.path;
         actions = ["set" "fsd"];
-        instcmds = [ "all" ];
+        instcmds = ["all"];
         upsmon = "primary";
       };
       "observer" = {

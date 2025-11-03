@@ -1,8 +1,11 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   # Enable x drivers to _hopefully_ support hadware compositing?
-  services.xserver.videoDrivers = [ "intel" "nvidia" ];
+  services.xserver.videoDrivers = ["intel" "nvidia"];
 
   # Enable sound for xrdp session, doesn't yet support pipewire as of 20251101 :(
   hardware.pulseaudio.enable = true;
@@ -18,11 +21,11 @@
     # use pulseaudio module to support audio forwarding
     audio.enable = true;
   };
-  
+
   # Set some extra XDG stuff to get portals mostly working as not using proper session.
   xdg = {
     portal.enable = true;
-    portal.extraPortals = [ pkgs.xdg-desktop-portal-xapp pkgs.xdg-desktop-portal-gtk ];
+    portal.extraPortals = [pkgs.xdg-desktop-portal-xapp pkgs.xdg-desktop-portal-gtk];
     terminal-exec.enable = true;
   };
 }

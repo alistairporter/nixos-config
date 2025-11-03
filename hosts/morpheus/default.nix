@@ -1,8 +1,4 @@
-{
-  config,
-  ...
-}:
-{
+{config, ...}: {
   imports = [
     ./hardware-configuration.nix
     ./services
@@ -38,7 +34,7 @@
     mode = "0440";
     sopsFile = ./secrets.yaml;
   };
-  
+
   lix.enable = true;
 
   system.stateVersion = "22.11";

@@ -1,9 +1,6 @@
 # Generated via dconf2nix: https://github.com/gvolpe/dconf2nix
-{ lib, ... }:
-
-with lib.hm.gvariant;
-
-{
+{lib, ...}:
+with lib.hm.gvariant; {
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       document-font-name = "Inter Variable 11";
@@ -25,10 +22,10 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/wm/keybindings" = {
-      switch-applications = [ "<Super>Tab" ];
-      switch-applications-backward = [ "<Shift><Super>Tab" ];
-      switch-windows = [ "<Alt>Tab" ];
-      switch-windows-backward = [ "<Shift><Alt>Tab" ];
+      switch-applications = ["<Super>Tab"];
+      switch-applications-backward = ["<Shift><Super>Tab"];
+      switch-windows = ["<Alt>Tab"];
+      switch-windows-backward = ["<Shift><Alt>Tab"];
     };
 
     "org/gnome/desktop/wm/preferences" = {
@@ -45,7 +42,7 @@ with lib.hm.gvariant;
 
     "org/gnome/mutter" = {
       center-new-windows = true;
-      experimental-features = [ "variable-refresh-rate" "scale-monitor-framebuffer" ];
+      experimental-features = ["variable-refresh-rate" "scale-monitor-framebuffer"];
       workspaces-only-on-primary = true;
     };
 
@@ -75,6 +72,5 @@ with lib.hm.gvariant;
       command = "flatpak run io.missioncenter.MissionCenter";
       name = "Mission Center";
     };
-
   };
 }

@@ -1,7 +1,9 @@
-{ config, lib, pkgs, ... }:
-
 {
-
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   networking.hostName = "borealis"; # Define your hostname.
 
   # Pick only one of the below networking options.
@@ -37,7 +39,7 @@
     enable = true;
     interfaces = {
       "wgtunnelinfra" = {
-#        privateKey = "SECRET_REDACTED";
+        #        privateKey = "SECRET_REDACTED";
         privateKeyFile = config.sops.secrets.wg_privkey_borealis.path;
         ips = ["10.10.10.3/32"];
         peers = [

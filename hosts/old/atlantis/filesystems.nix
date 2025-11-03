@@ -1,8 +1,10 @@
-{ config, lib, pkgs, modulesPath, ... }:
-
 {
-
-
+  config,
+  lib,
+  pkgs,
+  modulesPath,
+  ...
+}: {
   # Btrfs Scrubbing
   services.btrfs.autoScrub = {
     enable = true;
@@ -45,11 +47,11 @@
 
   # Filesystems:
   fileSystems = {
-  # add options to fs definitions in hardware-configuration.nix
-    "/".options = [ "compress=zstd" ];
-    "/home".options = [ "compress=zstd" ];
-    "/nix".options = [ "compress=zstd" "noatime" ];
-    "/swap".options = [ "noatime" ];
+    # add options to fs definitions in hardware-configuration.nix
+    "/".options = ["compress=zstd"];
+    "/home".options = ["compress=zstd"];
+    "/nix".options = ["compress=zstd" "noatime"];
+    "/swap".options = ["noatime"];
 
     ## appdata ssd mount
     "/media/MiscFiles" = {
@@ -87,7 +89,6 @@
       ];
     };
 
-    
     ## btrfs commands
     ### mkfs.btrfs /dev/disk/blah
     ### btrfs subvolume create /mnt/disks/diskX/data
@@ -130,7 +131,7 @@
         "subvol=snapraidContent"
       ];
     };
-    
+
     "/mnt/disks/md4" = {
       device = "/dev/disk/by-uuid/14b2089d-b806-4b2e-939a-5ec03e560378";
       options = [
@@ -149,7 +150,7 @@
         "subvol=snapraidContent"
       ];
     };
-    
+
     "/mnt/disks/md5" = {
       device = "/dev/disk/by-uuid/e38ac870-e56f-425b-8b13-fdbd5af2a53a";
       options = [
@@ -168,7 +169,7 @@
         "subvol=snapraidContent"
       ];
     };
-    
+
     "/mnt/disks/md6" = {
       device = "/dev/disk/by-uuid/8b2336d6-90b1-43c5-b696-3f1784780e42";
       options = [

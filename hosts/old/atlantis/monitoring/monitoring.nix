@@ -1,10 +1,13 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [
     ./netdata.nix
   ];
-  # Scrutiny Collector 
+  # Scrutiny Collector
   services.scrutiny.collector = {
     enable = true;
     settings = {
@@ -12,9 +15,9 @@
       api.endpoint = "http://atlantis:8081";
     };
   };
-  
+
   # Prometheus Exporter
-  services.prometheus.exporters.node.enable = true; 
+  services.prometheus.exporters.node.enable = true;
 
   # Beszel Agent:
   #
@@ -25,5 +28,4 @@
     };
     environmentFile = "${config.sops.secrets.beszel_key_atlantis.path}";
   };
-
 }

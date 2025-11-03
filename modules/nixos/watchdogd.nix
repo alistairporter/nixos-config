@@ -3,23 +3,23 @@
   lib,
   pkgs,
   ...
-}:
-let
+}: let
   cfg = config.custom.server.watchdogd;
   ping-watchdog = pkgs.writeShellScriptBin "ping-watchdog" ''
     /run/current-system/sw/bin/ping -c 4 8.8.8.8
   '';
   logDirectory = "/var/lib/misc";
-in
-{
+in {
   options.custom.server.watchdogd = {
-    enable = lib.mkEnableOption "watchdogd config" // {
-      default = config.custom.server.enable;
-    };
+    enable =
+      lib.mkEnableOption "watchdogd config"
+      // {
+        default = config.custom.server.enable;
+      };
   };
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = [ ping-watchdog ];
+    environment.systemPackages = [ping-watchdog];
 
     services.watchdogd = {
       enable = true;
@@ -34,6 +34,6 @@ in
       };
     };
 
-    systemd.tmpfiles.rules = [ "d ${logDirectory} 0700" ];
+    systemd.tmpfiles.rules = ["d ${logDirectory} 0700"];
   };
 }

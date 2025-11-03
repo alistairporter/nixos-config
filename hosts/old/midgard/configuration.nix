@@ -1,10 +1,12 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   # imports =
   #   [ # Include the results of the hardware scan.
   #     <nixos-hardware/lenovo/thinkpad/t480>
@@ -15,12 +17,12 @@
   ];
 
   fileSystems = {
-    "/".options = [ "compress=zstd" ];
-    "/home".options = [ "compress=zstd" ];
-    "/nix".options = [ "compress=zstd" "noatime" ];
-#    "/swap".options = [ "noatime" ];
+    "/".options = ["compress=zstd"];
+    "/home".options = ["compress=zstd"];
+    "/nix".options = ["compress=zstd" "noatime"];
+    #    "/swap".options = [ "noatime" ];
   };
-  
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -34,12 +36,12 @@
   boot.consoleLogLevel = 3;
   boot.initrd.verbose = false;
   boot.kernelParams = [
-      "quiet"
-      "splash"
-      "boot.shell_on_fail"
-      "udev.log_priority=3"
-      "rd.systemd.show_status=auto"
-    ];
+    "quiet"
+    "splash"
+    "boot.shell_on_fail"
+    "udev.log_priority=3"
+    "rd.systemd.show_status=auto"
+  ];
 
   networking.hostName = "midgard"; # Define your hostname.
 
@@ -67,11 +69,11 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_GB.UTF-8";
-#  console = {
-#    font = "Lat2-Terminus16";
-#    keyMap = "uk";
-#    useXkbConfig = true; # use xkb.options in tty.
-#  };
+  #  console = {
+  #    font = "Lat2-Terminus16";
+  #    keyMap = "uk";
+  #    useXkbConfig = true; # use xkb.options in tty.
+  #  };
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -95,7 +97,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.alistair = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker"]; # Enable ‘sudo’ for the user.
+    extraGroups = ["wheel" "docker"]; # Enable ‘sudo’ for the user.
     uid = 1000;
     shell = pkgs.zsh;
     packages = with pkgs; [
@@ -127,51 +129,50 @@
 
   custom.gnome-boxes = {
     enable = true;
-    vm-priv-accounts = [ "alistair" ];
+    vm-priv-accounts = ["alistair"];
   };
 
   virtualisation.docker = {
     enable = true;
     storageDriver = "btrfs";
   };
-  
+
   # provide comapibility environment for precompile binaries without witing nixpkgs declarations for them each time.
-  programs.nix-ld = {                                                                                                                                                             
-    enable = true;                                                                                                                                                                
-    libraries = with pkgs;                                                                                                                                                        
-      [                                                                                                                                                                           
-        zlib                                                                                                                                                                      
-        zstd                                                                                                                                                                      
-        stdenv.cc.cc                                                                                                                                                              
-        stdenv.cc.cc.lib                                                                                                                                                          
-        udev                                                                                                                                                                      
-        dbus                                                                                                                                                                      
-        mesa                                                                                                                                                                      
-        libglvnd
-        libgbm
-        vulkan-headers
-        vulkan-loader
-        vulkan-validation-layers
-        curl                                                                                                                                                                      
-        openssl                                                                                                                                                                   
-        attr                                                                                                                                                                      
-        libssh                                                                                                                                                                    
-        bzip2                                                                                                                                                                     
-        libxml2                                                                                                                                                                   
-        acl                                                                                                                                                                       
-        libsodium
-        util-linux
-        xz
-        systemd
-      ];
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      zlib
+      zstd
+      stdenv.cc.cc
+      stdenv.cc.cc.lib
+      udev
+      dbus
+      mesa
+      libglvnd
+      libgbm
+      vulkan-headers
+      vulkan-loader
+      vulkan-validation-layers
+      curl
+      openssl
+      attr
+      libssh
+      bzip2
+      libxml2
+      acl
+      libsodium
+      util-linux
+      xz
+      systemd
+    ];
   };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
   # programs.gnupg.agent = {
-    # enable = true;
-    # enableSSHSupport = true;
+  # enable = true;
+  # enableSSHSupport = true;
   # };
 
   # List services that you want to enable:
@@ -212,4 +213,3 @@
   nix.settings.experimental-features = "nix-command flakes";
   nixpkgs.config.allowUnfree = true;
 }
-

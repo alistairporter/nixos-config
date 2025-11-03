@@ -1,10 +1,13 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   # flatpak
   services.flatpak.enable = true;
 
- # List packages installed in system profile. To search, run:
+  # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     util-linuxMinimal
@@ -28,8 +31,8 @@
     git
     zsh
     nix-index
-#    docker-compose
-#    nvidia-container-toolkit
+    #    docker-compose
+    #    nvidia-container-toolkit
     pciutils
     wakeonlan
     smartmontools

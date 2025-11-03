@@ -32,10 +32,10 @@
 
   # Override mount options in 'hardware-configuration.nix'
   fileSystems = {
-    "/".options = [ "compress=zstd" ];
-    "/home".options = [ "compress=zstd" ];
-    "/nix".options = [ "compress=zstd" "noatime" ];
-#    "/swap".options = [ "noatime" ];
+    "/".options = ["compress=zstd"];
+    "/home".options = ["compress=zstd"];
+    "/nix".options = ["compress=zstd" "noatime"];
+    #    "/swap".options = [ "noatime" ];
   };
 
   boot = {

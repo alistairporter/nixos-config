@@ -2,8 +2,8 @@
   pkgs,
   config,
   lib,
-   ...
- }: let
+  ...
+}: let
   # git commit --ammend but for older commits
   git-fixup = pkgs.writeShellScriptBin "git-fixup" ''
     rev="$(git rev-parse "$1")"
@@ -24,7 +24,7 @@ in {
       pushall = "!git remote | xargs -L1 git push --all";
       add-nowhitespace = "!git diff -U0 -w --no-color | git apply --cached --ignore-whitespace --unidiff-zero -";
     };
-  
+
     userName = "Alistair Porter";
     userEmail = lib.mkDefault "alistair@aporter.xyz";
     extraConfig = {
@@ -43,13 +43,13 @@ in {
       # Reuse merge conflict fixes when rebasing
       rerere.enabled = true;
     };
-  
+
     signing = {
       key = "~/.ssh/id_ed25519";
       signByDefault = builtins.stringLength "~/.ssh/id_ed25519" > 0;
     };
 
     lfs.enable = true;
-    ignores = [ ".direnv" "result" ];
+    ignores = [".direnv" "result"];
   };
 }

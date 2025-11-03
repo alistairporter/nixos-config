@@ -1,4 +1,9 @@
-{ config, pkgs, misc, ... }: {
+{
+  config,
+  pkgs,
+  misc,
+  ...
+}: {
   # shell history sync
   programs.atuin = {
     enable = true;

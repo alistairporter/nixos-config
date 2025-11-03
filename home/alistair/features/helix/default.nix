@@ -1,5 +1,8 @@
-{ pkgs, lib, ... }: {
-
+{
+  pkgs,
+  lib,
+  ...
+}: {
   home.sessionVariables.EDITOR = "hx";
   home.sessionVariables.COLORTERM = "truecolor";
 
@@ -16,7 +19,7 @@
       vscode-langservers-extracted # css lsp
       superhtml # html lsp
       typescript-language-server # js ts lsp
-#      vscode-json-languageserver # json lsp
+      #      vscode-json-languageserver # json lsp
       # kotlin-language-server # kotlin lsp
       jdt-language-server # java lsp
       markdown-oxide # markdown lsp
@@ -32,7 +35,7 @@
         bufferline = "multiple"; # show currently open buffers weh multiple exist
         cursorline = true; # highliegt lines with cursors
         line-number = "relative"; # use relative line numbers
-#        rules = [120]; #show a ruler a col 120
+        #        rules = [120]; #show a ruler a col 120
         lsp = {
           auto-signature-help = false; # disables popups of signature parameter help
           display-messages = true; #show lsp messages in the status line
@@ -57,7 +60,7 @@
         };
         statusline = {
           # add git branch to status line
-          left = [ "mode" "spinner" "version-control" "file-name" ];
+          left = ["mode" "spinner" "version-control" "file-name"];
         };
         end-of-line-diagnostics = "hint"; # Minimum severity to show a diagnostic after the end of a line
         inline-diagnostics = {
@@ -65,7 +68,7 @@
           other-lines = "disable"; # Don't expand diagnostics unless the cursor is on the line
         };
       };
-      
+
       keys = {
         normal = {
           # This adds support for navigate between open buffers using Alt , and Alt ., as well as closing the current buffer with Alt w
@@ -78,7 +81,7 @@
           "A-x" = "extend_to_line_bounds";
           "X" = "select_line_above";
         };
-        
+
         select = {
           "A-x" = "extend_to_line_bounds";
           "X" = "select_line_above";

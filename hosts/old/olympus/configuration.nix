@@ -1,20 +1,22 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   # imports =
   #   [ # Include the results of the hardware scan.
   #     ./hardware-configuration.nix
   #   ];
 
   fileSystems = {
-    "/".options = [ "compress=zstd" ];
-    "/home".options = [ "compress=zstd" ];
-    "/nix".options = [ "compress=zstd" "noatime" ];
-#    "/swap".options = [ "noatime" ];
+    "/".options = ["compress=zstd"];
+    "/home".options = ["compress=zstd"];
+    "/nix".options = ["compress=zstd" "noatime"];
+    #    "/swap".options = [ "noatime" ];
   };
 
   # Use the systemd-boot EFI boot loader.
@@ -30,7 +32,7 @@
   };
 
   services.xserver.videoDrivers = ["nvidia"];
-  
+
   hardware.nvidia = {
     package = config.boot.kernelPackages.nvidiaPackages.latest;
 
@@ -56,7 +58,7 @@
   };
 
   services.tailscale.enable = true;
-  
+
   # Set your time zone.
   time.timeZone = "Europe/London";
 
@@ -101,7 +103,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.alistair = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = ["wheel"]; # Enable ‘sudo’ for the user.
     uid = 1000;
     shell = pkgs.zsh;
     packages = with pkgs; [
@@ -131,7 +133,6 @@
     argyllcms
   ];
 
-
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -152,7 +153,7 @@
   networking.firewall.enable = false;
 
   nixpkgs.config.allowUnfree = true; # enable unfree packages
-  
+
   nix.settings.experimental-features = "nix-command flakes";
 
   # Copy the NixOS configuration file and link it from the resulting system
@@ -178,6 +179,4 @@
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "25.05"; # Did you read the comment?
-
 }
-

@@ -2,9 +2,8 @@
   config,
   pkgs,
   lib,
-  ...  
-}:
-{
+  ...
+}: {
   gtk = {
     enable = true;
     font = {

@@ -1,8 +1,10 @@
-{ config, lib, pkgs, ... }:
-
-with lib;
-
-let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib; let
   cfg = config.custom.gnome-boxes;
 in {
   options.custom.gnome-boxes = {
@@ -10,8 +12,8 @@ in {
 
     vm-priv-accounts = mkOption {
       type = types.listOf types.str;
-      default = [ "" ];
-      example = [ "alice" ];
+      default = [""];
+      example = ["alice"];
       description = "users to be added to vm management groups";
     };
   };
@@ -30,7 +32,6 @@ in {
 
     # Enable USB redirection
     virtualisation.spiceUSBRedirection.enable = true;
-    
 
     # Allow VM management
     users.groups.libvirtd.members = cfg.vm-priv-accounts;
@@ -38,10 +39,10 @@ in {
 
     # Enable VM networking and file sharing
     environment.systemPackages = with pkgs; [
-        # ... your other packages ...
-        gnome-boxes # VM management
-        dnsmasq # VM networking
-        phodav # (optional) Share files with guest VMs
+      # ... your other packages ...
+      gnome-boxes # VM management
+      dnsmasq # VM networking
+      phodav # (optional) Share files with guest VMs
     ];
   };
 }
