@@ -1,39 +1,19 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    argyllcms
     atuin
-    baobab
     btrfs-progs
-    calibre
     fastfetch
     ffmpeg-full
-    fira
-    fira-code
-    firefox
-    flatpak
     git
-    gnome-disk-utility
-    gnome-software
     gnupg
-    gparted
     helix
     htop
     iptables
     lm_sensors
-    mergerfs
-    mergerfs-tools
-    nano # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    neofetch
-    nerd-fonts.fira-mono
-    nix-index
+    nano 
     nvtopPackages.full
     pciutils
-    pinentry
-    pinentry-curses
     pipx
-    prometheus-node-exporter
-    ptyxis
-    python3
     python3Full
     smartmontools
     sops
@@ -42,7 +22,6 @@
     usbutils
     util-linuxMinimal
     uv
-    vim
     wakeonlan
     wget
     xdg-utils
