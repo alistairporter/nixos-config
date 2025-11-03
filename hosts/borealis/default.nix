@@ -13,7 +13,7 @@
     ../common/global
     ../common/users/alistair
 
-    ../common/optional/systemd-boot.nixi
+    ../common/optional/systemd-boot.nix
     ../common/optional/docker.nix
     ../common/optional/incus.nix
   ];
