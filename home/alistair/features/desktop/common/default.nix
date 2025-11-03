@@ -6,20 +6,22 @@
   imports = [
     ./fonts.nix
     ./gtk.nix
-    ./nextcloud.nix
     ./ptyxis.nix
+    ./remmina.nix
     ./zen.nix
   ];
 
-  home.packages = [
-    pkgs.libnotify
-    # pkgs.handlr-regex
-    # (pkgs.writeShellScriptBin "xterm" ''
-    #   handlr launch x-scheme-handler/terminal -- "$@"
-    # '')
-    # (pkgs.writeShellScriptBin "xdg-open" ''
-    #   handlr open "$@"
-    # '')
+  home.packages = with pkgs; [
+    libnotify # notififcations stuff
+    vlc # swissarmy knife of video and audio
+    bitwarden-cli # cli passwords
+    bitwarden-desktop # passwords
+    obsidian # notes
+    mission-center # taskmanager
+    ruffle # adobe flash compat
+    sqlitebrowser # sqlite stuff
+    tremotesf # transmission remote client
+    dconf-editor # dconf editor
   ];
 
   # # Also sets org.freedesktop.appearance color-scheme
