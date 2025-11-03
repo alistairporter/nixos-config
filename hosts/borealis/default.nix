@@ -16,6 +16,7 @@
     ../common/optional/systemd-boot.nix
     ../common/optional/docker.nix
     ../common/optional/incus.nix
+    ../common/optional/avahi.nix
   ];
 
   networking = {

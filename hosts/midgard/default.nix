@@ -20,6 +20,8 @@
     ../common/optional/flatpak.nix
     ../common/optional/pipewire.nix
     ../common/optional/gnome-boxes.nix
+    ../common/optional/avahi.nix
+    ../common/optional/printing.nix
   ];
 
   networking = {
