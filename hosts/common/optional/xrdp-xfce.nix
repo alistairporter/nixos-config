@@ -16,6 +16,7 @@
   # Enable XRDP service
   services.xrdp = {
     enable = true;
+    openFirewall = true;
     # use xfce as session
     defaultWindowManager = "xfce4-session";
     # use pulseaudio module to support audio forwarding
