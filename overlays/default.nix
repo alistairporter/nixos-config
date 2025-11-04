@@ -48,9 +48,9 @@ in {
       NIX_CFLAGS_COMPILE = ["-fno-fast-math"];
     });
 
-    adw-gtk3 = prev.adw-gtk3.overrideAttrs (_: {
-      postInstall = ''
-        rm -rf $out/share/themes/*/gtk-4.0
+    adw-gtk3 = prev.adw-gtk3.overrideAttrs (old: {
+      postInstall = (old.postInstall or "") + ''
+        find $out/share/themes -type d -name "gtk-4.0" -exec rm -rf {} +
       '';
     });
   };
