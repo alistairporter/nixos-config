@@ -44,6 +44,12 @@
       "$HOME/.cargo/bin"
       "$HOME/.local/bin"
     ];
+    file."accountimage" = {
+      enable = true;
+      source = ../face.png;
+      target = ".face";
+      force = true;
+    };
     sessionVariables = {
       NH_FLAKE = "$HOME/Documents/NixConfig";
     };
