@@ -47,6 +47,12 @@ in {
     gamescope = prev.gamescope.overrideAttrs (_: {
       NIX_CFLAGS_COMPILE = ["-fno-fast-math"];
     });
+
+    adw-gtk3 = prev.adw-gtk3.overrideAttrs (_: {
+      postInstall = ''
+        rm -rf $out/share/themes/*/gtk-4.0
+      '';
+    });
   };
 
   unstable-backport = final: prev: {
