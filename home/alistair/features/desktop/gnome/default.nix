@@ -1,7 +1,12 @@
 {pkgs, ...}:{
   imports = [
     ../common
-    ./dconf.nix
+    ./extensions.nix
+    ./shell.nix
+    ./wm.nix
+    ./keybinds.nix
+    ./nautilus.nix
+    ./extensions.nix
   ];
   # Enable xdg-desktop-portal and GTK backend
   xdg.portal = {
