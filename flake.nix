@@ -63,12 +63,12 @@
       # as of 20251102, needs 'libgbm' which is only in unstable-nixpkgs
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
     nix-gl = {
       url = "github:nix-community/nixgl";
       inputs.nixpkgs.follows = "nixpkgs";

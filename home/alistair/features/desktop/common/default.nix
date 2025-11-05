@@ -32,5 +32,4 @@
   #   else if config.colorscheme.mode == "light"
   #   then "prefer-light"
   #   else "default";
-
 }

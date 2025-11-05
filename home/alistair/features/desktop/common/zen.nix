@@ -3,8 +3,7 @@
   pkgs,
   inputs,
   ...
-}:
-{
+}: {
   imports = [
     inputs.zen-browser.homeModules.beta
     # or inputs.zen-browser.homeModules.twilight
@@ -19,7 +18,7 @@
 
   programs.zen-browser = {
     enable = true;
-    
+
     policies = let
       mkLockedAttrs = builtins.mapAttrs (_: value: {
         Value = value;
@@ -28,7 +27,7 @@
     in {
       # app updates won't work in nixos anyway
       DisableAppUpdate = true;
-      
+
       # disble the browser being "helpful"
       AutofillAddressEnabled = false;
       AutofillCreditCardEnabled = false;
@@ -63,7 +62,7 @@
         LinkPreviews = false;
         TabGroups = false;
       };
-      
+
       # privacy improvements
       DisableFeedbackCommands = true;
       DisableFirefoxStudies = true;
@@ -78,7 +77,7 @@
 
       # Set some browser preferences
       Preferences = mkLockedAttrs {
-        "zen.view.use-single-toolbar" = false; 
+        "zen.view.use-single-toolbar" = false;
       };
     };
 
@@ -106,7 +105,7 @@
           id = 4;
         };
       };
-      
+
       spacesForce = true;
       spaces = let
         containers = config.programs.zen-browser.profiles."alistair".containers;

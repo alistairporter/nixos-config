@@ -10,7 +10,7 @@
     htop
     iptables
     lm_sensors
-    nano 
+    nano
     pciutils
     pipx
     python3Full

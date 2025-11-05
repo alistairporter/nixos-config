@@ -1,4 +1,4 @@
-{pkgs, ...}:{
+{pkgs, ...}: {
   imports = [
     ../common
   ];
@@ -30,7 +30,7 @@
     ];
 
     config = {
-      common.default = [ "xapp" "gtk" ];
+      common.default = ["xapp" "gtk"];
     };
 
   };

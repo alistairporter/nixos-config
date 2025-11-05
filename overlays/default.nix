@@ -49,9 +49,11 @@ in {
     });
 
     adw-gtk3 = prev.adw-gtk3.overrideAttrs (old: {
-      postInstall = (old.postInstall or "") + ''
-        find $out/share/themes -type d -name "gtk-4.0" -exec rm -rf {} +
-      '';
+      postInstall =
+        (old.postInstall or "")
+        + ''
+          find $out/share/themes -type d -name "gtk-4.0" -exec rm -rf {} +
+        '';
     });
   };
 

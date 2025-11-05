@@ -35,7 +35,7 @@
   networking.firewall.allowedTCPPorts = [
     9091 # transmission
   ];
-  
+
   networking.wireguard = {
     enable = true;
     interfaces = {

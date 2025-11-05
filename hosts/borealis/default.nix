@@ -35,7 +35,7 @@
       8123 # hass
       8095 # mass
     ];
-    allowedUDPPorts = [ ];
+    allowedUDPPorts = [];
   };
   systemd.network.enable = true;
 
