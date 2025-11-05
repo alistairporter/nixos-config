@@ -3,28 +3,27 @@
   config,
   pkgs,
   ...
-}:
-{
+}: {
   home.packages = with pkgs.gnomeExtensions; [
-      alphabetical-app-grid
-      appindicator
-      blur-my-shell
-      caffeine
-      dash-to-dock
-      freon
-      fuzzy-app-search
-      gamemode-shell-extension
-      gsconnect
-      just-perfection
-      logo-menu
-      quick-settings-audio-panel
-      quick-touchpad-toggle
-      tactile
-      tailscale-status
-      user-themes
-      user-avatar-in-quick-settings
+    alphabetical-app-grid
+    appindicator
+    blur-my-shell
+    caffeine
+    dash-to-dock
+    freon
+    fuzzy-app-search
+    gamemode-shell-extension
+    gsconnect
+    just-perfection
+    logo-menu
+    quick-settings-audio-panel
+    quick-touchpad-toggle
+    tactile
+    tailscale-status
+    user-themes
+    user-avatar-in-quick-settings
   ];
-  
+
   dconf.settings."org/gnome/shell" = {
     disable-user-extensions = false;
     enabled-extensions = with pkgs.gnomeExtensions; [
@@ -66,7 +65,7 @@
   dconf.settings."org/gnome/shell/extensions/blur-my-shell/panel" = {
     blur = false;
   };
-  
+
   dconf.settings."org/gnome/shell/extensions/dash-to-dock" = {
     apply-custom-theme = true;
     custom-theme-shrink = true;
@@ -86,7 +85,7 @@
   };
 
   dconf.settings."org/gnome/shell/extensions/search-light" = {
-    shortcut-search = [ "<Super>space" ];
+    shortcut-search = ["<Super>space"];
     popup-at-cursor-monitor = true;
   };
 }

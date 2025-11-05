@@ -1,4 +1,4 @@
-{pkgs, ...}:{
+{pkgs, ...}: {
   imports = [
     ../common
     ./extensions.nix
@@ -17,7 +17,7 @@
     ];
 
     config = {
-      common.default = [ "gnome" "gtk" ];
+      common.default = ["gnome" "gtk"];
     };
   };
 }

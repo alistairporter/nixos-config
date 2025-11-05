@@ -1,8 +1,4 @@
-{
-  lib,
-  ...
-}:
-{
+{lib, ...}: {
   dconf.settings = with lib.hm.gvariant; {
     "org/gnome/desktop/wm/keybindings" = {
       switch-applications = ["<Super>Tab"];

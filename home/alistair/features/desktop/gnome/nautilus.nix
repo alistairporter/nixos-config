@@ -1,8 +1,4 @@
-{
-  lib,
-  ...
-}:
-{
+{lib, ...}: {
   dconf.settings = with lib.hm.gvariant; {
     "org/gnome/nautilus/preferences" = {
       date-time-format = "detailed";
