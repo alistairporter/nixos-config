@@ -6,6 +6,9 @@
   imports = [
     ./global
     ./features/desktop/gnome
+
+    ./features/productivity
+    ./features/games
   ];
 
   # Disable impermanence
