@@ -34,6 +34,7 @@
 
   networking.firewall.allowedTCPPorts = [
     9091 # transmission
+    8266 # tdarr
   ];
 
   networking.wireguard = {
