@@ -1,4 +1,16 @@
 {lib, ...}: {
+
+  gtk.gtk3.bookmarks = [
+    "file:///home/alistair/Downloads"
+    "file:///home/alistair/Nextcloud"
+    "file:///home/alistair/Documents"
+    "file:///home/alistair/Music"
+    "file:///home/alistair/Pictures"
+    "file:///home/alistair/Videos"
+    "sftp://alistair@atlantis/media/Files Files on atlantis"
+    "sftp://alistair@atlantis/media/MiscFiles MiscFiles on atlantis"
+  ];
+  
   dconf.settings = with lib.hm.gvariant; {
     "org/gnome/nautilus/preferences" = {
       date-time-format = "detailed";
