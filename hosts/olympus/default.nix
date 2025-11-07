@@ -24,6 +24,7 @@
     ../common/optional/gnome-boxes.nix
     ../common/optional/avahi.nix
     ../common/optional/printing.nix
+    ../common/optional/steam.nix
   ];
 
   # Overrride mount options in 'hardware-configuration.nix'
