@@ -6,7 +6,6 @@
   imports = [
     # ./factorio.nix
     ./prism-launcher.nix
-    ./steam.nix
   ];
   home = {
     packages = with pkgs; [gamescope];
