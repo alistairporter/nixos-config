@@ -31,10 +31,10 @@
   fileSystems = {
     "/".options = ["compress=zstd"];
     "/home".options = ["compress=zstd"];
-    "/mnt/SSD1".options = ["compress=zstd"];
-    "/mnt/SSD2".options = ["compress=zstd"];
-    "/media/Games01".options = ["compress=zstd"];
-    "/media/Games02".options = ["compress=zstd"];
+    "/mnt/SSD1".options = ["compress=zstd" "x-gvfs-hide"];
+    "/mnt/SSD2".options = ["compress=zstd" "x-gvfs-hide"];
+    "/media/Games01".options = ["compress=zstd" "x-gvfs-hide"];
+    "/media/Games02".options = ["compress=zstd" "x-gvfs-hide"];
     "/nix".options = ["compress=zstd" "noatime"];
     #    "/swap".options = [ "noatime" ];
   };
