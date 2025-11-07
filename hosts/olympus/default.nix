@@ -31,6 +31,10 @@
   fileSystems = {
     "/".options = ["compress=zstd"];
     "/home".options = ["compress=zstd"];
+    "/mnt/SSD1".options = ["compress=zstd"];
+    "/mnt/SSD2".options = ["compress=zstd"];
+    "/media/Games01".options = ["compress=zstd"];
+    "/media/Games02".options = ["compress=zstd"];
     "/nix".options = ["compress=zstd" "noatime"];
     #    "/swap".options = [ "noatime" ];
   };
