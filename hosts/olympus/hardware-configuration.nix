@@ -35,6 +35,30 @@
     options = ["subvol=nix"];
   };
 
+  fileSystems."/mnt/SSD1" = {
+    device = "/dev/disk/by-uuid/f86f462b-0428-4371-9aae-c1a44491ec96";
+    fsType = "btrfs";
+    options = ["subvol=data"];
+  };
+
+  fileSystems."/mnt/SSD2" = {
+    device = "/dev/disk/by-uuid/910a3cba-e969-48be-b754-095d676af4f5";
+    fsType = "btrfs";
+    options = ["subvol=data"];
+  };
+  
+  fileSystems."/media/Games01" = {
+    device = "/dev/disk/by-uuid/f86f462b-0428-4371-9aae-c1a44491ec96";
+    fsType = "btrfs";
+    options = ["subvol=games"];
+  };
+
+  fileSystems."/media/Games02" = {
+    device = "/dev/disk/by-uuid/910a3cba-e969-48be-b754-095d676af4f5";
+    fsType = "btrfs";
+    options = ["subvol=games"];
+  };
+
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/E4E9-E19A";
     fsType = "vfat";
