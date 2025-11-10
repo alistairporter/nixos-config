@@ -30,7 +30,7 @@
   # allow docker metrics through firewall on tailnet.
   networking.firewall.interfaces."tailscale0" = {
     allowedTCPPorts = [
-      9322
+      9323
     ];
   };
 }
