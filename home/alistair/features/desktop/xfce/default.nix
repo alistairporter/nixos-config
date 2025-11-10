@@ -9,17 +9,17 @@
     xfce.xfdesktop
   ];
 
-  xfconf.settings = {
-    xfwm4 = {
-      "/general/theme" = "adw-gtk3-dark";
-      "/general/activate_action" = "none";
-    };
+  # xfconf.settings = {
+  #   xfwm4 = {
+  #     "/general/theme" = "adw-gtk3-dark";
+  #     "/general/activate_action" = "none";
+  #   };
 
-    xfce4-desktop = {
-      "/desktop-icons/file-icons/show-unknown-removable" = false;
-      "/desktop-icons/file-icons/show-device-fixed" = false;
-    };
-  };
+  #   xfce4-desktop = {
+  #     "/desktop-icons/file-icons/show-unknown-removable" = false;
+  #     "/desktop-icons/file-icons/show-device-fixed" = false;
+  #   };
+  # };
 
   # Enable xdg-desktop-portal and GTK backend
   xdg.portal = {
