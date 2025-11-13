@@ -67,4 +67,23 @@
     #   ];
     # };
   };
+
+  xdg.userDirs = {
+    enable = true;
+    createDirectories = true;
+    desktop = "${config.home.homeDirectory}/Desktop";
+    documents = "${config.home.homeDirectory}/Documents";
+    download = "${config.home.homeDirectory}/Downloads";
+    music = "${config.home.homeDirectory}/Music";
+    pictures = "${config.home.homeDirectory}/Pictures";
+    publicShare = "${config.home.homeDirectory}/Public";
+    templates = "${config.home.homeDirectory}/Templates";
+    videos = "${config.home.homeDirectory}/Videos";
+    extraConfig = {
+      XDG_APPIMAGE_DIR = "${config.home.homeDirectory}/AppImages";
+      XDG_GIT_DIR = "${config.home.homeDirectory}/Git";
+      XDG_PROJECTS_DIR = "${config.home.homeDirectory}/Projects";
+      XDG_NEXTCLOUD_DIR = lib.mkIf config.services.nextcloud-client.enable "${config.home.homeDirectory}/Nextcloud";
+    };
+  };
 }
