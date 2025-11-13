@@ -87,6 +87,7 @@
   #
   services.beszel.agent = {
     enable = true;
+    openFirewall = true;
     environment = {
       "EXTRA_FILESYSTEMS" = "/media/MiscFiles,/media/Files";
     };
