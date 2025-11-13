@@ -4,4 +4,6 @@
 
   # libadwaita xfwm theme
   adw-xfwm4 = pkgs.callPackage ./adw-xfwm4 {};
+
+  garage-webui = pkgs.callPackage ./garage-webui {};
 }
