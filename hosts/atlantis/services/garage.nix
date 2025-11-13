@@ -19,24 +19,27 @@ in {
   };
 
   users.groups.garage = {};
-  sops = {
-    defaultSopsFile = ../secrets.yaml;
-    secrets = {
-      garage_rpc_secret = {
-        owner = "garage";
-        group = "garage";
-        mode = "0600";
-      };
-      garage_admin_token = {
-        owner = "garage";
-        group = "garage";
-        mode = "0600";
-      };
-      garage_metrics_token = {
-        owner = "garage";
-        group = "garage";
-        mode = "0600";
-      };
+  sops.secrets = {
+    garage_rpc_secret = {
+      sopsFile = ../secrets.yaml;
+      owner = "garage";
+      group = "garage";
+      mode = "0600";
+    };
+    garage_admin_token = {
+      sopsFile = ../secrets.yaml;
+      owner = "garage";
+      group = "garage";
+      mode = "0600";
+    };
+    garage_metrics_token = {
+      sopsFile = ../secrets.yaml;
+      owner = "garage";
+      group = "garage";
+      mode = "0600";
+    };
+    garage_webui_env = {
+      sopsFile = ../secrets.yaml;
     };
   };
 
@@ -77,7 +80,7 @@ in {
       };
 
       admin = {
-        api_bind_addr = "[::]:${toString admin_port}";
+        api_bind_addr = "0.0.0.0:${toString admin_port}";
         metrics_token_file = config.sops.secrets.garage_metrics_token.path;
         admin_token_file = config.sops.secrets.garage_admin_token.path;
       };
@@ -85,4 +88,18 @@ in {
   };
 
   networking.firewall.allowedTCPPorts = [ s3_port rpc_port s3_web_port admin_port ]; # Facilitate firewall punching
+
+  services.garage-webui = {
+    enable = true;
+    package = pkgs.garage-webui;
+    openFirewall = true;
+    environment = {
+      "API_BASE_URL" = "http://atlantis.dropbear-monster.ts.net:3903";
+      "S3_ENDPOINT" = "s3.aporter.xyz";
+      "S3_REGION" = "garage";
+    };
+    environmentFile = config.sops.secrets.garage_webui_env.path;
+    configuration = {};
+    # configuration = config.services.garage.settings;
+  };
 }
