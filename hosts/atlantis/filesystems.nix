@@ -16,11 +16,12 @@
     enable = true;
     parityFiles = [
       "/mnt/disks/pd1/snapraid.parity"
+      "/mnt/disks/pd2/snapraid.parity"
     ];
     contentFiles = [
       "/var/snapraid.content"
       "/mnt/snapraidContent/md1/snapraid.content"
-      "/mnt/snapraidContent/md2/snapraid.content"
+      # "/mnt/snapraidContent/md2/snapraid.content"
       # "/mnt/snapraidContent/md3/snapraid.content"
       "/mnt/snapraidContent/md4/snapraid.content"
       "/mnt/snapraidContent/md5/snapraid.content"
@@ -28,7 +29,7 @@
     ];
     dataDisks = {
       d1 = "/mnt/disks/md1";
-      d2 = "/mnt/disks/md2";
+      # d2 = "/mnt/disks/md2";
       # d3 = "/mnt/disks/md3";
       d4 = "/mnt/disks/md4";
       d5 = "/mnt/disks/md5";
@@ -88,6 +89,13 @@
         "autodefrag"
       ];
     };
+    "/mnt/disks/pd2" = {
+      device = "/dev/disk/by-uuid/83ac0fbd-2869-4958-b5f4-08a71e132545";
+      options = [
+        "defaults"
+        "autodefrag"
+      ];
+    };
 
     ## btrfs commands
     ### mkfs.btrfs /dev/disk/blah
@@ -105,25 +113,6 @@
     };
     "/mnt/snapraidContent/md1" = {
       device = "/dev/disk/by-uuid/2fd36c76-3626-42ce-befe-248c7a3f2f7c";
-      options = [
-        "defaults"
-        "autodefrag"
-        "compress=zstd"
-        "subvol=snapraidContent"
-      ];
-    };
-
-    "/mnt/disks/md2" = {
-      device = "/dev/disk/by-uuid/11445e2a-cfd0-4b0e-be89-b7fcc4367349";
-      options = [
-        "defaults"
-        "autodefrag"
-        "compress=zstd"
-        "subvol=data"
-      ];
-    };
-    "/mnt/snapraidContent/md2" = {
-      device = "/dev/disk/by-uuid/11445e2a-cfd0-4b0e-be89-b7fcc4367349";
       options = [
         "defaults"
         "autodefrag"
