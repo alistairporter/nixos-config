@@ -13,6 +13,7 @@
     nano
     pciutils
     pipx
+    progress
     python3Full
     smartmontools
     sops
