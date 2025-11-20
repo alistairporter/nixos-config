@@ -57,7 +57,7 @@ in {
     });
   };
 
-  unstable-backport = final: prev: {
-    atuin = inputs.nixpkgs-unstable.legacyPackages.${final.system}.atuin;
-  };
+  # unstable-backport = final: prev: {
+  #   atuin = inputs.nixpkgs-unstable.legacyPackages.${final.system}.atuin;
+  # };
 }

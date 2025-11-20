@@ -11,9 +11,9 @@
     # nixpkgs.url = "nixpkgs/{BRANCH-NAME}";
     #
 
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable"; # allow access to newer packages from unstable though overlay at 'overlays/default.nix'
+    # nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable"; # allow access to newer packages from unstable though overlay at 'overlays/default.nix'
 
     systems.url = "github:nix-systems/default-linux";
 
@@ -22,7 +22,7 @@
 
     # Home manager
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -36,12 +36,6 @@
     # SOPS secret managment
     sops-nix = {
       url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # NixVirt
-    nixvirt = {
-      url = "https://flakehub.com/f/AshleyYakeley/NixVirt/0.5.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -137,7 +131,7 @@
           inherit inputs outputs;
         };
       };
-      # Steam Deck
+      # Secondary app server in 1L minipc
       khazaddum = lib.nixosSystem {
         modules = [./hosts/khazaddum];
         specialArgs = {

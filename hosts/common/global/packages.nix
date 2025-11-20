@@ -14,7 +14,7 @@
     pciutils
     pipx
     progress
-    python3Full
+    python3
     smartmontools
     sops
     starship

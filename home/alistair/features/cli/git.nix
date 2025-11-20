@@ -16,18 +16,21 @@ in {
   ];
   programs.git = {
     enable = true;
-    package = pkgs.gitAndTools.gitFull;
-    aliases = {
-      p = "pull --ff-only";
-      ff = "merge --ff-only";
-      graph = "log --decorate --oneline --graph";
-      pushall = "!git remote | xargs -L1 git push --all";
-      add-nowhitespace = "!git diff -U0 -w --no-color | git apply --cached --ignore-whitespace --unidiff-zero -";
-    };
 
-    userName = "Alistair Porter";
-    userEmail = lib.mkDefault "alistair@aporter.xyz";
-    extraConfig = {
+    settings = {
+      alias = {
+        p = "pull --ff-only";
+        ff = "merge --ff-only";
+        graph = "log --decorate --oneline --graph";
+        pushall = "!git remote | xargs -L1 git push --all";
+        add-nowhitespace = "!git diff -U0 -w --no-color | git apply --cached --ignore-whitespace --unidiff-zero -";
+      };
+      
+      user = {
+        name = "Alistair Porter";
+        email = lib.mkDefault "alistair@aporter.xyz"; 
+      };
+      
       init.defaultBranch = "main";
       feature.manyFiles = true;
       gpg.format = "ssh";
