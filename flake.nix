@@ -76,6 +76,11 @@
     # Overlays
 
     nur.url = "github:nix-community/NUR";
+
+    jovian = {
+      url = "github:jovian-experiments/jovian-nixos/development";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -132,6 +137,13 @@
           inherit inputs outputs;
         };
       };
+      # Steam Deck
+      khazaddum = lib.nixosSystem {
+        modules = [./hosts/khazaddum];
+        specialArgs = {
+          inherit inputs outputs;
+        };
+      };
       # Main laptop
       midgard = lib.nixosSystem {
         modules = [./hosts/midgard];
@@ -158,13 +170,13 @@
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = {
-      "alistair@khazaddum" = lib.homeManagerConfiguration {
-        modules = [./home/alistair/khazaddum.nix ./home/alistair/nixpkgs.nix];
-        pkgs = pkgsFor.x86_64-linux;
-        extraSpecialArgs = {
-          inherit inputs outputs;
-        };
-      };
+      # "alistair@khazaddum" = lib.homeManagerConfiguration {
+      #   modules = [./home/alistair/khazaddum.nix ./home/alistair/nixpkgs.nix];
+      #   pkgs = pkgsFor.x86_64-linux;
+      #   extraSpecialArgs = {
+      #     inherit inputs outputs;
+      #   };
+      # };
     };
   };
 }
