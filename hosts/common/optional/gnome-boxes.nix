@@ -6,7 +6,7 @@
     # Enable TPM emulation (for Windows 11)
     qemu = {
       swtpm.enable = true;
-      ovmf.packages = [pkgs.OVMFFull.fd];
+      # ovmf.packages = [pkgs.OVMFFull.fd];
     };
   };
 
