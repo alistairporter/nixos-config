@@ -204,7 +204,7 @@
     };
 
     "/mnt/disks/md4" = {
-      device = "/dev/disk/by-uuid/14b2089d-b806-4b2e-939a-5ec03e560378";
+      device = "/dev/disk/by-uuid/910e0fe0-4be2-47a0-98ef-fee0e445105d";
       options = [
         "defaults"
         "nofail"
@@ -214,7 +214,7 @@
       ];
     };
     "/mnt/snapraidContent/md4" = {
-      device = "/dev/disk/by-uuid/14b2089d-b806-4b2e-939a-5ec03e560378";
+      device = "/dev/disk/by-uuid/910e0fe0-4be2-47a0-98ef-fee0e445105d";
       options = [
         "defaults"
         "nofail"
