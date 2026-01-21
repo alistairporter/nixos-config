@@ -16,4 +16,6 @@
       gamemode
     ];
   };
+
+  hardware.xpadneo.enable = true;
 }
