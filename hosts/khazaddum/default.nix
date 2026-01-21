@@ -69,6 +69,7 @@
     jupiter-dock-updater-bin
   ];
 
+  services.orca.enable = lib.mkForce false;
   hardware.graphics.enable = true;
 
   system.stateVersion = "25.05";
