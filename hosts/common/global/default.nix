@@ -8,6 +8,7 @@
   imports =
     [
       inputs.home-manager.nixosModules.home-manager
+      ./appimage.nix
       ./fwupd.nix
       ./gamemode.nix
       ./kdeconnect.nix
