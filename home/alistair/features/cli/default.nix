@@ -44,7 +44,7 @@
     glow # markdown renderer
     nixd # Nix LSP
     alejandra # Nix formatter
-    nixfmt-rfc-style
+    nixfmt
     nvd # Differ
     nix-diff # Differ, more detailed
     nix-output-monitor
