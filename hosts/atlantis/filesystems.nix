@@ -47,130 +47,15 @@
     };
 
      
-    ## data disk mounts
-    "/mnt/disks/md1" = {
-      device = "/dev/disk/by-uuid/2fd36c76-3626-42ce-befe-248c7a3f2f7c";
+    # ## data disk mounts
+    "/mnt/disks/mdnew" = {
+      device = "/dev/disk/by-uuid/bcf5ad28-9515-43a2-b560-8e2357641089";
       options = [
         "defaults"
         "nofail"
         "autodefrag"
         "compress=zstd"
         "subvol=data"
-      ];
-    };
-    "/mnt/snapraidContent/md1" = {
-      device = "/dev/disk/by-uuid/2fd36c76-3626-42ce-befe-248c7a3f2f7c";
-      options = [
-        "defaults"
-        "nofail"
-        "autodefrag"
-        "compress=zstd"
-        "subvol=snapraidContent"
-      ];
-    };
-    
-    "/mnt/disks/md2" = {
-      device = "/dev/disk/by-uuid/83ac0fbd-2869-4958-b5f4-08a71e132545";
-      options = [
-        "defaults"
-        "nofail"
-        "autodefrag"
-        "compress=zstd"
-        "subvol=data"
-      ];
-    };
-    "/mnt/snapraidContent/md2" = {
-      device = "/dev/disk/by-uuid/83ac0fbd-2869-4958-b5f4-08a71e132545";
-      options = [
-        "defaults"
-        "nofail"
-        "autodefrag"
-        "compress=zstd"
-        "subvol=snapraidContent"
-      ];
-    };
-
-    "/mnt/disks/md3" = {
-      device = "/dev/disk/by-uuid/0013e2f5-f54e-4074-9e0e-ecca9acefb3a";
-      options = [
-        "defaults"
-        "nofail"
-        "autodefrag"
-        "compress=zstd"
-        "subvol=data"
-      ];
-    };
-    "/mnt/snapraidContent/md3" = {
-      device = "/dev/disk/by-uuid/0013e2f5-f54e-4074-9e0e-ecca9acefb3a";
-      options = [
-        "defaults"
-        "nofail"
-        "autodefrag"
-        "compress=zstd"
-        "subvol=snapraidContent"
-      ];
-    };
-
-    "/mnt/disks/md4" = {
-      device = "/dev/disk/by-uuid/910e0fe0-4be2-47a0-98ef-fee0e445105d";
-      options = [
-        "defaults"
-        "nofail"
-        "autodefrag"
-        "compress=zstd"
-        "subvol=data"
-      ];
-    };
-    "/mnt/snapraidContent/md4" = {
-      device = "/dev/disk/by-uuid/910e0fe0-4be2-47a0-98ef-fee0e445105d";
-      options = [
-        "defaults"
-        "nofail"
-        "autodefrag"
-        "compress=zstd"
-        "subvol=snapraidContent"
-      ];
-    };
-
-    "/mnt/disks/md5" = {
-      device = "/dev/disk/by-uuid/e38ac870-e56f-425b-8b13-fdbd5af2a53a";
-      options = [
-        "defaults"
-        "nofail"
-        "autodefrag"
-        "compress=zstd"
-        "subvol=data"
-      ];
-    };
-    "/mnt/snapraidContent/md5" = {
-      device = "/dev/disk/by-uuid/e38ac870-e56f-425b-8b13-fdbd5af2a53a";
-      options = [
-        "defaults"
-        "nofail"
-        "autodefrag"
-        "compress=zstd"
-        "subvol=snapraidContent"
-      ];
-    };
-    
-    "/mnt/disks/md6" = {
-      device = "/dev/disk/by-uuid/e1fb50b0-7b71-4490-a752-69af36d44c7c";
-      options = [
-        "defaults"
-        "nofail"
-        "autodefrag"
-        "compress=zstd"
-        "subvol=data"
-      ];
-    };
-    "/mnt/snapraidContent/md6" = {
-      device = "/dev/disk/by-uuid/e1fb50b0-7b71-4490-a752-69af36d44c7c";
-      options = [
-        "defaults"
-        "nofail"
-        "autodefrag"
-        "compress=zstd"
-        "subvol=snapraidContent"
       ];
     };
   };
