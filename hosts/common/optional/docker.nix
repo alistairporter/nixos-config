@@ -7,7 +7,7 @@
   virtualisation.docker = {
     enable = true;
     enableOnBoot = true;
-    package = pkgs.docker_27; # as of 2024, required to have cdi support working.
+    package = pkgs.docker_28;
     autoPrune.enable = true;
     daemon.settings = {
       # metrics for collection by prometheus.
