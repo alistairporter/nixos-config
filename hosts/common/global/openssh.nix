@@ -51,8 +51,5 @@ in {
           "git.aporter.xyz"
         ]);
     });
-    startAgent = false; #keeps fighting with gpg
   };
-
-  services.gnome.gcr-ssh-agent.enable = false; # also fighting with gpg
 }
