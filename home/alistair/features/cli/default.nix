@@ -13,6 +13,7 @@
     ./direnv.nix
     ./eza.nix
     ./git.nix
+    ./gpg.nix
     ./nano.nix
     ./nix-index.nix
     ./nix-your-shell.nix
