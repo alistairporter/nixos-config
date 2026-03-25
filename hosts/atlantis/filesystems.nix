@@ -11,68 +11,6 @@
     interval = "weekly";
   };
 
-  # Snapraid
-  services.snapraid = {
-    enable = true;
-    parityFiles = [
-      "/mnt/disks/pd1/snapraid.parity"
-      "/mnt/disks/pd2/snapraid.parity"
-    ];
-    contentFiles = [
-      "/var/snapraid.content"
-      "/mnt/snapraidContent/md1/snapraid.content"
-      "/mnt/snapraidContent/md2/snapraid.content"
-      "/mnt/snapraidContent/md3/snapraid.content"
-      "/mnt/snapraidContent/md4/snapraid.content"
-      "/mnt/snapraidContent/md5/snapraid.content"
-      "/mnt/snapraidContent/md6/snapraid.content"
-    ];
-    dataDisks = {
-      d1 = "/mnt/disks/md1";
-      d2 = "/mnt/disks/md2";
-      d3 = "/mnt/disks/md3";
-      d4 = "/mnt/disks/md4";
-      d5 = "/mnt/disks/md5";
-      d6 = "/mnt/disks/md6";
-    };
-    exclude = [
-      "downloads/"
-      "appdata/"
-      "*.!sync"
-      "/.snapshots/"
-      ".trash/"
-      "*.nfo"
-      "poster.jpg"
-      "*-poster.jpg"
-      "banner.jpg"
-      "*-banner.jpg"
-      "fanart.jpg"
-      "clearlogo.png"
-      "*-thumb.jpg"
-      "*.srt"
-      "*.vtt"
-      "trickplay/"
-      "active/"
-      "completed/"
-      "watch/"
-      ".transcode_cache/"
-      "*.unrecoverable"
-      "catcam/"
-      "tmp/"
-      "/lost+found/"
-      ".AppleDouble"
-      "._AppleDouble"
-      ".DS_Store"
-      ".Thumbs.db"
-      ".fseventsd"
-      ".Spotlight-V100"
-      ".TemporaryItems"
-      ".Trashes"
-      ".AppleDB"
-      "._*"
-    ];
-  };
-
   # Filesystems:
   fileSystems = {
     # add options to fs definitions in hardware-configuration.nix
@@ -107,36 +45,6 @@
         "x-gvfs-show"
       ];
     };
-
-    ## snapraid parity mounts
-    "/mnt/disks/pd1" = {
-      device = "/dev/disk/by-uuid/c812a19a-3805-4351-ba83-9d0d90520bed";
-      options = [
-        "defaults"
-        "autodefrag"
-        "nofail"
-      ];
-    };
-
-    "/mnt/disks/pd2" = {
-      device = "/dev/disk/by-uuid/8b2336d6-90b1-43c5-b696-3f1784780e42";
-      options = [
-        "defaults"
-        "autodefrag"
-        "nofail"
-      ];
-    };
-
-    ### BTRFS commands for setting up new media disk:
-    # format disk with btrfs:
-    # $ sudo mkfs.btrfs /dev/disk/by-uuid/blah
-    ## Then mount somewhere e.g under ~ or /media, where doesn't matter.
-    # $ mount /dev/disk/by-uuid/blah /mnt/driveMountPoint
-    # $ cd /mnt/driveMountPoint/
-    ## Create subvolumes for data and snapraid:
-    # $ btrfs subvolume create data
-    # $ btrfs subvolume create snapraidContent
-    # Finally add mount definition and snapraid confiuration(s), and rebuild the NixOS closure.
 
      
     ## data disk mounts
