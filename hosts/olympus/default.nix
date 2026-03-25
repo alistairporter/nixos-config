@@ -64,9 +64,10 @@
     dconf.enable = true;
   };
 
-  services.logind = {
-    powerKey = "suspend";
-    powerKeyLongPress = "poweroff";
+  # Power Button & Lid settings
+  services.logind.settings.Login = {
+    HandlePowerKey = "suspend"; # suspend on power button
+    HandlePowerKeyLongPress = "poweroff"; # power off on power button hold
   };
 
   hardware.graphics.enable = true;

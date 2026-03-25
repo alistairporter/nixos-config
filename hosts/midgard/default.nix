@@ -58,12 +58,12 @@
   };
   environment.systemPackages = [];
 
-  # # Lid settings
-  services.logind = {
-    lidSwitch = "suspend";
-    lidSwitchExternalPower = "lock";
-    powerKey = "suspend";
-    powerKeyLongPress = "poweroff";
+  # Power Button & Lid settings
+  services.logind.settings.Login = {
+    HandleLidSwitch = "suspend"; # suspend on lid close
+    HandleLidSwitchExternalPower = "lock"; # lock on lid close when power connected
+    HandlePowerKey = "suspend"; # suspend on power button
+    HandlePowerKeyLongPress = "poweroff"; # power off on power button hold
   };
 
   hardware.graphics.enable = true;
