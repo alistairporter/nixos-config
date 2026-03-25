@@ -44,9 +44,9 @@ in {
     # todoman = addPatches prev.todoman [./todoman-latest-main.patch ./todoman-subtasks.patch];
 
     # https://github.com/ValveSoftware/gamescope/issues/1622
-    gamescope = prev.gamescope.overrideAttrs (_: {
-      NIX_CFLAGS_COMPILE = ["-fno-fast-math"];
-    });
+    # gamescope = prev.gamescope.overrideAttrs (_: {
+    #   NIX_CFLAGS_COMPILE = ["-fno-fast-math"];
+    # });
 
     adw-gtk3 = prev.adw-gtk3.overrideAttrs (old: {
       postInstall =
