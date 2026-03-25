@@ -11,13 +11,15 @@
 in {
   programs.ssh = {
     enable = true;
-    # See above
+    enableDefaultConfig = false; # replace deprecated option with "*" matchBlock below
+    # See above let block
     matchBlocks = {
       net = {
         host = lib.concatStringsSep " " (lib.flatten (map (host: [
             host
             "${host}.aporter.xyz"
             "${host}.ts.aporter.xyz"
+            "${host}.dropbear-monster.ts.net"
           ])
           hostnames));
         forwardAgent = true;
@@ -36,6 +38,19 @@ in {
         setEnv.WAYLAND_DISPLAY = "wayland-waypipe";
         extraOptions.StreamLocalBindUnlink = "yes";
       };
+
+      # Replacement for the deprecated programs.ssh.enableDefaultConfig option
+      "*" = {
+        forwardAgent = false;
+        addKeysToAgent = "no";
+        compression = false;
+        serverAliveInterval = 0;
+        serverAliveCountMax = 3;
+        hashKnownHosts = false;
+        userKnownHostsFile = "~/.ssh/known_hosts";
+        controlMaster = "no";
+        controlPath = "~/.ssh/master-%r@%n:%p";
+        controlPersist = "no"; };
     };
   };
 
