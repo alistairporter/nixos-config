@@ -5,8 +5,8 @@
   
   home.packages = with pkgs; [
     adw-xfwm4
-    xfce.xfce4-icon-theme
-    xfce.xfdesktop
+    xfce4-icon-theme
+    xfdesktop
   ];
 
   # xfconf.settings = {
