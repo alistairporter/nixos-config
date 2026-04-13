@@ -23,6 +23,7 @@
     sqlitebrowser # sqlite stuff
     tremotesf # transmission remote client
     dconf-editor # dconf editor
+    clementine # media player with decent mp3player and ipod support
   ];
 
   # # Also sets org.freedesktop.appearance color-scheme

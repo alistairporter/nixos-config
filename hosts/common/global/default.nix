@@ -40,6 +40,7 @@
     overlays = builtins.attrValues outputs.overlays;
     config = {
       allowUnfree = true;
+      clementine.ipod = true; # enables compiletime ipod support in clementine
     };
   };
 
