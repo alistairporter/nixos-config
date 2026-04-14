@@ -60,7 +60,7 @@
   };
 
   boot = {
-    kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
+    kernelPackages = pkgs.linuxKernel.packages.linux_6_19;
     kernelModules = ["nct6775"];
     binfmt.emulatedSystems = [
       "aarch64-linux"
