@@ -79,10 +79,10 @@
     templates = "${config.home.homeDirectory}/Templates";
     videos = "${config.home.homeDirectory}/Videos";
     extraConfig = {
-      XDG_APPIMAGE_DIR = "${config.home.homeDirectory}/AppImages";
-      XDG_GIT_DIR = "${config.home.homeDirectory}/Git";
-      XDG_PROJECTS_DIR = "${config.home.homeDirectory}/Projects";
-      XDG_NEXTCLOUD_DIR = lib.mkIf config.services.nextcloud-client.enable "${config.home.homeDirectory}/Nextcloud";
+      APPIMAGE = "${config.home.homeDirectory}/AppImages";
+      GIT = "${config.home.homeDirectory}/Git";
+      PROJECTS = "${config.home.homeDirectory}/Projects";
+      NEXTCLOUD = lib.mkIf config.services.nextcloud-client.enable "${config.home.homeDirectory}/Nextcloud";
     };
   };
 }
