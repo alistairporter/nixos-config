@@ -22,6 +22,7 @@
     ## appdata ssd mount
     "/media/MiscFiles" = {
       device = "/dev/disk/by-uuid/3d4a90c0-9bf1-449b-b855-4b04f5e66e30";
+      fsType = "btrfs";
       options = [
         "nosuid"
         "nodev"
@@ -30,26 +31,10 @@
       ];
     };
 
-    ## mergerfs mount
+    ## data disk mount
     "/media/Files" = {
-      fsType = "fuse.mergerfs";
-      device = "/mnt/disks/md*";
-      options = [
-        "allow_other"
-        "direct_io"
-        "use_ino"
-        "category.create=lfs"
-        "moveonenospc=true"
-        "minfreespace=500GB"
-        "fsname=mergerfsMediaFiles"
-        "x-gvfs-show"
-      ];
-    };
-
-     
-    # ## data disk mounts
-    "/mnt/disks/mdnew" = {
       device = "/dev/disk/by-uuid/bcf5ad28-9515-43a2-b560-8e2357641089";
+      fsType = "btrfs";
       options = [
         "defaults"
         "nofail"
