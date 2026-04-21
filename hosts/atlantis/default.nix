@@ -33,8 +33,11 @@
   };
 
   networking.firewall.allowedTCPPorts = [
-    9091 # transmission
-    8266 # tdarr
+    9091  # transmission
+    51414 # transmission peers
+    9100  # prometheus
+    9323  # docker metrics
+    8266  # tdarr
   ];
 
   networking.wireguard = {
