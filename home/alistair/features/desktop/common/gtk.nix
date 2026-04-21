@@ -24,6 +24,9 @@
     gtk3 = {
       extraConfig.gtk-application-prefer-dark-theme = true;
     };
+    gtk4 = {
+      theme = config.gtk.theme; # keep old behaviour of applying gtk3 theme to gtk4
+    };
   };
 
   home.pointerCursor = {
