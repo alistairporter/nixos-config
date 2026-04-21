@@ -48,6 +48,7 @@ in {
     };
 
     signing = {
+      format = "ssh";
       key = "~/.ssh/id_ed25519";
       signByDefault = builtins.stringLength "~/.ssh/id_ed25519" > 0;
     };
