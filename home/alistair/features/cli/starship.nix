@@ -43,6 +43,15 @@
         trim_at = "";
       };
 
+      # I will make a singular exception to the "no fancy unicode or hacker fonts in my prompt" rule as expressing battery status succinctly is a pain in the hoop.
+      battery = {
+        full_symbol = "🔋";
+        charging_symbol = "🔋+(green)";
+        discharging_symbol = "🔋-(red)";
+        unknown_symbol = "🔋?(bold red)";
+        empty_symbol = "🪫";
+      };    
+
       line_break.disabled = true;
 
       status.symbol = "[x](bold red) ";
