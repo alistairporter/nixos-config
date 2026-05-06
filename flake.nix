@@ -131,13 +131,13 @@
           inherit inputs outputs;
         };
       };
-      # Secondary app server in 1L minipc
-      khazaddum = lib.nixosSystem {
-        modules = [./hosts/khazaddum];
-        specialArgs = {
-          inherit inputs outputs;
-        };
-      };
+      # # Steamdeck running nixos
+      # khazaddum = lib.nixosSystem {
+      #   modules = [./hosts/khazaddum];
+      #   specialArgs = {
+      #     inherit inputs outputs;
+      #   };
+      # };
       # Main laptop
       midgard = lib.nixosSystem {
         modules = [./hosts/midgard];
@@ -164,13 +164,14 @@
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = {
-      # "alistair@khazaddum" = lib.homeManagerConfiguration {
-      #   modules = [./home/alistair/khazaddum.nix ./home/alistair/nixpkgs.nix];
-      #   pkgs = pkgsFor.x86_64-linux;
-      #   extraSpecialArgs = {
-      #     inherit inputs outputs;
-      #   };
-      # };
+      # Steamdeck on steamos
+      "deck@khazaddum" = lib.homeManagerConfiguration {
+        modules = [./home/alistair/khazaddum.nix ./home/alistair/nixpkgs.nix];
+        pkgs = pkgsFor.x86_64-linux;
+        extraSpecialArgs = {
+          inherit inputs outputs;
+        };
+      };
     };
   };
 }
