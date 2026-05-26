@@ -24,6 +24,7 @@
     tremotesf # transmission remote client
     dconf-editor # dconf editor
     clementine # media player with decent mp3player and ipod support
+    bazaar # flatpak first frontend and appstore
   ];
 
   # # Also sets org.freedesktop.appearance color-scheme
