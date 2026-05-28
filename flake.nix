@@ -55,7 +55,10 @@
       # url = "github:youwen5/zen-browser-flake";
       url = "github:0xc000022070/zen-browser-flake";
       # as of 20251102, needs 'libgbm' which is only in unstable-nixpkgs
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
     };
 
     firefox-addons = {
