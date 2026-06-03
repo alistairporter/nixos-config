@@ -216,20 +216,44 @@
       pins = {
         "TubeArchivist" = {
           id = "9d8a8f91-7e29-4688-ae2e-da4e49d4a179";
-          url = "https://tubearchive.aporter.xyz";
+          url = "https://tubearchive.dropbear-monster.ts.net";
           position = 101;
           isEssential = true;
         };
         "Forgejo" = {
           id = "206824e0-5ddf-4dd5-85ae-35b2d4ff83e5";
-          url = "https://git.aporter.xyz";
+          url = "https://git.dropbear-monster.ts.net";
           position = 102;
+          isEssential = true;
+        };
+        "Jellyfin" = {
+          id = "815fcf03-c819-4bc0-8d35-112e4f9aaa9c";
+          url = "https://jellyfin.dropbear-monster.ts.net";
+          position = 103;
+          isEssential = true;
+        };
+        "Home Assistant" = {
+          id = "3b832bbd-886a-4dab-8529-49cc9cd5f999";
+          url = "https://git.dropbear-monster.ts.net";
+          position = 104;
+          isEssential = true;
+        };
+        "Manyfold" = {
+          id = "3b832bbd-886a-4dab-8529-49cc9cd5f999";
+          url = "https://manyfold.dropbear-monster.ts.net";
+          position = 105;
+          isEssential = true;
+        };
+        "Nextcloud" = {
+          id = "a4165b27-ccb7-4c7b-bd61-cb444f8fc0fe";
+          url = "https://nextcloud.dropbear-monster.ts.net";
+          position = 106;
           isEssential = true;
         };
         "GitHub" = {
           id = "48e8a119-5a14-4826-9545-91c8e8dd3bf6";
           url = "https://github.com";
-          position = 103;
+          position = 107;
         };
         "Dev Tools" = {
           id = "d85a9026-1458-4db6-b115-346746bcc692";
@@ -271,18 +295,30 @@
           
           "searxng" = {
             name = "SearXNG metasearch";
-            urls = [{
-              template = "https://search.aporter.xyz/search";
-              params = [
-                { name = "q"; value = "{searchTerms}"; }
-                { name = "category_general"; value = ""; }
-                { name = "language"; value = "auto"; }
-                { name = "time_range"; value = ""; }
-                { name = "safesearch"; value = "2"; }
-                { name = "theme"; value = "simple"; }
-              ];
-            }];
-
+            description = "SearXNG is a metasearch engine that respects your privacy.";
+            queryCharset = "UTF-8";
+            urls = [
+              {
+                template = "https://search.dropbear-monster.ts.net/search";
+                params = [
+                  { name = "q"; value = "{searchTerms}"; }
+                  { name = "category_general"; value = ""; }
+                  { name = "language"; value = "en-GB"; }
+                  { name = "time_range"; value = ""; }
+                  { name = "safesearch"; value = "1"; } # 0 = off, 1 = moderate, 3 = strict
+                  { name = "theme"; value = "simple"; }
+                ];
+                rels = [ "results" ];
+                method = "GET";
+              }
+              {
+                "params" = [ ];
+                "rels" = [ "suggestions" ];
+                "template" = "https://search.pavluk.org/autocompleter?q={searchTerms}";
+                "type" = "application/x-suggestions+json";
+                "method" = "POST";
+              }
+            ];
             icon = "${pkgs.searxng}/share/static/themes/simple/img/favicon.svg";
             definedAliases = [ "@searx" "@searxng"];
           };
