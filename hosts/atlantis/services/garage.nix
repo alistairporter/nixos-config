@@ -3,15 +3,13 @@
   config,
   lib,
   ...
-}:
-let
+}: let
   root_domain = "aporter.xyz";
   s3_port = 3900;
   rpc_port = 3901;
   s3_web_port = 3902;
   admin_port = 3903;
 in {
-
   users.users.garage = {
     isSystemUser = true;
     group = "garage";
@@ -60,7 +58,7 @@ in {
       ];
 
       replication_factor = 1;
-      
+
       # it's *NOT* world-readable, however not was garage exepects either
       # Jun 20 17:27:39 x64-linux-dev-01 garage[1701365]: Error: File /run/secrets/GARAGE_RPC_SECRET is world-readable! (mode: 0100440, expected 0600)
       allow_world_readable_secrets = true;
@@ -87,7 +85,7 @@ in {
     };
   };
 
-  networking.firewall.allowedTCPPorts = [ s3_port rpc_port s3_web_port admin_port ]; # Facilitate firewall punching
+  networking.firewall.allowedTCPPorts = [s3_port rpc_port s3_web_port admin_port]; # Facilitate firewall punching
 
   services.garage-webui = {
     enable = true;

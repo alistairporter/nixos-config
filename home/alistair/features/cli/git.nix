@@ -25,12 +25,12 @@ in {
         pushall = "!git remote | xargs -L1 git push --all";
         add-nowhitespace = "!git diff -U0 -w --no-color | git apply --cached --ignore-whitespace --unidiff-zero -";
       };
-      
+
       user = {
         name = "Alistair Porter";
-        email = lib.mkDefault "alistair@aporter.xyz"; 
+        email = lib.mkDefault "alistair@aporter.xyz";
       };
-      
+
       init.defaultBranch = "main";
       feature.manyFiles = true;
       gpg.format = "ssh";

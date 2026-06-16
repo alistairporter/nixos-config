@@ -50,7 +50,7 @@
         discharging_symbol = "🔋-(red)";
         unknown_symbol = "🔋?(bold red)";
         empty_symbol = "🪫";
-      };    
+      };
 
       line_break.disabled = true;
 

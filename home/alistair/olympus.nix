@@ -21,7 +21,7 @@
     "file:///mnt/SSD1"
     "file:///mnt/SSD2"
   ];
-  
+
   # # Yellow
   # wallpaper = pkgs.inputs.themes.wallpapers.lake-houses-sunset-gold;
 }

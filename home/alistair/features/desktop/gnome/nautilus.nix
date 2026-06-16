@@ -1,5 +1,4 @@
 {lib, ...}: {
-
   gtk.gtk3.bookmarks = [
     "file:///home/alistair/Downloads"
     "file:///home/alistair/Nextcloud"
@@ -10,7 +9,7 @@
     "sftp://alistair@atlantis/media/Files Files on atlantis"
     "sftp://alistair@atlantis/media/MiscFiles MiscFiles on atlantis"
   ];
-  
+
   dconf.settings = with lib.hm.gvariant; {
     "org/gnome/nautilus/preferences" = {
       date-time-format = "detailed";

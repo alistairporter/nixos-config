@@ -1,8 +1,11 @@
-{ config, lib, pkgs, ...}:
-let
-  cfg = config.services.garage-webui;
-in
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
+  cfg = config.services.garage-webui;
+in {
   options = {
     services.garage-webui = {
       enable = lib.options.mkEnableOption "Enable garage-webui service";
@@ -18,15 +21,15 @@ in
           only be used if they are unchanged, see [Running](https://github.com/khairul169/garage-webui#running).
         '';
       };
-           
+
       environment = lib.mkOption {
         type = lib.types.attrsOf lib.types.str;
         default = {};
-        description = '''
-          Environment variables for configuring the garage-webui service.
-          This field will end up public in /nix/store, for secret values (such as `KEY`) use `environmentFile`.
+        description = ''          '
+                    Environment variables for configuring the garage-webui service.
+                    This field will end up public in /nix/store, for secret values (such as `KEY`) use `environmentFile`.
 
-          See <https://github.com/khairul169/garage-webui#environment-variables> for available options.
+                    See <https://github.com/khairul169/garage-webui#environment-variables> for available options.
         '';
       };
 
@@ -60,7 +63,7 @@ in
                 '''''';
             };
           }
-          '';
+        '';
       };
     };
   };
@@ -71,14 +74,14 @@ in
       source = (pkgs.formats.toml {}).generate "config.toml" cfg.configuration;
       mode = "0444";
     };
-    
+
     systemd.services.garage-webui = {
       description = "Web UI for Garage";
-      
+
       wantedBy = ["multi-user.target"];
       wants = ["network-online.target"];
       after = ["network-online.target"];
-      
+
       environment = cfg.environment;
 
       serviceConfig = {

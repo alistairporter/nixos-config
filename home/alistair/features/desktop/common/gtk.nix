@@ -54,7 +54,7 @@
 
   home.sessionVariables = {
     # For qadwaitadecorations
-    QT_WAYLAND_DECORATION = "adwaita";    
+    QT_WAYLAND_DECORATION = "adwaita";
   };
 
   home.packages = with pkgs; [

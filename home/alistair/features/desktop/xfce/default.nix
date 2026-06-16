@@ -2,7 +2,7 @@
   imports = [
     ../common
   ];
-  
+
   home.packages = with pkgs; [
     adw-xfwm4
     xfce4-icon-theme
@@ -32,6 +32,5 @@
     config = {
       common.default = ["xapp" "gtk"];
     };
-
   };
 }

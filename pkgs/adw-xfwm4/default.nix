@@ -1,8 +1,11 @@
-{ lib, stdenv, fetchFromGitHub }:
-
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+}:
 stdenv.mkDerivation rec {
   pname = "adw-xfwm4";
-  version = "b0b163bac7d74e5c2d69451d9b1315389bb3c361";  # you can encode date or commit hash
+  version = "b0b163bac7d74e5c2d69451d9b1315389bb3c361"; # you can encode date or commit hash
 
   src = fetchFromGitHub {
     owner = "FabianOvrWrt";
@@ -25,8 +28,7 @@ stdenv.mkDerivation rec {
     description = "Libadwaita-style xfwm4 window-decoration theme";
     homepage = "https://github.com/FabianOvrWrt/adw-xfwm4";
     license = licenses.lgpl21;
-    maintainers = with maintainers; [ alistairporter ];
+    maintainers = with maintainers; [alistairporter];
     platforms = platforms.linux;
   };
 }
-

@@ -50,7 +50,8 @@ in {
         userKnownHostsFile = "~/.ssh/known_hosts";
         controlMaster = "no";
         controlPath = "~/.ssh/master-%r@%n:%p";
-        controlPersist = "no"; };
+        controlPersist = "no";
+      };
     };
   };
 

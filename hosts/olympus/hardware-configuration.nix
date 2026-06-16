@@ -46,7 +46,7 @@
     fsType = "btrfs";
     options = ["subvol=data"];
   };
-  
+
   fileSystems."/media/Games01" = {
     device = "/dev/disk/by-uuid/f86f462b-0428-4371-9aae-c1a44491ec96";
     fsType = "btrfs";

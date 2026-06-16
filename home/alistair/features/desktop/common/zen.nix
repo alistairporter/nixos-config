@@ -130,7 +130,7 @@
       #
       # Troubleshooting settings not persisting: see issue #293
       # https://github.com/0xc000022070/zen-browser-flake/issues/293
-      
+
       containersForce = true; # Deletes any containers not defined here on rebuild
       containers = {
         Personal = {
@@ -292,7 +292,6 @@
           "google"
         ];
         engines = {
-          
           "searxng" = {
             name = "SearXNG metasearch";
             description = "SearXNG is a metasearch engine that respects your privacy.";
@@ -301,157 +300,237 @@
               {
                 template = "https://search.dropbear-monster.ts.net/search";
                 params = [
-                  { name = "q"; value = "{searchTerms}"; }
-                  { name = "category_general"; value = ""; }
-                  { name = "language"; value = "en-GB"; }
-                  { name = "time_range"; value = ""; }
-                  { name = "safesearch"; value = "1"; } # 0 = off, 1 = moderate, 3 = strict
-                  { name = "theme"; value = "simple"; }
+                  {
+                    name = "q";
+                    value = "{searchTerms}";
+                  }
+                  {
+                    name = "category_general";
+                    value = "";
+                  }
+                  {
+                    name = "language";
+                    value = "en-GB";
+                  }
+                  {
+                    name = "time_range";
+                    value = "";
+                  }
+                  {
+                    name = "safesearch";
+                    value = "1";
+                  } # 0 = off, 1 = moderate, 3 = strict
+                  {
+                    name = "theme";
+                    value = "simple";
+                  }
                 ];
-                rels = [ "results" ];
+                rels = ["results"];
                 method = "GET";
               }
               {
-                "params" = [ ];
-                "rels" = [ "suggestions" ];
+                "params" = [];
+                "rels" = ["suggestions"];
                 "template" = "https://search.pavluk.org/autocompleter?q={searchTerms}";
                 "type" = "application/x-suggestions+json";
                 "method" = "POST";
               }
             ];
             icon = "${pkgs.searxng}/share/static/themes/simple/img/favicon.svg";
-            definedAliases = [ "@searx" "@searxng"];
+            definedAliases = ["@searx" "@searxng"];
           };
-          
+
           "kagi" = {
-            urls = [{
-              template = "https://kagi.com/search";
-              params = [
-                { name = "q"; value = "{searchTerms}"; }
-              ];
-            }];
-            definedAliases = [ "@kagi" "!k"];
+            urls = [
+              {
+                template = "https://kagi.com/search";
+                params = [
+                  {
+                    name = "q";
+                    value = "{searchTerms}";
+                  }
+                ];
+              }
+            ];
+            definedAliases = ["@kagi" "!k"];
           };
 
           "google" = {
-            urls = [{
-              template = "https://google.com/search";
-              params = [
-                { name = "q"; value="{searchTerms}"; }
-              ];
-            }];
-            definedAliases = [ "@google" "!g"];
+            urls = [
+              {
+                template = "https://google.com/search";
+                params = [
+                  {
+                    name = "q";
+                    value = "{searchTerms}";
+                  }
+                ];
+              }
+            ];
+            definedAliases = ["@google" "!g"];
           };
 
           "jisho" = {
-            urls = [{
-              template = "https://jisho.org/search/{searchTerms}";
-            }];
-            definedAliases = [ "@jisho" "!jisho"];
+            urls = [
+              {
+                template = "https://jisho.org/search/{searchTerms}";
+              }
+            ];
+            definedAliases = ["@jisho" "!jisho"];
           };
 
           "brave" = {
-            urls = [{
-              template = "https://search.brave.com/search";
-              params = [
-                { name = "q"; value = "{searchTerms}"; }
-              ];
-            }];
-            definedAliases = [ "@brave" "!brave"];
+            urls = [
+              {
+                template = "https://search.brave.com/search";
+                params = [
+                  {
+                    name = "q";
+                    value = "{searchTerms}";
+                  }
+                ];
+              }
+            ];
+            definedAliases = ["@brave" "!brave"];
           };
 
           "ddg" = {
-            urls = [{
-              template = "https://duckduckgo.com";
-              params = [
-                { name ="q"; value = "{searchTerms}"; }
-              ];
-            }];
-            definedAliases = [ "@ddg" "!ddg"];
+            urls = [
+              {
+                template = "https://duckduckgo.com";
+                params = [
+                  {
+                    name = "q";
+                    value = "{searchTerms}";
+                  }
+                ];
+              }
+            ];
+            definedAliases = ["@ddg" "!ddg"];
           };
 
           "nixos-wiki" = {
             name = "NixOS Wiki";
-            urls = [{
-              template = "https://wiki.nixos.org/w/index.php";
-              params = [
-                { name = "search"; value = "{searchTerms}"; }
-              ];
-            }];
+            urls = [
+              {
+                template = "https://wiki.nixos.org/w/index.php";
+                params = [
+                  {
+                    name = "search";
+                    value = "{searchTerms}";
+                  }
+                ];
+              }
+            ];
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-            definedAliases = [ "!nixw" ];
+            definedAliases = ["!nixw"];
           };
 
           "youtube" = {
             name = "YouTube";
-            urls = [{
-              template = "https://www.youtube.com/results";
-              params = [
-                { name = "search_query"; value = "{searchTerms}"; }
-              ];
-            }];
-            definedAliases = [ "!yt" "@yt"];
+            urls = [
+              {
+                template = "https://www.youtube.com/results";
+                params = [
+                  {
+                    name = "search_query";
+                    value = "{searchTerms}";
+                  }
+                ];
+              }
+            ];
+            definedAliases = ["!yt" "@yt"];
           };
 
           "ebay" = {
-            urls = [{
-              template = "https://www.ebay.com/sch/i.html";
-              params = [
-                { name = "_nkw"; value = "{searchTerms}";}
-              ];
-            }];
-            definedAliases = [ "!ebay" "@ebay" ];
+            urls = [
+              {
+                template = "https://www.ebay.com/sch/i.html";
+                params = [
+                  {
+                    name = "_nkw";
+                    value = "{searchTerms}";
+                  }
+                ];
+              }
+            ];
+            definedAliases = ["!ebay" "@ebay"];
           };
 
           "mynixos" = {
             name = "My NixOS";
-            urls = [{
-              template = "https://mynixos.com/search";
-              params = [
-                { name = "q"; value = "{searchTerms}";}
-              ];
-            }];
+            urls = [
+              {
+                template = "https://mynixos.com/search";
+                params = [
+                  {
+                    name = "q";
+                    value = "{searchTerms}";
+                  }
+                ];
+              }
+            ];
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
             definedAliases = ["!nix"];
           };
-          
+
           "github" = {
             name = "GitHub Search";
-            urls = [{
+            urls = [
+              {
                 template = "https://github.com/search";
                 params = [
-                  { name = "q"; value = "{searchTerms}"; }
+                  {
+                    name = "q";
+                    value = "{searchTerms}";
+                  }
                 ];
-              }];
+              }
+            ];
             definedAliases = ["!gh"];
           };
 
           "github (code)" = {
-            urls = [{
-              template = "https://github.com/search";
-              params = [
-                { name = "q"; value = "{searchTerms}"; }
-                { name = "type"; value = "code"; }
-              ];
-            }];
-            definedAliases = [ "!ghc" ];
+            urls = [
+              {
+                template = "https://github.com/search";
+                params = [
+                  {
+                    name = "q";
+                    value = "{searchTerms}";
+                  }
+                  {
+                    name = "type";
+                    value = "code";
+                  }
+                ];
+              }
+            ];
+            definedAliases = ["!ghc"];
           };
-          
+
           "github (repository)" = {
-            urls = [{
-              template = "https://github.com/search";
-              params = [
-                { name = "q"; value = "{searchTerms}"; }
-                { name = "type"; value = "repository"; }
-              ];
-            }];
-            definedAliases = [ "!ghr" ];
+            urls = [
+              {
+                template = "https://github.com/search";
+                params = [
+                  {
+                    name = "q";
+                    value = "{searchTerms}";
+                  }
+                  {
+                    name = "type";
+                    value = "repository";
+                  }
+                ];
+              }
+            ];
+            definedAliases = ["!ghr"];
           };
 
           "wikipedia".metaData.hidden = true;
 
           "bing".metaData.hidden = true;
-          
         };
       };
 
@@ -460,7 +539,7 @@
       # If modifying keyboardShortcuts: close Zen before home-manager switch
       # (activation script modifies zen-keyboard-shortcuts.json, which is locked while browser runs)
       # Version check prevents silent breakage if Zen updates change the shortcuts schema.
-      # 
+      #
       # Find shortcut IDs in ~/.config/zen/default/zen-keyboard-shortcuts.json
       # Get version from about:config -> zen.keyboard.shortcuts.version
       # Activation fails if version changes (prevents silent breakage).
@@ -468,7 +547,6 @@
       # Use this command:
       # jq -c '.shortcuts[] | {id, key, keycode, action}' ~/.config/zen/default/zen-keyboard-shortcuts.json | fzf
 
-      
       # In order to avoid breaking changes here, sometimes when you upgrade you
       # should be asked to bump this version
       keyboardShortcutsVersion = 19;

@@ -51,7 +51,7 @@
     kernelPackages = pkgs.linuxPackages_xanmod;
     # as of 20251104, the mouse was repeatedly powering off while using it,
     # so disable usbautosuspend for now
-    kernelParams = [ "usbcore.autosuspend=-1" ];
+    kernelParams = ["usbcore.autosuspend=-1"];
     binfmt.emulatedSystems = [
       "aarch64-linux"
       "i686-linux"
