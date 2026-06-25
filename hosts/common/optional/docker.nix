@@ -7,7 +7,7 @@
   virtualisation.docker = {
     enable = true;
     enableOnBoot = true;
-    package = pkgs.docker_28;
+    package = pkgs.docker_29;
     autoPrune.enable = true;
     daemon.settings = {
       # metrics for collection by prometheus.
