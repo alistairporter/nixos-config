@@ -27,6 +27,7 @@
 
     bc # Calculator
     bottom # System viewer
+    claude-code
     ncdu # TUI disk usage
     ripgrep # Better grep
     fd # Better find
