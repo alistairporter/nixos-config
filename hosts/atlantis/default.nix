@@ -29,7 +29,20 @@
   networking = {
     hostName = "atlantis";
     useDHCP = true;
+    useNetworkd = true;
     nftables.enable = true;
+  };
+
+  systemd.network = {
+    enable = true;
+    networks."10-wan" = {
+      matchConfig.Name = "eno1";
+      networkConfig = {
+        DHCP = "ipv4";
+        IPv6AcceptRA = true;
+      };
+      linkConfig.RequiredForOnline = "routable";
+    };
   };
 
   networking.firewall.allowedTCPPorts = [
@@ -76,6 +89,23 @@
     mergerfs
     mergerfs-tools
   ];
+
+  # btrfs array dropout monitoring
+  custom.server.btrfs-monitor = {
+    enable = true;
+    mountpoints = ["/media/Files" "/media/MiscFiles"];
+    webhook = {
+      headers = {
+        Priority = "high";
+        Tags = "warning,floppy_disk";
+      };
+      # URL is supplied via BTRFS_MONITOR_WEBHOOK_URL in the sops secret below.
+      environmentFile = config.sops.secrets.btrfs_monitor_webhook.path;
+    };
+  };
+  sops.secrets.btrfs_monitor_webhook = {
+    sopsFile = ./secrets.yaml;
+  };
 
   # Scrutiny Collector
   services.scrutiny.collector = {
