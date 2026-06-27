@@ -89,10 +89,7 @@
   } @ inputs: let
     inherit (self) outputs;
     lib = nixpkgs.lib // home-manager.lib;
-    private =
-      if builtins.pathExists ./private.nix
-      then import ./private.nix
-      else import ./private.nix.example;
+    private = import ./private.nix;
     forEachSystem = f: lib.genAttrs (import systems) (system: f pkgsFor.${system});
     pkgsFor = lib.genAttrs (import systems) (
       system:
