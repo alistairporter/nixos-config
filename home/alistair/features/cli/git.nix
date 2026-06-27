@@ -14,6 +14,7 @@
 in {
   home.packages = [
     git-fixup
+    pkgs.git-crypt
   ];
   programs.git = {
     enable = true;
