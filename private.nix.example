@@ -1,0 +1,4 @@
+{
+  domain = "example.com";
+  tailnet = "your-tailnet.ts.net";
+}

@@ -2,9 +2,10 @@
   pkgs,
   config,
   lib,
+  private,
   ...
 }: let
-  root_domain = "aporter.xyz";
+  root_domain = private.domain;
   s3_port = 3900;
   rpc_port = 3901;
   s3_web_port = 3902;
@@ -92,8 +93,8 @@ in {
     package = pkgs.garage-webui;
     openFirewall = true;
     environment = {
-      "API_BASE_URL" = "http://atlantis.dropbear-monster.ts.net:3903";
-      "S3_ENDPOINT" = "s3.aporter.xyz";
+      "API_BASE_URL" = "http://atlantis.${private.tailnet}:3903";
+      "S3_ENDPOINT" = "s3.${private.domain}";
       "S3_REGION" = "garage";
     };
     environmentFile = config.sops.secrets.garage_webui_env.path;

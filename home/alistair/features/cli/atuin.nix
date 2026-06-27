@@ -2,6 +2,7 @@
   config,
   pkgs,
   misc,
+  private,
   ...
 }: {
   # shell history sync
@@ -10,7 +11,7 @@
     enableZshIntegration = true;
     enableBashIntegration = true;
     settings = {
-      sync_address = "https://atuin.aporter.xyz";
+      sync_address = "https://atuin.${private.domain}";
       sync_frequency = "0";
       key_path = config.sops.secrets.atuin_key.path;
       dialect = "uk";

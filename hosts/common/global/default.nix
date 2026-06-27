@@ -3,6 +3,7 @@
   inputs,
   outputs,
   lib,
+  private,
   ...
 }: {
   imports =
@@ -34,7 +35,7 @@
   home-manager.useGlobalPkgs = true;
   home-manager.backupFileExtension = "hm-backup";
   home-manager.extraSpecialArgs = {
-    inherit inputs outputs;
+    inherit inputs outputs private;
   };
 
   nixpkgs = {
@@ -46,7 +47,7 @@
   };
 
   hardware.enableRedistributableFirmware = true;
-  networking.domain = "aporter.xyz";
+  networking.domain = private.domain;
 
   # Increase open file limit for sudoers
   security.pam.loginLimits = [

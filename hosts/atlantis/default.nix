@@ -2,6 +2,7 @@
   pkgs,
   config,
   inputs,
+  private,
   ...
 }: {
   imports = [
@@ -62,7 +63,7 @@
         peers = [
           {
             name = "atlantis";
-            endpoint = "aporter.xyz:51821";
+            endpoint = "${private.domain}:51821";
             publicKey = "eYrWhvMGJc8BFadkwOhVQUQf/3OFOLiybYvE/JK7gXM=";
             allowedIPs = ["10.10.10.0/24" "fd00:dead:beef::1/112"];
             persistentKeepalive = 25;

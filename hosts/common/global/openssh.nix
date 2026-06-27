@@ -2,6 +2,7 @@
   outputs,
   lib,
   config,
+  private,
   ...
 }: let
   hosts = lib.attrNames outputs.nixosConfigurations;
@@ -40,15 +41,15 @@ in {
       publicKeyFile = ../../${hostname}/ssh_host_ed25519_key.pub;
       extraHostNames =
         [
-          "${hostname}.aporter.xyz"
+          "${hostname}.${private.domain}"
         ]
         ++
         # Alias for localhost if it's the same host
         (lib.optional (hostname == config.networking.hostName) "localhost")
-        # Alias to aporter.xyz and git.aporter.xyz if it's morpheus
+        # Alias to the apex domain and git subdomain if it's morpheus
         ++ (lib.optionals (hostname == "morpehus") [
-          "aporter.xyz"
-          "git.aporter.xyz"
+          private.domain
+          "git.${private.domain}"
         ]);
     });
   };

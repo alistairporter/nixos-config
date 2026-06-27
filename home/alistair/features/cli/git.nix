@@ -2,6 +2,7 @@
   pkgs,
   config,
   lib,
+  private,
   ...
 }: let
   # git commit --ammend but for older commits
@@ -28,7 +29,7 @@ in {
 
       user = {
         name = "Alistair Porter";
-        email = lib.mkDefault "alistair@aporter.xyz";
+        email = lib.mkDefault "alistair@${private.domain}";
       };
 
       init.defaultBranch = "main";

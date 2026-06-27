@@ -3,6 +3,7 @@
   lib,
   config,
   pkgs,
+  private,
   ...
 }: let
   nixosConfigs = builtins.attrNames outputs.nixosConfigurations;
@@ -17,9 +18,9 @@ in {
       net = {
         host = lib.concatStringsSep " " (lib.flatten (map (host: [
             host
-            "${host}.aporter.xyz"
-            "${host}.ts.aporter.xyz"
-            "${host}.dropbear-monster.ts.net"
+            "${host}.${private.domain}"
+            "${host}.ts.${private.domain}"
+            "${host}.${private.tailnet}"
           ])
           hostnames));
         forwardAgent = true;

@@ -2,6 +2,7 @@
   config,
   pkgs,
   inputs,
+  private,
   ...
 }: {
   imports = [
@@ -216,37 +217,37 @@
       pins = {
         "TubeArchivist" = {
           id = "9d8a8f91-7e29-4688-ae2e-da4e49d4a179";
-          url = "https://tubearchive.dropbear-monster.ts.net";
+          url = "https://tubearchive.${private.tailnet}";
           position = 101;
           isEssential = true;
         };
         "Forgejo" = {
           id = "206824e0-5ddf-4dd5-85ae-35b2d4ff83e5";
-          url = "https://git.dropbear-monster.ts.net";
+          url = "https://git.${private.tailnet}";
           position = 102;
           isEssential = true;
         };
         "Jellyfin" = {
           id = "815fcf03-c819-4bc0-8d35-112e4f9aaa9c";
-          url = "https://jellyfin.dropbear-monster.ts.net";
+          url = "https://jellyfin.${private.tailnet}";
           position = 103;
           isEssential = true;
         };
         "Home Assistant" = {
           id = "3b832bbd-886a-4dab-8529-49cc9cd5f999";
-          url = "https://git.dropbear-monster.ts.net";
+          url = "https://git.${private.tailnet}";
           position = 104;
           isEssential = true;
         };
         "Manyfold" = {
           id = "3b832bbd-886a-4dab-8529-49cc9cd5f999";
-          url = "https://manyfold.dropbear-monster.ts.net";
+          url = "https://manyfold.${private.tailnet}";
           position = 105;
           isEssential = true;
         };
         "Nextcloud" = {
           id = "a4165b27-ccb7-4c7b-bd61-cb444f8fc0fe";
-          url = "https://nextcloud.dropbear-monster.ts.net";
+          url = "https://nextcloud.${private.tailnet}";
           position = 106;
           isEssential = true;
         };
@@ -298,7 +299,7 @@
             queryCharset = "UTF-8";
             urls = [
               {
-                template = "https://search.dropbear-monster.ts.net/search";
+                template = "https://search.${private.tailnet}/search";
                 params = [
                   {
                     name = "q";

@@ -89,6 +89,10 @@
   } @ inputs: let
     inherit (self) outputs;
     lib = nixpkgs.lib // home-manager.lib;
+    private =
+      if builtins.pathExists ./private.nix
+      then import ./private.nix
+      else import ./private.nix.example;
     forEachSystem = f: lib.genAttrs (import systems) (system: f pkgsFor.${system});
     pkgsFor = lib.genAttrs (import systems) (
       system:
@@ -124,14 +128,14 @@
       atlantis = lib.nixosSystem {
         modules = [./hosts/atlantis];
         specialArgs = {
-          inherit inputs outputs;
+          inherit inputs outputs private;
         };
       };
       # Secondary app server in 1L minipc
       borealis = lib.nixosSystem {
         modules = [./hosts/borealis];
         specialArgs = {
-          inherit inputs outputs;
+          inherit inputs outputs private;
         };
       };
       # # Steamdeck running nixos
@@ -145,21 +149,21 @@
       midgard = lib.nixosSystem {
         modules = [./hosts/midgard];
         specialArgs = {
-          inherit inputs outputs;
+          inherit inputs outputs private;
         };
       };
       # VPS and reverse proxy/tertiary appserver
       morpheus = lib.nixosSystem {
         modules = [./hosts/morpheus];
         specialArgs = {
-          inherit inputs outputs;
+          inherit inputs outputs private;
         };
       };
       # Main desktop and gaming rig
       olympus = lib.nixosSystem {
         modules = [./hosts/olympus];
         specialArgs = {
-          inherit inputs outputs;
+          inherit inputs outputs private;
         };
       };
     };
@@ -172,7 +176,7 @@
         modules = [./home/alistair/khazaddum.nix ./home/alistair/nixpkgs.nix];
         pkgs = pkgsFor.x86_64-linux;
         extraSpecialArgs = {
-          inherit inputs outputs;
+          inherit inputs outputs private;
         };
       };
     };
