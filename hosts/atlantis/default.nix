@@ -25,6 +25,7 @@
     ../common/optional/incus.nix
     ../common/optional/xrdp-xfce.nix
     ../common/optional/avahi.nix
+    ../common/optional/flatpak.nix
   ];
 
   networking = {
