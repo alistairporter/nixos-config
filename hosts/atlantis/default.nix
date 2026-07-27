@@ -30,6 +30,7 @@
 
   networking = {
     hostName = "atlantis";
+    hostId = "020ba3f2"; #needed for zfs to identify system uniquely.
     useDHCP = true;
     useNetworkd = true;
     nftables.enable = true;
@@ -78,6 +79,10 @@
   };
 
   boot = {
+    # ZFS Support
+    supportedFilesystems = [ "zfs" ];
+    zfs.forceImportRoot = false;
+
     kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_stable;
     kernelModules = ["nct6775"];
     binfmt.emulatedSystems = [

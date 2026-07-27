@@ -32,16 +32,20 @@
     };
 
     ## data disk mount
+
+    "/mnt/tank" = {
+      device = "tank";
+      fsType = "zfs";
+    };
+   
+    "/mnt/tank/files" = {
+      device = "tank/files";
+      fsType = "zfs";
+    };
+
     "/media/Files" = {
-      device = "/dev/disk/by-uuid/bcf5ad28-9515-43a2-b560-8e2357641089";
-      fsType = "btrfs";
-      options = [
-        "defaults"
-        "nofail"
-        "autodefrag"
-        "compress=zstd"
-        "subvol=data"
-      ];
+      device = "tank/files";
+      fsType = "zfs";
     };
   };
 }
