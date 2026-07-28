@@ -11,6 +11,13 @@
     interval = "weekly";
   };
 
+  # ZFS Scrubbing
+  services.zfs.autoScrub = {
+    enable = true;
+    interval = "weekly";
+    pools = [ "tank" ];
+  };
+
   # Filesystems:
   fileSystems = {
     # add options to fs definitions in hardware-configuration.nix
