@@ -37,22 +37,5 @@
         "x-gvfs-show"
       ];
     };
-
-    ## data disk mount
-
-    "/mnt/tank" = {
-      device = "tank";
-      fsType = "zfs";
-    };
-   
-    "/mnt/tank/files" = {
-      device = "tank/files";
-      fsType = "zfs";
-    };
-
-    "/media/Files" = {
-      device = "tank/files";
-      fsType = "zfs";
-    };
   };
 }
