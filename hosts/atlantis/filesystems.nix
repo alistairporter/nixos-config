@@ -18,6 +18,33 @@
     pools = [ "tank" ];
   };
 
+  # Don't prompt for ZFS encryption credentials at boot; encrypted datasets are
+  # unlocked post-boot by the systemd unit(s) below once sops-nix has written
+  # the key material to /run/secrets.
+  boot.zfs.requestEncryptionCredentials = false;
+
+  sops.secrets.zfs_key_tank_private = {
+    sopsFile = ./secrets.yaml;
+  };
+
+  systemd.services.zfs-load-key-tank-private = {
+    description = "Load ZFS encryption key for tank/private and mount it";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "sops-install-secrets.service" "zfs-import-tank.service" ];
+    requires = [ "sops-install-secrets.service" "zfs-import-tank.service" ];
+    unitConfig.ConditionPathExists = config.sops.secrets.zfs_key_tank_private.path;
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+    };
+    script = ''
+      if ! ${pkgs.zfs}/bin/zfs get -H -o value keystatus tank/private | grep -qx available; then
+        ${pkgs.zfs}/bin/zfs load-key -L file://${config.sops.secrets.zfs_key_tank_private.path} tank/private
+      fi
+      ${pkgs.zfs}/bin/zfs mount tank/private || true
+    '';
+  };
+
   # Filesystems:
   fileSystems = {
     # add options to fs definitions in hardware-configuration.nix
