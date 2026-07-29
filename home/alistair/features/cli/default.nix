@@ -36,6 +36,7 @@
     htop # better top
     btop # even better top
     fastfetch # better neofetch
+    fzf # fuzzy find
     sl # encourage better typing
     sops # secret managment
     lolcat # for the lols
