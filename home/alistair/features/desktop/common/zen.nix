@@ -611,6 +611,7 @@
         noscript
 
         # utilities
+        auto-tab-discard
         violentmonkey
         gnu_terry_pratchett
         libredirect
