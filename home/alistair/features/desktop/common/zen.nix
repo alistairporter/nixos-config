@@ -240,7 +240,7 @@
           isEssential = true;
         };
         "Manyfold" = {
-          id = "3b832bbd-886a-4dab-8529-49cc9cd5f999";
+          id = "0e19ccc1-d6e5-48ac-a61a-70bda70d6491";
           url = "https://manyfold.${private.tailnet}";
           position = 105;
           isEssential = true;
