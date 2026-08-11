@@ -12,6 +12,7 @@ in {
       trusted-users = [
         "root"
         "@wheel"
+        "alistair"
       ];
       auto-optimise-store = lib.mkDefault true;
       experimental-features = [

@@ -24,6 +24,7 @@
       ./prometheus-node-exporter.nix
       ./sops.nix
       ./steam-hardware.nix
+      ./sudo.nix
       ./swappiness.nix
       ./systemd-initrd.nix
       ./tailscale.nix
