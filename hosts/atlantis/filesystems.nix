@@ -15,7 +15,7 @@
   services.zfs.autoScrub = {
     enable = true;
     interval = "weekly";
-    pools = [ "tank" ];
+    pools = ["tank"];
   };
 
   # Don't prompt for ZFS encryption credentials at boot; encrypted datasets are
@@ -29,9 +29,9 @@
 
   systemd.services.zfs-load-key-tank-private = {
     description = "Load ZFS encryption key for tank/private and mount it";
-    wantedBy = [ "multi-user.target" ];
-    after = [ "sops-install-secrets.service" "zfs-import-tank.service" ];
-    requires = [ "sops-install-secrets.service" "zfs-import-tank.service" ];
+    wantedBy = ["multi-user.target"];
+    after = ["sops-install-secrets.service" "zfs-import-tank.service"];
+    requires = ["sops-install-secrets.service" "zfs-import-tank.service"];
     unitConfig.ConditionPathExists = config.sops.secrets.zfs_key_tank_private.path;
     serviceConfig = {
       Type = "oneshot";

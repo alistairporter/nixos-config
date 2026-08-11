@@ -68,7 +68,7 @@
   ];
 
   # enable esp32 flashing without sudo
-  services.udev.packages = with pkgs; [ platformio-core.udev ];
+  services.udev.packages = with pkgs; [platformio-core.udev];
 
   environment.persistence = lib.mkForce {};
 }

@@ -16,13 +16,15 @@ in {
     # See above let block
     settings = {
       net = {
-        header = "Host " + lib.concatStringsSep " " (lib.flatten (map (host: [
-            host
-            "${host}.${private.domain}"
-            "${host}.ts.${private.domain}"
-            "${host}.${private.tailnet}"
-          ])
-          hostnames));
+        header =
+          "Host "
+          + lib.concatStringsSep " " (lib.flatten (map (host: [
+              host
+              "${host}.${private.domain}"
+              "${host}.ts.${private.domain}"
+              "${host}.${private.tailnet}"
+            ])
+            hostnames));
         ForwardAgent = true;
         RemoteForward = [
           {

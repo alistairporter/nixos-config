@@ -6,9 +6,9 @@
   imports = [
     inputs.hardware.nixosModules.common-pc-ssd
     /*
-      This is referenced "indirectly" through its path, rather
-      than through `inputs.nixos-hardware.nixosModules` because of
-      <https://github.com/NixOS/nixos-hardware/issues/992>.
+    This is referenced "indirectly" through its path, rather
+    than through `inputs.nixos-hardware.nixosModules` because of
+    <https://github.com/NixOS/nixos-hardware/issues/992>.
     */
     # TODO: Fix this when <https://github.com/NixOS/nixos-hardware/issues/992> gets merged.
     "${inputs.hardware}/common/gpu/intel/kaby-lake"

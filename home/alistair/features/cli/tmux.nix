@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}:{
+{pkgs, ...}: {
   # shell multiplexer
   programs.tmux = {
     enable = true;
@@ -11,7 +8,6 @@
       fuzzback
       prefix-highlight
       tmux-fzf
-      
     ];
     keyMode = "vi";
     terminal = "tmux-256color";
@@ -19,7 +15,7 @@
       # to get all possible colours in your terminal run this command:
       # `for i in {0..255}; do printf '\033[38;5;%dmcolour%d\033[0m\n' "$i" "$i"; done`
       #
-      
+
       bind-key @ choose-window 'join-pane -h -s "%%"'
       bind  c  new-window      -c "#{pane_current_path}"
       bind  %  split-window -h -c "#{pane_current_path}"

@@ -80,7 +80,7 @@
 
   boot = {
     # ZFS Support
-    supportedFilesystems = [ "zfs" ];
+    supportedFilesystems = ["zfs"];
     zfs.forceImportRoot = false;
 
     kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_stable;

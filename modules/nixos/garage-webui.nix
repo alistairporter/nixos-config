@@ -25,7 +25,7 @@ in {
       environment = lib.mkOption {
         type = lib.types.attrsOf lib.types.str;
         default = {};
-        description = ''          '
+        description = ''
                     Environment variables for configuring the garage-webui service.
                     This field will end up public in /nix/store, for secret values (such as `KEY`) use `environmentFile`.
 
