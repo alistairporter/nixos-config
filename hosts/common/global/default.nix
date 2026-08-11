@@ -4,6 +4,7 @@
   outputs,
   lib,
   private,
+  pkgs,
   ...
 }: {
   imports =
@@ -64,6 +65,9 @@
       value = "1048576";
     }
   ];
+
+  # enable esp32 flashing without sudo
+  services.udev.packages = with pkgs; [ platformio-core.udev ];
 
   environment.persistence = lib.mkForce {};
 }
