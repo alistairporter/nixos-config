@@ -12,19 +12,19 @@
 in {
   programs.ssh = {
     enable = true;
-    enableDefaultConfig = false; # replace deprecated option with "*" matchBlock below
+    enableDefaultConfig = false; # replace deprecated option with "*" settings block below
     # See above let block
-    matchBlocks = {
+    settings = {
       net = {
-        host = lib.concatStringsSep " " (lib.flatten (map (host: [
+        header = "Host " + lib.concatStringsSep " " (lib.flatten (map (host: [
             host
             "${host}.${private.domain}"
             "${host}.ts.${private.domain}"
             "${host}.${private.tailnet}"
           ])
           hostnames));
-        forwardAgent = true;
-        remoteForwards = [
+        ForwardAgent = true;
+        RemoteForward = [
           {
             bind.address = ''/%d/.gnupg-sockets/S.gpg-agent'';
             host.address = ''/%d/.gnupg-sockets/S.gpg-agent.extra'';
@@ -34,24 +34,24 @@ in {
             host.address = ''/%d/.waypipe/client.sock'';
           }
         ];
-        forwardX11 = true;
-        forwardX11Trusted = true;
-        setEnv.WAYLAND_DISPLAY = "wayland-waypipe";
-        extraOptions.StreamLocalBindUnlink = "yes";
+        ForwardX11 = true;
+        ForwardX11Trusted = true;
+        SetEnv.WAYLAND_DISPLAY = "wayland-waypipe";
+        StreamLocalBindUnlink = "yes";
       };
 
       # Replacement for the deprecated programs.ssh.enableDefaultConfig option
       "*" = {
-        forwardAgent = false;
-        addKeysToAgent = "no";
-        compression = false;
-        serverAliveInterval = 0;
-        serverAliveCountMax = 3;
-        hashKnownHosts = false;
-        userKnownHostsFile = "~/.ssh/known_hosts";
-        controlMaster = "no";
-        controlPath = "~/.ssh/master-%r@%n:%p";
-        controlPersist = "no";
+        ForwardAgent = false;
+        AddKeysToAgent = "no";
+        Compression = false;
+        ServerAliveInterval = 0;
+        ServerAliveCountMax = 3;
+        HashKnownHosts = false;
+        UserKnownHostsFile = "~/.ssh/known_hosts";
+        ControlMaster = "no";
+        ControlPath = "~/.ssh/master-%r@%n:%p";
+        ControlPersist = "no";
       };
     };
   };
