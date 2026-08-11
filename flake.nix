@@ -18,7 +18,10 @@
     systems.url = "github:nix-systems/default-linux";
 
     # Hardware configs by nixos community optimal for various machines.
-    hardware.url = "github:NixOS/nixos-hardware/master";
+    hardware = {
+      url = "github:NixOS/nixos-hardware/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Home manager
     home-manager = {
@@ -72,7 +75,10 @@
     };
     # Overlays
 
-    nur.url = "github:nix-community/NUR";
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     jovian = {
       url = "github:jovian-experiments/jovian-nixos/development";
