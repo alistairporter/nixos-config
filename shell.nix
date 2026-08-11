@@ -11,6 +11,7 @@
       gnupg
       age
       git-crypt
+      just
     ];
   };
 }

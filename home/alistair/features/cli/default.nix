@@ -33,6 +33,7 @@
     fd # Better find
     httpie # Better curl
     jq # JSON pretty printer and manipulator
+    just # Custom command macros for projects
     htop # better top
     btop # even better top
     fastfetch # better neofetch
