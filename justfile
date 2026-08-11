@@ -12,6 +12,14 @@ remotes := "atlantis borealis morpheus"
 # nixos-rebuild-ng: --elevate sudo works for both local activation and remote deploys
 nrb := "nixos-rebuild --elevate sudo"
 
+# nix-output-monitor: nixos-rebuild and home-manager forward --log-format to nix, and nom
+# renders the resulting json stream as a live build tree. Set NOM=0 for plain nix output
+# (e.g. when redirecting to a file or running non-interactively).
+use_nom   := env('NOM', '1')
+nom_fmt   := if use_nom == "1" { "--log-format internal-json" } else { "" }
+nom_pipe  := if use_nom == "1" { "|& nom --json" } else { "" }
+nom_build := if use_nom == "1" { "nom build" } else { "nix build" }
+
 [private]
 default:
     @just --list --unsorted
@@ -21,32 +29,32 @@ default:
 # Build and activate a config, and make it the boot default
 [group('rebuild')]
 switch h=host:
-    {{nrb}} switch --flake {{flake}}#{{h}} --diff
+    {{nrb}} switch --flake {{flake}}#{{h}} --diff {{nom_fmt}} {{nom_pipe}}
 
 # Build and make it the boot default, but do not activate now
 [group('rebuild')]
 boot h=host:
-    {{nrb}} boot --flake {{flake}}#{{h}} --diff
+    {{nrb}} boot --flake {{flake}}#{{h}} --diff {{nom_fmt}} {{nom_pipe}}
 
 # Activate now without touching the bootloader (reverts on reboot)
 [group('rebuild')]
 test h=host:
-    {{nrb}} test --flake {{flake}}#{{h}} --diff
+    {{nrb}} test --flake {{flake}}#{{h}} --diff {{nom_fmt}} {{nom_pipe}}
 
 # Build only, leaving a ./result symlink
 [group('rebuild')]
 build h=host:
-    {{nrb}} build --flake {{flake}}#{{h}}
+    {{nrb}} build --flake {{flake}}#{{h}} {{nom_fmt}} {{nom_pipe}}
 
 # Show what activation would do, without changing anything
 [group('rebuild')]
 dry h=host:
-    {{nrb}} dry-activate --flake {{flake}}#{{h}}
+    {{nrb}} dry-activate --flake {{flake}}#{{h}} {{nom_fmt}} {{nom_pipe}}
 
 # Build a host and diff its closure against the running system
 [group('rebuild')]
 diff h=host:
-    {{nrb}} build --flake {{flake}}#{{h}}
+    {{nrb}} build --flake {{flake}}#{{h}} {{nom_fmt}} {{nom_pipe}}
     nvd diff /run/current-system ./result
 
 # Update all flake inputs, then switch
@@ -56,7 +64,7 @@ upgrade h=host: update (switch h)
 # Boot the config in a throwaway VM (safe way to test risky changes)
 [group('rebuild')]
 vm h=host:
-    {{nrb}} build-vm --flake {{flake}}#{{h}}
+    {{nrb}} build-vm --flake {{flake}}#{{h}} {{nom_fmt}} {{nom_pipe}}
     ./result/bin/run-*-vm
 
 # Roll the current system back to the previous generation
@@ -75,17 +83,17 @@ generations:
 # Deploy to a remote host over SSH (builds locally, activates there)
 [group('deploy')]
 deploy h:
-    {{nrb}} switch --flake {{flake}}#{{h}} --target-host {{user}}@{{h}} --diff
+    {{nrb}} switch --flake {{flake}}#{{h}} --target-host {{user}}@{{h}} --diff {{nom_fmt}} {{nom_pipe}}
 
 # Deploy to a remote host, activating on next reboot only
 [group('deploy')]
 deploy-boot h:
-    {{nrb}} boot --flake {{flake}}#{{h}} --target-host {{user}}@{{h}} --diff
+    {{nrb}} boot --flake {{flake}}#{{h}} --target-host {{user}}@{{h}} --diff {{nom_fmt}} {{nom_pipe}}
 
 # Build on the remote host itself instead of locally (for foreign arches / big builds)
 [group('deploy')]
 deploy-remote-build h:
-    {{nrb}} switch --flake {{flake}}#{{h}} --build-host {{user}}@{{h}} --target-host {{user}}@{{h}}
+    {{nrb}} switch --flake {{flake}}#{{h}} --build-host {{user}}@{{h}} --target-host {{user}}@{{h}} {{nom_fmt}} {{nom_pipe}}
 
 # Deploy sequentially to every remote host (atlantis, borealis, morpheus)
 [group('deploy')]
@@ -109,7 +117,7 @@ build-all:
     failed=()
     for h in $(just hosts); do
         echo "==> $h"
-        nix build "{{flake}}#nixosConfigurations.$h.config.system.build.toplevel" \
+        {{nom_build}} "{{flake}}#nixosConfigurations.$h.config.system.build.toplevel" \
             --no-link --print-out-paths || failed+=("$h")
     done
     if (( ${#failed[@]} )); then echo "FAILED: ${failed[*]}" >&2; exit 1; fi
@@ -119,12 +127,12 @@ build-all:
 # Activate a standalone home-manager config (non-NixOS hosts)
 [group('home')]
 hm cfg="deck@khazaddum":
-    home-manager switch --flake {{flake}}#{{cfg}} -b backup
+    home-manager switch --flake {{flake}}#{{cfg}} -b backup {{nom_fmt}} {{nom_pipe}}
 
 # Build a standalone home-manager config without activating
 [group('home')]
 hm-build cfg="deck@khazaddum":
-    home-manager build --flake {{flake}}#{{cfg}}
+    home-manager build --flake {{flake}}#{{cfg}} {{nom_fmt}} {{nom_pipe}}
 
 # List home-manager generations
 [group('home')]
@@ -146,7 +154,7 @@ update-in +inputs:
 # Evaluate all flake outputs and run checks
 [group('flake')]
 check:
-    nix flake check {{flake}} --all-systems
+    nix flake check {{flake}} --all-systems {{nom_fmt}} {{nom_pipe}}
 
 # Show the flake's outputs
 [group('flake')]
