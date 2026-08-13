@@ -18,7 +18,7 @@ in {
       frontend https
         bind [::]:443 v4v6
         mode tcp
-        default_backend wireguard
+        default_backend httpsbackend
 
       frontend prometheus
         bind :8405
@@ -29,22 +29,22 @@ in {
       frontend minecraft
         bind [::]:25565 v4v6
         mode tcp
-        default_backend minecraft
+        default_backend minecraftbackend
 
       frontend forgejossh
         bind [::]:2202 v4v6
         mode tcp
-        default_backend forgejossh
+        default_backend forgejosshbackend
 
-      backend forgejossh
+      backend forgejosshbackend
         # server atlantisv4 10.10.10.2:2222
         server atlantisv4 ${atlantis}:2222
 
-      backend minecraft
+      backend minecraftbackend
         # server atlantisv4 10.10.10.2:25565 check send-proxy-v2
         server atlantisv4 ${atlantis}:25565 check send-proxy-v2
 
-      backend wireguard
+      backend httpsbackend
         # server atlantisv4 10.10.10.2:8080 check send-proxy-v2
         server atlantisv4 ${atlantis}:8080 check send-proxy-v2
     '';
