@@ -104,7 +104,7 @@
       device = "/dev/disk/by-uuid/3413f16e-7b6b-4899-92ad-379cc3cd5e68";
       fsType = "btrfs";
       options = [
-        "subvol=home"
+        "subvol=MiscFiles"
         "compress=zstd"
         "nosuid"
         "nodev"
