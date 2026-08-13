@@ -83,7 +83,7 @@
     supportedFilesystems = ["zfs"];
     zfs.forceImportRoot = false;
 
-    kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_stable;
+    kernelPackages = pkgs.linuxKernel.packages.linux_xanmod;
     kernelModules = ["nct6775"];
     binfmt.emulatedSystems = [
       "aarch64-linux"
