@@ -86,19 +86,22 @@ in {
     };
   };
 
-  networking.firewall.allowedTCPPorts = [s3_port rpc_port s3_web_port admin_port]; # Facilitate firewall punching
+  networking.firewall.allowedTCPPorts = [s3_port rpc_port s3_web_port admin_port 3909]; # Facilitate firewall punching (3909 = garage-webui)
 
-  services.garage-webui = {
-    enable = true;
-    package = pkgs.garage-webui;
-    openFirewall = true;
-    environment = {
-      "API_BASE_URL" = "http://atlantis.${private.tailnet}:3903";
-      "S3_ENDPOINT" = "s3.${private.domain}";
-      "S3_REGION" = "garage";
+  # garage-webui was removed from nixpkgs upstream, so run the official container instead.
+  virtualisation.oci-containers = {
+    backend = "docker";
+    containers.garage-webui = {
+      image = "khairul169/garage-webui:latest";
+      autoStart = true;
+      ports = ["3909:3909"];
+      volumes = ["/etc/garage.toml:/etc/garage.toml:ro"];
+      environment = {
+        API_BASE_URL = "http://atlantis.${private.tailnet}:3903";
+        S3_ENDPOINT_URL = "s3.${private.domain}";
+        S3_REGION = "garage";
+      };
+      environmentFiles = [config.sops.secrets.garage_webui_env.path];
     };
-    environmentFile = config.sops.secrets.garage_webui_env.path;
-    configuration = {};
-    # configuration = config.services.garage.settings;
   };
 }
