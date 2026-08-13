@@ -29,9 +29,9 @@
 
   systemd.services.zfs-load-key-tank-private = {
     description = "Load ZFS encryption key for tank/private and mount it";
-    wantedBy = ["multi-user.target"];
-    after = ["sops-install-secrets.service" "zfs-import-tank.service"];
-    requires = ["sops-install-secrets.service" "zfs-import-tank.service"];
+    wantedBy = [ "multi-user.target" ];
+    after = [ "zfs-import-tank.service" ];
+    requires = [ "zfs-import-tank.service" ];
     unitConfig.ConditionPathExists = config.sops.secrets.zfs_key_tank_private.path;
     serviceConfig = {
       Type = "oneshot";
@@ -44,6 +44,9 @@
       ${pkgs.zfs}/bin/zfs mount tank/private || true
     '';
   };
+
+  # Import zfs pool on boot
+  boot.zfs.extraPools = [ "tank" ];
 
   # Filesystems:
   fileSystems = {
