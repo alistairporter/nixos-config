@@ -47,14 +47,57 @@
 
   # Import zfs pool on boot
   boot.zfs.extraPools = [ "tank" ];
+  # use swapfile for swap
+  swapDevices = [{device = "/swap/swapfile";}];
 
   # Filesystems:
   fileSystems = {
-    # add options to fs definitions in hardware-configuration.nix
-    "/".options = ["compress=zstd"];
-    "/home".options = ["compress=zstd"];
-    "/nix".options = ["compress=zstd" "noatime"];
-    "/swap".options = ["noatime"];
+    # mount root subvolume
+    "/" = {
+      device = "/dev/disk/by-uuid/3413f16e-7b6b-4899-92ad-379cc3cd5e68";
+      fsType = "btrfs";
+      options = [
+        "subvol=root"
+        "compress=zstd"
+      ];
+    };
+    # mount efi partition as boot
+    "/boot" = {
+      device = "/dev/disk/by-uuid/4917-BEC8";
+      fsType = "vfat";
+      options = [
+        "fmask=0022"
+        "dmask=0022"
+      ];
+    };
+    # keep user data on seperate subvolume
+    "/home" = {
+      device = "/dev/disk/by-uuid/3413f16e-7b6b-4899-92ad-379cc3cd5e68";
+      fsType = "btrfs";
+      options = [
+        "subvol=home"
+        "compress=zstd"
+      ];
+    };
+    # keep nix store on seperate subvolume
+    "/nix" = {
+      device = "/dev/disk/by-uuid/3413f16e-7b6b-4899-92ad-379cc3cd5e68";
+      fsType = "btrfs";
+      options = [
+        "subvol=nix"
+        "compress=zstd"
+        "noatime"
+      ];
+    };
+    # special subvolume for swapfile to keep out of snapshots
+    "/swap" = {
+      device = "/dev/disk/by-uuid/3413f16e-7b6b-4899-92ad-379cc3cd5e68";
+      fsType = "btrfs";
+      options = [
+        "subvol=swap"
+        "noatime"
+      ];
+    };
 
     # mount appdata subvolume in place of old ssd, keeping traditional location
     "/media/MiscFiles" = {
