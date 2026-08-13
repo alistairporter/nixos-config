@@ -56,11 +56,13 @@
     "/nix".options = ["compress=zstd" "noatime"];
     "/swap".options = ["noatime"];
 
-    ## appdata ssd mount
+    # mount appdata subvolume in place of old ssd, keeping traditional location
     "/media/MiscFiles" = {
-      device = "/dev/disk/by-uuid/3d4a90c0-9bf1-449b-b855-4b04f5e66e30";
+      device = "/dev/disk/by-uuid/3413f16e-7b6b-4899-92ad-379cc3cd5e68";
       fsType = "btrfs";
       options = [
+        "subvol=home"
+        "compress=zstd"
         "nosuid"
         "nodev"
         "nofail"
