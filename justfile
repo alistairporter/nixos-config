@@ -10,7 +10,7 @@ user   := env('USER', 'alistair')
 remotes := "atlantis borealis morpheus"
 
 # nixos-rebuild-ng: --elevate sudo works for both local activation and remote deploys
-nrb := "nixos-rebuild --elevate sudo"
+nrb := "nixos-rebuild --elevate sudo --ask-elevate-password"
 
 # nix-output-monitor: nixos-rebuild and home-manager forward --log-format to nix, and nom
 # renders the resulting json stream as a live build tree. Set NOM=0 for plain nix output
