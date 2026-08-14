@@ -2,7 +2,6 @@
   pkgs,
   config,
   inputs,
-  private,
   ...
 }: {
   imports = [
@@ -56,28 +55,6 @@
     8266 # tdarr
   ];
 
-  networking.wireguard = {
-    enable = true;
-    interfaces = {
-      "wgtunnelinfra" = {
-        privateKeyFile = config.sops.secrets.wg_privkey_atlantis.path;
-        ips = ["10.10.10.2/32" "fd00:dead:beef::2/128"];
-        peers = [
-          {
-            name = "atlantis";
-            endpoint = "${private.domain}:51821";
-            publicKey = "eYrWhvMGJc8BFadkwOhVQUQf/3OFOLiybYvE/JK7gXM=";
-            allowedIPs = ["10.10.10.0/24" "fd00:dead:beef::1/112"];
-            persistentKeepalive = 25;
-          }
-        ];
-      };
-    };
-  };
-  sops.secrets.wg_privkey_atlantis = {
-    sopsFile = ./secrets.yaml;
-  };
-
   boot = {
     # ZFS Support
     supportedFilesystems = ["zfs"];
@@ -93,8 +70,6 @@
 
   environment.systemPackages = with pkgs; [
     calibre
-    mergerfs
-    mergerfs-tools
   ];
 
   # btrfs array dropout monitoring

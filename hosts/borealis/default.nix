@@ -2,7 +2,6 @@
   config,
   pkgs,
   inputs,
-  private,
   ...
 }: {
   imports = [
@@ -50,29 +49,6 @@
     };
     # make routing on this interface a dependency for network-online.target
     linkConfig.RequiredForOnline = "routable";
-  };
-
-  networking.wireguard = {
-    enable = true;
-    interfaces = {
-      "wgtunnelinfra" = {
-        #        privateKey = "SECRET_REDACTED";
-        privateKeyFile = config.sops.secrets.wg_privkey_borealis.path;
-        ips = ["10.10.10.3/32"];
-        peers = [
-          {
-            name = "atlantis";
-            endpoint = "${private.domain}:51821";
-            publicKey = "eYrWhvMGJc8BFadkwOhVQUQf/3OFOLiybYvE/JK7gXM=";
-            allowedIPs = ["10.10.10.0/24"];
-            persistentKeepalive = 25;
-          }
-        ];
-      };
-    };
-  };
-  sops.secrets.wg_privkey_borealis = {
-    sopsFile = ./secrets.yaml;
   };
 
   boot = {

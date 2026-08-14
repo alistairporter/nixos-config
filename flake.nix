@@ -141,13 +141,6 @@
           inherit inputs outputs private;
         };
       };
-      # # Steamdeck running nixos
-      # khazaddum = lib.nixosSystem {
-      #   modules = [./hosts/khazaddum];
-      #   specialArgs = {
-      #     inherit inputs outputs;
-      #   };
-      # };
       # Main laptop
       midgard = lib.nixosSystem {
         modules = [./hosts/midgard];
