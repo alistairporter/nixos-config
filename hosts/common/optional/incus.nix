@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   # incus needs nftables on nixos
   networking.nftables.enable = true;
 
@@ -45,6 +45,21 @@
       ];
     };
   };
+  # Also enable libvirtd for virt-manager
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu = {
+      package = pkgs.qemu_kvm;
+    };
+  };
+
+  environment.systemPackages = with pkgs; [
+    # Virtualization packages
+    qemu_kvm         # QEMU with KVM support
+    virt-manager     # GUI for VM management
+    libvirt          # libvirt client tools
+    bridge-utils     # Network bridge utilities
+  ];
   # https://github.com/NixOS/nixpkgs/issues/263359
   networking.firewall.trustedInterfaces = ["incusbr0"];
 }

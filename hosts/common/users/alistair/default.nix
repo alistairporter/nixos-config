@@ -18,6 +18,7 @@ in {
       "git"
       "i2c"
       "incus"
+      "incus-admin"
       "kvm"
       "libvirtd"
       "lxd"
