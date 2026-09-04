@@ -13,7 +13,6 @@
     evince # document viewer
     geary # email reader
     gnome-music
-    gnome-photos
     gnome-terminal #ancient terminal emulator
     gnome-console # more modern but very spartan terminal
     yelp # gnome help
