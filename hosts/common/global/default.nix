@@ -40,6 +40,11 @@
     inherit inputs outputs private;
   };
 
+  # Allow all users to access powercap so mission-center can display its data.
+  services.udev.extraRules = ''
+    SUBSYSTEM=="powercap", KERNEL=="intel-rapl*", RUN+="${pkgs.coreutils-full}/bin/chmod a+r /sys/%p/energy_uj"
+  '';
+
   nixpkgs = {
     overlays = builtins.attrValues outputs.overlays;
     config = {

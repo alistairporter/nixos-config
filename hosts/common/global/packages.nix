@@ -35,4 +35,11 @@
     xdg-utils
     zsh
   ];
+  # wrap nethogs to allow any user to run it, this is required for per proc network usage in mission-center
+  security.wrappers.nethogs = {
+    owner = "root";
+    group = "root";
+    capabilities = "cap_net_admin,cap_net_raw,cap_dac_read_search,cap_sys_ptrace+pe";
+    source = "${pkgs.nethogs}/bin/nethogs";
+  };
 }
