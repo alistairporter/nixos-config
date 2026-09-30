@@ -215,6 +215,7 @@
       pinsForce = true;
       # pinsForceAction = "remove"; # omit or "demote" to keep undeclared pins as normal tabs
       pins = {
+        ## pinned tabs
         "TubeArchivist" = {
           id = "9d8a8f91-7e29-4688-ae2e-da4e49d4a179";
           url = "https://tubearchive.${private.tailnet}";
@@ -235,7 +236,7 @@
         };
         "Home Assistant" = {
           id = "3b832bbd-886a-4dab-8529-49cc9cd5f999";
-          url = "https://git.${private.tailnet}";
+          url = "https://homeassistant.${private.tailnet}";
           position = 104;
           isEssential = true;
         };
@@ -245,36 +246,49 @@
           position = 105;
           isEssential = true;
         };
-        "Nextcloud" = {
+        "Search" = {
           id = "a4165b27-ccb7-4c7b-bd61-cb444f8fc0fe";
-          url = "https://nextcloud.${private.tailnet}";
+          url = "https://search.${private.tailnet}";
           position = 106;
           isEssential = true;
         };
+        "Seer" = {
+          id = "c91d48dc-5f69-404e-b482-2504427ca325";
+          url = "https://seerr.${private.tailnet}";
+          position = 107;
+          isEssential = true;
+        };
+        "OwnCloud" = {
+          id = "b69104cb-11e6-4a96-976f-016412119006";
+          url = "https://owncloud.${private.tailnet}";
+          position = 108;
+          isEssential = true;
+        };
+        ## non favorite pinned tabs
         "GitHub" = {
           id = "48e8a119-5a14-4826-9545-91c8e8dd3bf6";
           url = "https://github.com";
-          position = 107;
+          position = 201;
         };
         "Dev Tools" = {
           id = "d85a9026-1458-4db6-b115-346746bcc692";
           isGroup = true;
           isFolderCollapsed = false;
           editedTitle = true;
-          position = 200;
+          position = 300;
           folderIcon = "chrome://browser/skin/zen-icons/selectable/eye.svg";
         };
         "NixOS Packages" = {
           id = "f8dd784e-11d7-430a-8f57-7b05ecdb4c77";
           url = "https://search.nixos.org/packages";
           folderParentId = "d85a9026-1458-4db6-b115-346746bcc692";
-          position = 201;
+          position = 301;
         };
         "NixOS Options" = {
           id = "92931d60-fd40-4707-9512-a57b1a6a3919";
           url = "https://search.nixos.org/options";
           folderParentId = "d85a9026-1458-4db6-b115-346746bcc692";
-          position = 202;
+          position = 302;
         };
       };
 
