@@ -17,7 +17,6 @@
     vlc # swissarmy knife of video and audio
     bitwarden-cli # cli passwords
     bitwarden-desktop # passwords
-    obsidian # notes
     mission-center # taskmanager
     ruffle # adobe flash compat
     sqlitebrowser # sqlite stuff

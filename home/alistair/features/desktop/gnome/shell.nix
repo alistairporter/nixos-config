@@ -26,7 +26,7 @@
 
     "org/gnome/shell" = {
       # Dock apps in dash
-      favorite-apps = ["zen-beta.desktop" "thunderbird.desktop" "bitwarden.desktop" "obsidian.desktop" "steam.desktop" "org.remmina.Remmina.desktop" "org.gnome.Ptyxis.desktop" "vlc.desktop" "org.gnome.Nautilus.desktop" "org.gnome.Settings.desktop"];
+      favorite-apps = ["zen-beta.desktop" "thunderbird.desktop" "bitwarden.desktop" "joplin.desktop" "steam.desktop" "org.remmina.Remmina.desktop" "org.gnome.Ptyxis.desktop" "vlc.desktop" "org.gnome.Nautilus.desktop" "org.gnome.Settings.desktop"];
       last-selected-power-profile = "performance";
       remember-mount-password = true;
     };
